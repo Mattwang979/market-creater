@@ -107,14 +107,30 @@ svg{display:block;}
 #chartPanel{flex:none;padding:7px 8px 6px;}
 .ch-h{display:flex;justify-content:space-between;align-items:center;gap:6px;}
 .ctabs{display:flex;gap:2px;padding:2px;border-radius:10px;background:var(--panel-2);}
-.ctabs button{height:28px;padding:0 10px;border:0;border-radius:8px;background:transparent;color:var(--muted);font-size:12px;font-weight:700;}
+.ctabs button{height:28px;padding:0 8px;border:0;border-radius:8px;background:transparent;color:var(--muted);font-size:12px;font-weight:700;}
 .ctabs button[aria-selected="true"]{background:var(--ink);color:var(--bg);}
 .cval{font-size:11px;color:var(--muted);text-align:right;white-space:nowrap;line-height:1.1;}
 .cval b{font-size:20px;color:var(--ink);}
 .drv{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:4px;margin:6px 0 5px;}
 .dv{display:flex;justify-content:space-between;align-items:baseline;gap:2px;padding:2px 6px;border-radius:7px;background:var(--panel-2);font-size:11px;color:var(--muted);white-space:nowrap;}
 .dv b{font-family:var(--f-num);font-style:italic;font-size:14px;}
-#chart{display:block;width:100%;height:84px;}
+#chart{display:block;width:100%;height:80px;}
+.lq{display:flex;align-items:center;gap:8px;margin-top:6px;font-size:11px;color:var(--muted);}
+.lq-l{flex:none;}
+.lq-bar{flex:1;position:relative;height:8px;border-radius:4px;background:var(--panel-2);}
+.lq-bar #lqFill{position:absolute;left:0;top:0;bottom:0;border-radius:4px;background:linear-gradient(90deg,#1f8f87,#2ed6c4);transition:width .5s;}
+.lq-bar .tg{position:absolute;top:-3px;bottom:-3px;width:2px;margin-left:-1px;background:#fff;opacity:.7;border-radius:1px;}
+.lq-bar b{position:absolute;top:0;bottom:0;width:1px;background:rgba(0,0,0,.5);}
+.lq-v{flex:none;min-width:58px;white-space:nowrap;}
+.lq-v b{font-size:16px;color:#7ff0e2;margin-right:3px;}
+.lq-al{flex:none;height:30px;padding:0 10px;border-radius:9px;border:1px solid var(--line);background:var(--panel-2);color:var(--ink);font-size:12px;font-weight:700;}
+.hotc{color:var(--up);font-weight:700;}
+.up2{color:#7ff0e2;} .down2{color:var(--up);}
+.grp{font-size:15px;font-weight:900;margin:16px 0 6px;}
+.rules{padding-left:1.1em;margin:8px 0;line-height:1.7;}
+.ledger{display:grid;grid-template-columns:1fr auto;gap:5px 10px;margin-top:8px;font-size:13px;}
+.ledger b{font-size:16px;text-align:right;}
+.src.cat{background:#ff9ecb;color:#2a0a18;}
 
 /* dock */
 #dock{flex:none;padding:8px 10px;}
@@ -125,17 +141,18 @@ svg{display:block;}
 .stc{font-size:11px;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
 .stc.peak{color:var(--gold);} .stc.off{color:var(--cyan);} .stc.closed{color:var(--muted);} .stc.pulled,.stc.panic{color:var(--up);}
 .dk-inv{text-align:right;font-size:11px;color:var(--muted);line-height:1.35;flex:none;}
+.dk-inv > span{display:block;}
 .dk-inv b{font-size:16px;color:var(--ink);}
 .hearts{display:flex;gap:1px;justify-content:flex-end;}
-.dk-r2{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr) auto;gap:6px;margin-top:7px;position:relative;}
+.dk-r2{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:5px;margin-top:6px;position:relative;}
 .qs{display:flex;align-items:center;gap:3px;min-width:0;}
-.qs button{width:34px;height:44px;border-radius:10px;border:1px solid var(--line);background:var(--panel-2);color:var(--ink);font-size:19px;padding:0;flex:none;}
+.qs button{width:30px;height:44px;border-radius:10px;border:1px solid var(--line);background:var(--panel-2);color:var(--ink);font-size:19px;padding:0;flex:none;}
 .qv{flex:1;min-width:0;height:44px;border-radius:10px;display:flex;flex-direction:column;align-items:center;justify-content:center;line-height:1;color:#0b1020;}
 .qs.bid .qv{background:var(--cyan);} .qs.ask .qv{background:var(--amber);}
 .qv small{font-size:10px;font-weight:900;opacity:.75;}
 .qv b{font-size:21px;}
 .dk-al{height:44px;padding:0 11px;border-radius:10px;border:1px solid var(--line);background:var(--panel-2);color:var(--ink);font-weight:700;font-size:13px;}
-.dk-lock{position:absolute;inset:0;border-radius:10px;background:rgba(9,12,28,.82);display:flex;align-items:center;justify-content:center;gap:6px;font-size:12px;font-weight:700;color:var(--gold);text-align:center;padding:0 8px;}
+.dk-lock{position:absolute;top:0;bottom:0;left:0;right:calc(33.33% + 2px);border-radius:10px;background:rgba(9,12,28,.82);display:flex;align-items:center;justify-content:center;gap:6px;font-size:12px;font-weight:700;color:var(--gold);text-align:center;padding:0 8px;}
 .dk-empty{display:flex;align-items:center;gap:10px;}
 .dk-empty p{flex:1;margin:0;font-size:13px;color:var(--muted);}
 
@@ -248,6 +265,7 @@ svg{display:block;}
     <div class="ch-h">
       <div class="ctabs" role="tablist" aria-label="圖表">
         <button role="tab" data-act="ctab" data-v="heat" aria-selected="true">熱度</button>
+        <button role="tab" data-act="ctab" data-v="liq" aria-selected="false">流動性</button>
         <button role="tab" data-act="ctab" data-v="price" aria-selected="false">價格</button>
         <button role="tab" data-act="ctab" data-v="flow" aria-selected="false">供需</button>
       </div>
@@ -281,19 +299,23 @@ var SEGS = [
   {n:'銀髮族', kind:'sen', speed:0.15, base:[0.6,0.9,0.1,0.5,0.4,0.1]}
 ];
 var DISTS = [
-  {id:'uni', n:'大學城', main:0, mix:[0.68,0.1,0.1,0.12], color:'#5b7cff', style:'campus', floor:0.12, bumps:[[12.5,0.7,1.2],[16,0.35,2],[22.5,0.95,1.6]], peaks:[[12,13.5,'午餐尖峰'],[21,24.5,'宵夜尖峰']]},
-  {id:'biz', n:'商辦區', main:1, mix:[0.1,0.78,0.06,0.06], color:'#8b6cff', style:'towers', floor:0.06, bumps:[[8.5,0.55,1],[12.8,0.95,1],[18,0.9,1.1]], peaks:[[12,14,'午餐尖峰'],[17,19,'下班尖峰']]},
-  {id:'home', n:'住宅區', main:2, mix:[0.12,0.2,0.53,0.15], color:'#26b673', style:'homes', floor:0.1, bumps:[[7.5,0.85,1.1],[19,0.85,1.4],[14,0.3,2]], peaks:[[7,9,'早餐尖峰'],[18,20,'晚餐尖峰']]},
-  {id:'old', n:'老街', main:3, mix:[0.1,0.08,0.25,0.57], color:'#d98a2b', style:'oldstreet', floor:0.08, bumps:[[9.5,0.85,1.3],[16,0.75,1.5],[20,0.3,1.5]], peaks:[[9,11,'早市尖峰'],[15,17,'午後尖峰']]},
-  {id:'port', n:'港口', port:true, color:'#1f9cc2', style:'port', floor:0.2, bumps:[[6,0.9,1.8]], peaks:[]}
+  {id:'uni', n:'大學城', main:0, mix:[0.68,0.1,0.1,0.12], color:'#5b7cff', style:'campus', rent:2, floor:0.12, bumps:[[12.5,0.7,1.2],[16,0.35,2],[22.5,0.95,1.6]], peaks:[[12,13.5,'午餐尖峰'],[21,24.5,'宵夜尖峰']]},
+  {id:'biz', n:'商辦區', main:1, mix:[0.1,0.78,0.06,0.06], color:'#8b6cff', style:'towers', rent:4, floor:0.06, bumps:[[8.5,0.55,1],[12.8,0.95,1],[18,0.9,1.1]], peaks:[[12,14,'午餐尖峰'],[17,19,'下班尖峰']]},
+  {id:'home', n:'住宅區', main:2, mix:[0.12,0.2,0.53,0.15], color:'#26b673', style:'homes', rent:2, floor:0.1, bumps:[[7.5,0.85,1.1],[19,0.85,1.4],[14,0.3,2]], peaks:[[7,9,'早餐尖峰'],[18,20,'晚餐尖峰']]},
+  {id:'old', n:'老街', main:3, mix:[0.1,0.08,0.25,0.57], color:'#d98a2b', style:'oldstreet', rent:1, floor:0.08, bumps:[[9.5,0.85,1.3],[16,0.75,1.5],[20,0.3,1.5]], peaks:[[9,11,'早市尖峰'],[15,17,'午後尖峰']]},
+  {id:'port', n:'港口', port:true, color:'#1f9cc2', style:'port', rent:0, floor:0.2, bumps:[[6,0.9,1.8]], peaks:[]}
 ];
 var DIST = {}; DISTS.forEach(function(d){ DIST[d.id] = d; });
+var CATS = {drink:'飲品', meal:'餐食', goods:'用品', sweet:'甜點', rain:'雨具'};
+var CAT_SHELF = {drink:48, meal:8, goods:0, sweet:12, rain:0};
 var PRODS0 = [
-  {id:'tumbler', n:'智慧保溫杯', icon:'tumbler', pts:[1,1,2,3,2,3], open:8, close:20, color:'#5cc8ff', temp:'warm', unlock:1},
-  {id:'tea', n:'無糖氣泡茶', icon:'tea', pts:[2,4,3,2,1,0], open:10, close:22, color:'#ffb547', temp:'cold', unlock:1},
-  {id:'bento', n:'宵夜便當', icon:'bento', pts:[4,1,2,4,1,0], open:18, close:26, color:'#ff7a8a', temp:'warm', unlock:1},
-  {id:'egg', n:'蛋餅早餐', icon:'egg', pts:[4,2,1,4,1,0], open:6, close:12, color:'#ffd27a', temp:'warm', unlock:2},
-  {id:'green', n:'綠拿鐵', icon:'cup2', pts:[1,5,3,2,1,0], open:9, close:19, color:'#7bd63c', temp:'cold', unlock:3}
+  {id:'tumbler', n:'智慧保溫杯', cat:'goods', icon:'tumbler', color:'#5cc8ff', pts:[1,1,2,3,2,3], shelf:0, vol:0.6, bm:1.0, temp:'warm', open:8, close:20, tf:0.35, tb:[[8.5,0.8,1.4],[18,0.9,1.5]], adv:'不會壞、價格穩，適合囤貨慢慢賣', risk:'週轉慢，熱度起伏小'},
+  {id:'tea', n:'無糖氣泡茶', cat:'drink', icon:'tea', color:'#ffb547', pts:[2,4,3,2,1,0], shelf:72, vol:0.8, bm:0.9, temp:'cold', open:10, close:22, tf:0.3, tb:[[13.5,0.9,2.4],[18,0.6,2]], adv:'熱天大賣，可以放 3 天，最容易上手', risk:'寒流和下雨時會冷清'},
+  {id:'bento', n:'宵夜便當', cat:'meal', icon:'bento', color:'#ff7a8a', pts:[4,1,2,4,1,0], shelf:8, vol:1.0, bm:1.15, temp:'warm', open:19, close:26, tf:0.12, tb:[[22.5,1.3,1.8],[12.3,0.5,1]], adv:'宵夜需求爆量、單價高', risk:'8 小時沒賣掉就報廢'},
+  {id:'egg', n:'蛋餅早餐', cat:'meal', icon:'egg', color:'#ffd27a', pts:[4,2,1,4,1,0], shelf:6, vol:0.9, bm:0.7, temp:'warm', open:6, close:12, tf:0.08, tb:[[7.5,1.6,1.2]], adv:'早餐尖峰量最大、進價最便宜', risk:'只有早上好賣，6 小時報廢'},
+  {id:'green', n:'綠拿鐵', cat:'drink', icon:'cup2', color:'#7bd63c', pts:[1,5,3,2,1,0], shelf:24, vol:1.0, bm:1.3, temp:'cold', open:8, close:18, tf:0.2, tb:[[9,0.8,1.5],[12.5,0.7,1.2]], adv:'健康風潮受惠、單價高', risk:'只能放 1 天，健康新聞影響大'},
+  {id:'cake', n:'鮮奶蛋糕', cat:'sweet', icon:'cake', color:'#ff9ecb', pts:[1,1,5,2,1,1], shelf:12, vol:1.5, bm:1.5, temp:null, open:12, close:22, tf:0.15, tb:[[15.5,0.9,1.8],[20,0.8,1.4]], adv:'節慶和網紅潮讓需求暴增，單價最高', risk:'價格波動最大，12 小時報廢'},
+  {id:'coat', n:'輕便雨衣', cat:'rain', icon:'coat', color:'#2ed6c4', pts:[4,0,1,5,1,0], shelf:0, vol:1.2, bm:0.6, temp:'rain', open:7, close:21, tf:0.5, tb:[[8,0.4,1.5],[18,0.4,1.5]], adv:'下雨颱風時需求爆發，可以無限期存放', risk:'晴天幾乎沒人買'}
 ];
 var SESSIONS = [{n:'早市',o:6,c:12},{n:'日間',o:10,c:20},{n:'午晚',o:12,c:22},{n:'晚間',o:16,c:24},{n:'夜市',o:18,c:26},{n:'全天',o:8,c:22}];
 var NEWS = [
@@ -317,12 +339,12 @@ var NEWS = [
 ];
 var NEWS_BY_ID = {}; NEWS.forEach(function(n){ NEWS_BY_ID[n.id] = n; });
 var WEATHERS = {
-  sun:{n:'晴天', traffic:1, warm:0.95, cold:1.1, supply:1, w:0.34},
-  cloud:{n:'多雲', traffic:1, warm:1, cold:1, supply:1, w:0.26},
-  rain:{n:'下雨', traffic:0.75, warm:1.12, cold:0.9, supply:0.9, w:0.2},
-  cold:{n:'寒流', traffic:0.85, warm:1.3, cold:0.75, supply:1, w:0.08},
-  hot:{n:'熱浪', traffic:0.9, warm:0.8, cold:1.35, supply:1, w:0.09},
-  typhoon:{n:'颱風', traffic:0.45, warm:1.1, cold:0.9, supply:0.5, w:0.03}
+  sun:{n:'晴天', traffic:1, warm:0.95, cold:1.1, rain:0.35, supply:1, w:0.34},
+  cloud:{n:'多雲', traffic:1, warm:1, cold:1, rain:0.7, supply:1, w:0.26},
+  rain:{n:'下雨', traffic:0.75, warm:1.12, cold:0.9, rain:3, supply:0.9, w:0.2},
+  cold:{n:'寒流', traffic:0.85, warm:1.3, cold:0.75, rain:0.9, supply:1, w:0.08},
+  hot:{n:'熱浪', traffic:0.9, warm:0.8, cold:1.35, rain:0.3, supply:1, w:0.09},
+  typhoon:{n:'颱風', traffic:0.45, warm:1.1, cold:0.9, rain:4, supply:0.5, w:0.03}
 };
 var DEVENTS = [
   {d:'uni', n:'大學城校慶', mult:1.8, dur:300, fw:true},
@@ -330,23 +352,58 @@ var DEVENTS = [
   {d:'biz', n:'商辦區加班潮', mult:1.6, dur:240},
   {d:'home', n:'住宅區社區市集', mult:1.6, dur:300}
 ];
+// 商品類別事件：dem 需求倍數、sup 供貨倍數、F 合理價倍數、L 流動性衝擊、shelf 保存期限倍數、wx 改變天氣
+var CEVENTS = [
+  {cat:'drink', n:'夏日冰飲季', t:'氣溫飆高，冰涼飲品需求大增', dur:720, dem:1.5},
+  {cat:'drink', n:'茶葉產地乾旱', t:'茶葉產量銳減，飲品進貨成本上漲', dur:1080, sup:0.6, F:1.12},
+  {cat:'drink', n:'含糖飲料稅上路', t:'含糖飲料加稅，無糖與健康飲品受惠', dur:1080, dem:1.3},
+  {cat:'drink', n:'手搖飲買一送一', t:'連鎖手搖飲大促銷，搶走不少客人', dur:480, dem:0.7},
+  {cat:'meal', n:'美食節目推薦', t:'美食節目介紹在地小吃，排隊人潮湧現', dur:480, dem:1.6},
+  {cat:'meal', n:'食材大漲', t:'蔬菜肉品批發價大漲，餐食進貨成本上升', dur:1440, sup:0.7, F:1.15},
+  {cat:'meal', n:'外送平台補貼戰', t:'外送平台大撒優惠，現場買的人變少', dur:720, dem:0.7},
+  {cat:'meal', n:'衛生局抽驗攤販', t:'衛生局抽驗攤販，消費者觀望、交易變少', dur:480, dem:0.8, L:-8},
+  {cat:'goods', n:'新款上市', t:'新一代產品發表，舊款價格鬆動', dur:1440, F:0.88},
+  {cat:'goods', n:'開學季採購潮', t:'開學季到來，學生大量採購用品', dur:1080, dem:1.5},
+  {cat:'goods', n:'網購購物節', t:'網購節折扣滿天飛，實體買氣轉弱', dur:720, dem:0.65},
+  {cat:'goods', n:'進口關稅調升', t:'進口關稅調升，用品供貨變少、成本上漲', dur:1440, sup:0.7, F:1.1},
+  {cat:'sweet', n:'網紅甜點打卡潮', t:'網紅爭相打卡甜點，排隊人潮暴增', dur:360, dem:1.9},
+  {cat:'sweet', n:'鮮奶原料吃緊', t:'乳品廠減產，甜點原料成本大漲', dur:1080, sup:0.5, F:1.2},
+  {cat:'sweet', n:'節慶訂購潮', t:'節日將至，蛋糕訂單大增', dur:720, dem:1.6},
+  {cat:'sweet', n:'減糖風潮', t:'營養師呼籲減糖，甜點買氣轉弱', dur:1440, dem:0.75},
+  {cat:'rain', n:'梅雨鋒面報到', t:'鋒面滯留，接下來陰雨不斷', dur:720, wx:'rain'},
+  {cat:'rain', n:'颱風警報', t:'颱風逼近，雨具被搶購一空', dur:480, wx:'typhoon', dem:1.3},
+  {cat:'rain', n:'超商雨衣特價', t:'超商雨衣大降價，搶走客人', dur:720, dem:0.7},
+  {cat:'rain', n:'工廠庫存出清', t:'雨具工廠清庫存，供應大增、價格下滑', dur:1080, sup:1.8, F:0.85},
+  {cat:'fresh', n:'冷藏設備故障潮', t:'電力不穩，生鮮商品保存時間縮短一半', dur:360, shelf:0.5}
+];
+var TIERS = [{n:'冷清', at:0}, {n:'起步', at:20}, {n:'活絡', at:40}, {n:'熱絡', at:60}, {n:'沸騰', at:80}];
+var TIER_UNLOCK = {1:'拉抬買盤、出清拋售', 2:'跨區調貨', 3:'吃對手單', 4:'撮合大單、預售合約'};
 var LEVELS = [
   {lv:1, n:'路邊攤', xp:0}, {lv:2, n:'小盤商', xp:150}, {lv:3, n:'批發行', xp:400}, {lv:4, n:'區域通路', xp:800},
   {lv:5, n:'全國造市商', xp:1400}, {lv:6, n:'流動性大亨', xp:2200}, {lv:7, n:'熱度之王', xp:3300}, {lv:8, n:'傳說造市商', xp:4800}
 ];
-var UNLOCKS = {2:'第 4 個攤位、造市承諾、會員集點、新品研發、蛋餅早餐', 3:'網紅合作、智慧報價機、綠拿鐵、倉庫 +40', 4:'倉庫 +40、融資額度提高', 5:'融資額度提高', 6:'倉庫 +40'};
+var UNLOCKS = {2:'第 3 個攤位、智慧報價機、會員集點、網紅合作、新品研發', 3:'第 4 個攤位、倉庫 +40', 4:'倉庫 +40、融資額度提高', 5:'融資額度提高', 6:'倉庫 +40'};
 var STRATS = [
-  {id:'promo', n:'限時優惠', lv:1, cost:0, dur:120, cd:360, icon:'tag', d:'售價自動打 95 折兩小時。熱度 +40%，口碑累積更快，但每件少賺。'},
-  {id:'ad', n:'社群廣告', lv:1, cost:180, dur:240, cd:240, icon:'mega', d:'在這一區投放廣告四小時，熱度 +25%。'},
-  {id:'bulk', n:'批發進貨', lv:1, cost:-1, cd:60, icon:'truck', d:'向港口批發最多 40 件，單價是參考價九折，3 小時後送達。'},
-  {id:'extend', n:'延長營業', lv:1, cost:120, cd:-1, icon:'clock', d:'今天收盤時間延後 2 小時，多接一段生意。'},
-  {id:'pull', n:'撤單', lv:1, cost:0, cd:0, icon:'pause', d:'暫停報價，保住庫存。撤單期間口碑會慢慢下滑。再按一次恢復。'},
-  {id:'pledge', n:'造市承諾', lv:2, cost:0, cd:-1, icon:'hand', d:'今天價差維持在 6% 以內，每成交一件交易所補貼 $1.5；違約罰 $200。'},
-  {id:'loyal', n:'會員集點', lv:2, cost:400, cd:0, icon:'card', d:'永久：口碑累積加快 25%，下滑速度減半。'},
-  {id:'influ', n:'網紅合作', lv:3, cost:500, dur:180, cd:1440, icon:'cam', d:'找網紅來攤位直播三小時，熱度暴增 50% 到 130%，效果看運氣。'},
-  {id:'pricer', n:'智慧報價機', lv:3, cost:30, cd:0, icon:'chip', d:'每 10 分鐘自動依參考價報價，尖峰鎖定時也能調整。營業中每小時 $30。'}
+  {id:'bulk', g:'營運', n:'批發進貨', lv:1, cd:60, icon:'truck', d:'向港口批發最多 40 件，單價是合理價九折，3 小時後送達。不受營業時間限制。'},
+  {id:'cold', g:'營運', n:'冷鏈設備', lv:1, cost:500, icon:'snow', perish:true, d:'生鮮保存時間延長 50%，也不怕冷藏設備故障。買一次永久有效。'},
+  {id:'markdown', g:'營運', n:'即期折扣', lv:1, icon:'tag', perish:true, d:'快過期（剩 1.5 小時內）的貨自動打 75 折賣給客人，減少報廢。'},
+  {id:'pricer', g:'營運', n:'智慧報價機', lv:2, cost:30, icon:'chip', d:'每 10 分鐘自動依參考價報價，尖峰鎖定時也能調整。營業中每小時 $30。'},
+  {id:'pull', g:'營運', n:'撤單', lv:1, icon:'pause', d:'暫停報價、保住庫存，但流動性會快速流失。再按一次恢復。'},
+  {id:'promo', g:'行銷', n:'限時優惠', lv:1, dur:120, cd:360, icon:'tag', d:'售價自動打 95 折兩小時，熱度 +40%，吸引更多人參與。'},
+  {id:'ad', g:'行銷', n:'社群廣告', lv:1, cost:180, dur:240, cd:240, icon:'mega', d:'投放廣告四小時，熱度 +25%。'},
+  {id:'transp', g:'行銷', n:'品質公開', lv:1, cost:250, dur:1440, cd:1440, icon:'eye', d:'公開檢驗報告 24 小時：謠言和恐慌的衝擊減半、價格波動降低，流動性目標 +6%。'},
+  {id:'loyal', g:'行銷', n:'會員集點', lv:2, cost:400, icon:'card', d:'永久：口碑累積加快 25%、下滑速度減半。'},
+  {id:'influ', g:'行銷', n:'網紅合作', lv:2, cost:500, dur:180, cd:1440, icon:'cam', d:'找網紅直播三小時，熱度暴增 50% 到 130%，效果看運氣。'},
+  {id:'pledge', g:'造市', n:'造市承諾', lv:1, icon:'hand', d:'今天營業時價差維持 6% 以內且不撤單：每成交一件補貼 $1.5，流動性目標 +12%。違約罰 $200。'},
+  {id:'pump', g:'造市', n:'拉抬買盤', tier:1, cd:180, icon:'up', d:'以 3% 溢價一口氣掃進 20 件，推高價格並吸引追漲客。市場越冷清推得越高，但回歸套利客會把價格壓回合理價。兩天內拉抬三次會被主管機關關切。'},
+  {id:'dump', g:'造市', n:'出清拋售', tier:1, cd:120, icon:'down', d:'以 3% 折價快速賣出最多 20 件，先賣最舊的一批，適合快過期的生鮮。會壓低價格，吸引撿便宜的買家。'},
+  {id:'xfer', g:'套利', n:'跨區調貨', tier:2, cd:120, icon:'swap', d:'把同一種商品從便宜的區運到貴的區賺價差，每件運費 $1，2 小時到貨。需要兩個賣同樣商品的攤位。'},
+  {id:'rival', g:'套利', n:'吃對手單', tier:3, cd:60, icon:'bolt', d:'對手報價跟不上行情時直接跟他交易：他賣太便宜就向他買，收太貴就賣給他。'},
+  {id:'cross', g:'套利', n:'撮合大單', tier:4, cd:180, icon:'link', d:'幫買賣雙方直接配對，賺 3% 手續費，不用承擔庫存風險，還會讓市場更熱絡。'},
+  {id:'fwd', g:'套利', n:'預售合約', tier:4, cd:360, icon:'clock', d:'以參考價 +3% 先賣出 25 件，12 小時內交貨。趁進貨時段低價收貨就能賺時間價差；交不出貨要賠 25%。'}
 ];
 var STRAT = {}; STRATS.forEach(function(s){ STRAT[s.id] = s; });
+var ARB_IDS = {pump:1, dump:1, xfer:1, rival:1, cross:1, fwd:1};
 var RESEARCH = [
   {n:'問卷調查', s:'問卷', cost:60, sd:.12, d:'看到客群目前的偏好，但誤差較大'},
   {n:'精準數據', s:'精準數據', cost:150, sd:.03, d:'客群目前的偏好，幾乎沒有誤差'},
@@ -354,7 +411,7 @@ var RESEARCH = [
 ];
 var BIG_BUYERS = ['團購主小美','連鎖超市採購','網紅電商','企業福委會'];
 var BIG_SELLERS = ['急需周轉的供應商','清倉的進口商','收攤的老工廠'];
-var CFG = {startCash:5000, hourMs:5000, theta:0.8, resv:0.07, storageH:0.00017, interestD:0.003, openFee:600, rndFee:800, swapFee:300};
+var CFG = {startCash:5000, hourMs:5000, theta:0.8, resv:0.07, storageH:0.00017, interestD:0.003, openFee:600, rndFee:800, swapFee:300, staff:4};
 
 /* ===================== 工具 ===================== */
 function clamp(v,a,b){ return Math.max(a, Math.min(b, v)); }
@@ -380,13 +437,17 @@ function hh(x){ x = ((x % 24) + 24) % 24; var m = Math.round(x*60); return pad(M
 function circ(a,b){ var d = Math.abs(a-b) % 24; return Math.min(d, 24-d); }
 function inWin(h,a,b){ return (h >= a && h < b) || (h + 24 >= a && h + 24 < b); }
 
+
 /* ===================== 模型 ===================== */
 var S = null;
 function prod(id){ for(var i=0;i<S.products.length;i++) if(S.products[i].id === id) return S.products[i]; return S.products[0]; }
 function stallIn(d){ for(var i=0;i<S.stalls.length;i++) if(S.stalls[i].d === d) return S.stalls[i]; return null; }
 function stallById(id){ for(var i=0;i<S.stalls.length;i++) if(S.stalls[i].id === id) return S.stalls[i]; return null; }
-function trafficOf(d,h){ var D = DIST[d], v = D.floor; D.bumps.forEach(function(b){ var x = circ(h,b[0])/b[2]; v += b[1]*Math.exp(-0.5*x*x); }); return v; }
-function supplyCurve(h){ var x = circ(h,7)/2.5; return 0.8 + 0.5*Math.exp(-0.5*x*x); }
+function bump(h,c,w){ var x = circ(h,c)/w; return Math.exp(-0.5*x*x); }
+function trafficOf(d,h){ var D = DIST[d], v = D.floor; D.bumps.forEach(function(b){ v += b[1]*bump(h,b[0],b[2]); }); return v; }
+function prodTime(p,h){ var v = p.tf; (p.tb || []).forEach(function(b){ v += b[1]*bump(h,b[0],b[2]); }); return v; }
+function demTime(st,h){ return trafficOf(st.d,h)*prodTime(prod(st.p),h); }
+function perishable(p){ return p.shelf > 0 && p.shelf <= 24; }
 function appealOf(d, pts, prefs){ var D = DIST[d]; if(D.port) return 0; var s = 0; for(var i=0;i<4;i++){ var dot = 0; for(var a=0;a<6;a++) dot += prefs[i][a]*pts[a]/5; s += D.mix[i]*Math.max(0, dot - CFG.theta); } return s; }
 function targets(){
   var t = SEGS.map(function(s){ return s.base.slice(); });
@@ -395,66 +456,79 @@ function targets(){
 }
 function lvl(){ var L = LEVELS[0]; LEVELS.forEach(function(x){ if(S.xp >= x.xp) L = x; }); return L; }
 function nextLvl(){ return LEVELS[lvl().lv] || null; }
-function maxStalls(){ return lvl().lv >= 2 ? 4 : 3; }
+function maxStalls(){ var l = lvl().lv; return l >= 3 ? 4 : l >= 2 ? 3 : 2; }
 function capOf(){ var l = lvl().lv; return 120 + (l >= 3 ? 40 : 0) + (l >= 4 ? 40 : 0) + (l >= 6 ? 40 : 0); }
 function creditOf(){ var l = lvl().lv; return 2000 + (l >= 4 ? 3000 : 0) + (l >= 5 ? 3000 : 0) + (l - 1)*500; }
-function sessionOf(st){ var p = prod(st.p); return [p.open, p.close + (st.mods.extendDay === dayOf(S.t) ? 2 : 0)]; }
-function inSession(st,h){ var s = sessionOf(st); return inWin(h, s[0], s[1]); }
-function peakOf(st,h){ if(!inSession(st,h)) return null; var pk = DIST[st.d].peaks; for(var i=0;i<pk.length;i++) if(inWin(h, pk[i][0], pk[i][1])) return pk[i]; return null; }
+function inHours(st,h){ return inWin(h, st.open, st.close); }
+function peakOf(st,h){ if(!inHours(st,h)) return null; var pk = DIST[st.d].peaks; for(var i=0;i<pk.length;i++) if(inWin(h, pk[i][0], pk[i][1])) return pk[i]; return null; }
 function effAsk(st){ return st.mods.promo > S.t ? st.ask*0.95 : st.ask; }
-function rivalSpread(d){ return S.wars.some(function(w){ return w.d === d && w.until > S.t; }) ? 0.035 : 0.08; }
+function saleAsk(st){ var a = effAsk(st); if(st.mods.markdown){ var ol = oldestLeft(st); if(ol != null && ol < 90) a = Math.min(a, st.ask*0.75); } return a; }
+function tierOf(L){ var k = 0; for(var i=0;i<TIERS.length;i++) if(L >= TIERS[i].at) k = i; return k; }
+function rivalSpread(st){ var base = 0.09 - 0.04*st.L/100; return S.wars.some(function(w){ return w.d === st.d && w.until > S.t; }) ? 0.03 : base; }
 function distMult(d){ var m = 1; S.devents.forEach(function(e){ if(e.d === d && e.until > S.t) m *= e.mult; }); return m; }
 function locked(st){ return !!peakOf(st, hourOf(S.t)) && !st.mods.pricer; }
 function pendingQ(st){ return S.deliveries.reduce(function(a,d){ return a + (d.sid === st.id ? d.q : 0); }, 0); }
+function catEvents(p){ return S.cevents.filter(function(e){ return e.until > S.t && (e.cat === p.cat || (e.cat === 'fresh' && perishable(p))); }); }
+function catMult(p, k){ var m = 1; catEvents(p).forEach(function(e){ if(e[k] != null) m *= e[k]; }); return m; }
+function wxMult(p, wx){ return p.temp ? wx[p.temp] : 1; }
+function shelfMin(st){ var p = prod(st.p); if(!p.shelf) return 0; var m = p.shelf*60*(st.mods.cold ? 1.5 : 1); if(!st.mods.cold && perishable(p)) m *= catMult(p, 'shelf'); return m; }
+function impact(st){ return 0.04/(st.L + 10); }
+function supTime(st,h){ var p = prod(st.p); if(perishable(p)) return 2*bump(h, (st.open - 0.5 + 24) % 24, 0.8); return 0.4 + 0.9*bump(h, 6, 2); }
+function nightH(h){ return h < 6 || h >= 22; }
+function otFactor(st){ var len = st.close - st.open; if(len <= 8) return 1; return (8 + 1.5*(Math.min(len,12) - 8) + 2*Math.max(0, len - 12))/len; }
+function costPerHour(st,h){ return (DIST[st.d].rent + CFG.staff*otFactor(st))*(nightH(h) ? 1.4 : 1); }
+function dailyCost(st){ var c = 0; for(var h=0; h<24; h+=0.5) if(inHours(st,h)) c += costPerHour(st,h)*0.5; return c; }
+function avgCost(st){ var q = 0, c = 0; st.lots.forEach(function(l){ q += l.q; c += l.q*l.c; }); return q ? c/q : 0; }
+function oldestLeft(st){ var sm = shelfMin(st); if(!sm || !st.lots.length) return null; return sm - (S.t - st.lots[0].t); }
+function addInv(st, q, c, t){ if(q <= 0) return; st.lots.push({q:q, c:c, t:t == null ? S.t : t}); st.inv += q; }
+function takeInv(st, q){ var cost = 0, taken = []; while(q > 0 && st.lots.length){ var l = st.lots[0], k = Math.min(q, l.q); cost += k*l.c; taken.push({q:k, c:l.c, t:l.t}); l.q -= k; q -= k; st.inv -= k; if(l.q <= 0) st.lots.shift(); } return {cost:cost, lots:taken}; }
 function equity(){
   var v = S.cash - S.debt;
-  S.stalls.forEach(function(st){ v += st.inv*st.V; });
+  S.stalls.forEach(function(st){ v += st.inv*st.V; if(st.fwd) v -= st.fwd.q*st.V; });
   S.deliveries.forEach(function(d){ v += d.q*d.price; });
   return v;
 }
 function stars(b){ return clamp((b - 0.3)/1.4*5, 0, 5); }
-function newToday(){ return {fills:0, buys:0, maxHeat:0, maxStars:0, bigs:0, strategies:0, reward:0, rebate:0, arb:0, lost:0, costs:0}; }
-function newSTD(){ return {buy:0, sell:0, lost:0, pricey:0, cheap:0, nostock:0, full:0, closed:0, arb:0}; }
+function newToday(){ return {cust:0, sales:0, sup:0, bought:0, arbIn:0, arbOut:0, fills:0, buys:0, maxHeat:0, maxL:0, bigs:0, strategies:0, arbs:0, reward:0, rebate:0, arb:0, lost:0, costs:0, realized:0, spoiled:0, spoilLoss:0, pnl:0}; }
+function newSTD(){ return {buy:0, sell:0, lost:0, pricey:0, cheap:0, nostock:0, full:0, enough:0, closed:0, arb:0, spoiled:0, realized:0}; }
 function note(icon, text){ S.notes.unshift({t:S.t, icon:icon, text:text}); if(S.notes.length > 80) S.notes.pop(); }
 function pushNews(src, text, kind){ var n = {t:S.t, src:src, text:text, kind:kind}; S.news.unshift(n); if(S.news.length > 80) S.news.pop(); return n; }
 function mark(st, text, color){ st.marks.push({t:S.t, text:text, color:color}); if(st.marks.length > 30) st.marks.shift(); }
 function markAll(text, color, d){ S.stalls.forEach(function(st){ if(!d || st.d === d) mark(st, text, color); }); }
 
 function newState(){
-  S = {v:5, t:6*60, cash:CFG.startCash, debt:0, xp:0, uid:1,
+  S = {v:6, t:6*60, cash:CFG.startCash, debt:0, xp:0, uid:1, setup:true,
     prefs:SEGS.map(function(s){ return s.base.slice(); }), effects:[], pool:shuffle(NEWS.map(function(n){ return n.id; })),
     news:[], notes:[], newsSeen:0, products:PRODS0.map(function(p){ return JSON.parse(JSON.stringify(p)); }), stalls:[], sel:'biz',
-    weather:{id:'sun', until:6*60 + 480}, devents:[], wars:[], strikeUntil:0, deliveries:[], big:null, lastPanicDay:-9,
+    weather:{id:'sun', until:6*60 + 480}, devents:[], cevents:[], wars:[], strikeUntil:0, deliveries:[], big:null, lastPanicDay:-9, pumps:[],
     missions:[], today:newToday(), dayStartEq:0, daily:[], bestLv:1, totalFills:0, over:false,
     reports:SEGS.map(function(s){ return {t:0, type:'開局市調', cur:s.base.map(function(v){ return clamp(v + gauss()*0.04, 0, 1.3); }), tgt:null}; })};
-  addStall('biz','tumbler'); addStall('old','tea'); addStall('uni','bento');
   S.dayStartEq = equity();
   S.missions = genMissions();
-  note('play', '開張了！先看看各區的人潮，再調整報價。');
 }
-function addStall(d, pid){
-  var p = prod(pid), ap = appealOf(d, p.pts, SEGS.map(function(s){ return s.base; }));
-  var st = {id:S.uid++, d:d, p:pid, inv:30, cap:capOf(), buzz:1, appeal0:Math.max(0.05, ap), H:0, V:0, Vb:0, Vb0:0, Vlag:0, supBase:5,
-    pmult:1, pmultT:1, panic:null, pulled:false, pullBy:null,
-    mods:{promo:0, ad:0, influ:0, influM:1, viral:0, extendDay:0, pledgeDay:0, pledgeBroken:false, loyal:false, pricer:false, pricerSp:0.045},
+function makeStall(d, pid){
+  return {id:S.uid++, d:d, p:pid, lots:[], inv:0, cap:capOf(), open:8, close:20, bid:0, ask:0, buzz:1, L:8, lc:{t:8}, up:0.5, partE:8, volE:0.001, tox:0, tier:0,
+    appeal0:0.1, Vb:0, Vb0:0, F:0, V:0, Vlag:0, H:0, Hexp:[], supBase:3, pmult:1, pmultT:1, panic:null, pulled:false, pullBy:null, fwd:null, vr:[],
+    mods:{promo:0, ad:0, influ:0, influM:1, viral:0, transp:0, pledgeDay:0, pledgeBroken:false, loyal:false, cold:false, markdown:false, pricer:false, pricerSp:0.045, mom:0, momS:0},
     cds:{}, hist:[], trades:[], marks:[], cnt:{B:0,S:0,fb:0,fs:0}, td:newSTD(), drv:{traffic:1,liq:1,price:1,event:1}};
-  setupStall(st);
-  S.stalls.push(st);
-  return st;
 }
 function setupStall(st){
-  var p = prod(st.p), ap = appealOf(st.d, p.pts, SEGS.map(function(s){ return s.base; }));
+  var p = prod(st.p), base = SEGS.map(function(s){ return s.base; }), ap = appealOf(st.d, p.pts, base);
+  st.open = p.open; st.close = p.close;
   st.appeal0 = Math.max(0.05, ap);
-  st.Vb = st.Vb0 = Math.round((40 + 45*ap)*10)/10;
-  st.V = st.Vlag = st.Vb;
-  var sum = 0, n = 0, tr = 0, sc = 0;
-  for(var h=0; h<24; h+=0.5){ if(inWin(h, p.open, p.close)){ sum += 0.3*100*ap*trafficOf(st.d,h); tr += trafficOf(st.d,h); sc += supplyCurve(h); n++; } }
-  st.supBase = Math.max(2, n ? sum/n : 5); st.trAvg = n ? tr/n : 1; st.scAvg = n ? sc/n : 1;
-  var hn = hourOf(S.t);
-  st.H = 100*ap*trafficOf(st.d,hn)*(inWin(hn,p.open,p.close) ? 1 : 0.04);
-  alignQuotes(st);
+  st.Vb = st.Vb0 = Math.round((40 + 45*ap)*p.bm*10)/10;
+  st.F = st.V = st.Vlag = st.Vb;
+  st.Hexp = []; for(var h=0; h<24; h++) st.Hexp.push(100*st.appeal0*demTime(st, h + 0.5)*0.75);
+  var EB = 0, Z = 0;
+  for(var x=0; x<24; x+=0.25){ if(inHours(st,x)) EB += 0.5*100*st.appeal0*demTime(st,x)*0.75*0.25; else Z += supTime(st,x)*0.25; }
+  st.supBase = Math.max(1, (EB*0.26/0.75)/Math.max(0.5, Z));
+  st.tgt = Math.round(clamp(EB*(perishable(p) ? 0.25 : 0.32), 8, st.cap)); st.tgt0 = st.tgt;
+  var hn = hourOf(S.t); st.H = st.Hexp[Math.floor(hn)];
+  st.bid = Math.max(1, Math.round(st.V*0.93)); st.ask = Math.max(st.bid + 1, Math.round(st.V*1.07));
+  st.vr = [st.V];
 }
-function alignQuotes(st){ st.bid = Math.max(1, Math.round(st.V*0.95)); st.ask = Math.max(st.bid + 1, Math.round(st.V*1.05)); }
+function previewStall(d, pid){ var st = makeStall(d, pid); setupStall(st); S.uid--; return st; }
+function alignQuotes(st){ var sp = st.L >= 60 ? 0.04 : st.L >= 30 ? 0.05 : 0.06; st.bid = Math.max(1, Math.round(st.V*(1 - sp))); st.ask = Math.max(st.bid + 1, Math.round(st.V*(1 + sp))); }
 
 function stepMinute(){
   S.t++;
@@ -464,95 +538,181 @@ function stepMinute(){
   S.effects.forEach(function(e){ e.str *= 0.99997; });
   var wx = WEATHERS[S.weather.id], supG = wx.supply*(S.strikeUntil > S.t ? 0.4 : 1);
   S.stalls.forEach(function(st){ stallStep(st, h, day, wx, supG, T); });
-  for(var k=S.deliveries.length-1;k>=0;k--){ if(S.deliveries[k].eta <= S.t){ deliver(S.deliveries[k]); S.deliveries.splice(k,1); } }
+  for(var k=S.deliveries.length-1;k>=0;k--){ if(S.deliveries[k].eta <= S.t){ var dl = S.deliveries[k]; S.deliveries.splice(k,1); deliver(dl); } }
   if(S.t % 60 === 0) hourly(h, day);
   if(S.t % 1440 === 0) rollover();
   if(S.t % 5 === 0) sample();
   var eq = equity();
   S.today.pnl = eq - S.dayStartEq;
-  S.stalls.forEach(function(st){ if(st.H > S.today.maxHeat) S.today.maxHeat = st.H; var s = stars(st.buzz); if(s > S.today.maxStars) S.today.maxStars = s; });
+  S.stalls.forEach(function(st){ if(st.H > S.today.maxHeat) S.today.maxHeat = st.H; if(st.L > S.today.maxL) S.today.maxL = st.L; });
   if(eq < -800 && !S.over){ S.over = true; if(UI) uiGameOver(); }
 }
 function stallStep(st, h, day, wx, supG, T){
-  var p = prod(st.p), m = st.mods;
-  var open = inSession(st,h);
-  var traffic = trafficOf(st.d,h)*distMult(st.d)*wx.traffic;
+  var p = prod(st.p), m = st.mods, inH = inHours(st,h), open = inH && !st.pulled;
+  var dt = demTime(st,h)*distMult(st.d)*wx.traffic;
   var apNow = appealOf(st.d, p.pts, S.prefs), apT = appealOf(st.d, p.pts, T);
-  var mLiq = 0.55 + 0.45*st.buzz;
+  var mLiq = 0.5 + st.L/100;
   var askE = effAsk(st);
-  var mPrice = (open && !st.pulled) ? clamp(Math.exp(-4*(askE/st.V - 1.05)), 0.6, 1.5) : 1;
+  var mPrice = open ? clamp(Math.exp(-4*(askE/st.V - 1.05)), 0.6, 1.5) : 1;
   var mEv = 1;
   if(m.promo > S.t) mEv *= 1.4;
   if(m.ad > S.t) mEv *= 1.25;
   if(m.influ > S.t) mEv *= m.influM;
   if(m.viral > S.t) mEv *= 1.8;
-  if(p.temp) mEv *= wx[p.temp];
-  if(st.panic) mEv *= 0.7;
-  var Ht = 100*apNow*traffic*mLiq*mPrice*mEv*(open ? 1 : 0.04);
+  mEv *= wxMult(p, wx)*catMult(p, 'dem');
+  if(st.panic) mEv *= st.mods.transp > S.t ? 0.7 : 0.45;
+  var Ht = 100*apNow*dt*mLiq*mPrice*mEv;
   st.H += (Ht - st.H)/25 + st.H*0.018*gauss() + 0.2*gauss();
   if(st.H < 0) st.H = 0;
-  st.drv = {traffic:traffic, liq:mLiq, price:mPrice, event:mEv*(apNow/st.appeal0)};
+  st.drv = {traffic:dt, liq:mLiq, price:mPrice, event:mEv*(apNow/st.appeal0)};
   st.pmult += (st.pmultT - st.pmult)/20;
   if(st.Vb < st.Vb0) st.Vb = Math.min(st.Vb0, st.Vb*1.00008);
+  var hx = st.Hexp[Math.floor(h)] || 5;
+  var pressure = Math.pow(clamp(st.H/Math.max(5, hx), 0.5, 2), 0.1);
+  st.F = st.Vb*Math.pow(apNow/st.appeal0, 0.5)*catMult(p, 'F')*st.pmult*pressure;
+  var sig = 0.0011*p.vol*Math.sqrt(30/(st.L + 20))*(m.transp > S.t ? 0.7 : 1);
+  var V0 = st.V;
+  st.V += (st.F - st.V)/180 + st.V*sig*gauss();
+  st.V = Math.max(2, st.V);
   st.Vlag += (st.V - st.Vlag)/60;
-  var dec = m.loyal ? 1440 : 720;
-  st.buzz += (1 - st.buzz)/dec;
-  if(st.pulled) st.buzz -= 0.0006;
+  st.buzz += (1 - st.buzz)/(m.loyal ? 1440 : 720);
   st.buzz = clamp(st.buzz, 0.3, 2);
-  if(!open) return;
-  var lamB = st.H*0.3/60*(st.panic ? 0.6 : 1);
-  var sTime = 0.6*trafficOf(st.d,h)/(st.trAvg || 1) + 0.4*supplyCurve(h)/(st.scAvg || 1);
-  var lamS = st.supBase*sTime*supG*Math.pow(st.V/st.Vb, 2)/60*(st.panic ? 2.5 : 1);
-  var ratio = (lamB*60 + 1)/(lamS*60 + 1);
-  st.ratio = ratio;
-  var Vstar = st.Vb*Math.pow(clamp(ratio, 0.5, 2.2), 0.22)*st.pmult;
-  st.V += (Vstar - st.V)/120 + st.V*0.0008*gauss();
-  st.V = Math.max(3, st.V);
   if(m.pricer && S.t % 10 === 0){ st.bid = Math.max(1, Math.round(st.V*(1 - m.pricerSp))); st.ask = Math.max(st.bid + 1, Math.round(st.V*(1 + m.pricerSp))); }
-  if(m.pledgeDay === day && !m.pledgeBroken && !st.pulled && (st.ask - st.bid)/st.V > 0.065) breakPledge(st, '價差超過 6%');
-  var nB = poisson(lamB), nS = poisson(lamS), k;
-  for(k=0;k<nB;k++) arrival(st, 1);
-  for(k=0;k<nS;k++) arrival(st, -1);
-  if(!st.pulled && !st.panic && Math.random() < 1/30) arbCheck(st, apT/Math.max(0.05, apNow));
+  if(m.pledgeDay === day && !m.pledgeBroken && inH){
+    if(st.pulled) breakPledge(st, '營業時間撤單');
+    else if((st.ask - st.bid)/st.V > 0.065) breakPledge(st, '價差超過 6%');
+  }
+  var arr = 0, k;
+  if(open){
+    var nB = poisson(st.H*0.5/60);
+    for(k=0;k<nB;k++) arrival(st, 1);
+    arr += nB;
+    if(st.panic){ var nP = poisson(st.supBase*1.5/60); for(k=0;k<nP;k++) arrival(st, -1); arr += nP; }
+  } else if(!inH && !st.pulled){
+    var lamS = st.supBase*supTime(st,h)*supG*catMult(p, 'sup')*(0.5 + st.L/100)/0.75/60;
+    var nS = poisson(lamS);
+    for(k=0;k<nS;k++) arrival(st, -1);
+    arr += nS;
+  }
+  if(!st.pulled && !st.panic && Math.random() < (0.3 + st.L/100)/70) arbStep(st, open, apT/Math.max(0.05, apNow));
+  if(open && m.mom > S.t && Math.random() < m.momS/12) chaser(st);
+  if(inH){ var c = costPerHour(st,h)/60; S.cash -= c; S.today.costs += c; }
+  if(S.t % 10 === 0) spoilCheck(st);
+  if(st.fwd && st.fwd.due <= S.t) settleFwd(st);
+  st.volE += (Math.abs(st.V/V0 - 1) - st.volE)/120;
+  liqStep(st, h, day, inH, arr);
 }
 function arrival(st, side){
-  var m = st.mods, rivalOn = !st.panic, rs = rivalSpread(st.d);
-  var ra = st.Vlag*(1 + rs), rb = st.Vlag*(1 - rs), askE = effAsk(st), r = st.V*(1 + gauss()*CFG.resv), out, gain = m.loyal ? 1.25 : 1;
+  var p = prod(st.p), rivalOn = !st.panic, rs = rivalSpread(st);
+  var ra = st.Vlag*(1 + rs), rb = st.Vlag*(1 - rs), askE = side === 1 ? saleAsk(st) : effAsk(st), out, gain = st.mods.loyal ? 1.25 : 1, imp = impact(st)*0.2;
   st.cnt[side === 1 ? 'B' : 'S']++;
+  S.today[side === 1 ? 'cust' : 'sup']++;
   if(side === 1){
-    if(st.pulled) out = 'closed';
-    else if(!rivalOn || askE <= ra){
-      if(r >= askE){ if(st.inv > 0){ out = 'buy'; st.inv--; S.cash += askE; st.V *= 0.9998; } else out = rivalOn && r >= ra ? 'lost' : 'nostock'; }
+    var r = st.V*(1 + gauss()*0.08);
+    if(!rivalOn || askE <= ra){
+      if(r >= askE){ if(st.inv > 0){ out = 'buy'; var tk = takeInv(st, 1); S.cash += askE; S.today.realized += askE - tk.cost; st.td.realized += askE - tk.cost; st.V *= 1 - imp; } else out = rivalOn && r >= ra ? 'lost' : 'nostock'; }
       else out = 'pricey';
     } else out = r >= ra ? 'lost' : 'pricey';
   } else {
-    if(st.pulled) out = 'closed';
-    else if(!rivalOn || st.bid >= rb){
-      if(r <= st.bid){
-        if(st.inv < st.cap && S.cash >= st.bid){ out = 'sell'; st.inv++; S.cash -= st.bid; st.V *= 1.0002; if(st.panic){ S.cash += 5; S.today.reward += 5; S.xp += 2; } }
-        else out = rivalOn && r <= rb ? 'lost' : 'full';
+    var rs2 = st.V*0.91*(1 + gauss()*0.06);
+    if(st.panic) rs2 = st.V*0.85*(1 + gauss()*0.06);
+    if(!rivalOn || st.bid >= rb){
+      if(rs2 <= st.bid){
+        if(st.inv >= (st.tgt || st.cap) && st.inv < st.cap) out = 'enough';
+        else if(st.inv < st.cap && S.cash >= st.bid){ out = 'sell'; addInv(st, 1, st.bid); S.cash -= st.bid; st.V *= 1 + imp; if(st.panic){ S.cash += 5; S.today.reward += 5; S.xp += 2; } }
+        else out = rivalOn && rs2 <= rb ? 'lost' : 'full';
       } else out = 'cheap';
-    } else out = r <= rb ? 'lost' : 'cheap';
+    } else out = rs2 <= rb ? 'lost' : 'cheap';
   }
   st.td[out]++;
   if(out === 'buy' || out === 'sell'){
     st.buzz += 0.006*gain; S.xp += 1; S.totalFills++; S.today.fills++;
     st.cnt[out === 'buy' ? 'fb' : 'fs']++;
-    if(out === 'sell') S.today.buys++;
-    st.trades.push({t:S.t, px:out === 'buy' ? askE : st.bid, s:out === 'buy' ? 1 : -1}); if(st.trades.length > 260) st.trades.shift();
-    if(m.pledgeDay === dayOf(S.t) && !m.pledgeBroken){ S.cash += 1.5; S.today.rebate += 1.5; }
+    if(out === 'sell'){ S.today.buys++; S.today.bought++; } else S.today.sales++;
+    pushTrade(st, out === 'buy' ? askE : st.bid, out === 'buy' ? 1 : -1);
+    if(st.mods.pledgeDay === dayOf(S.t) && !st.mods.pledgeBroken){ S.cash += 1.5; S.today.rebate += 1.5; }
   } else {
-    if(out === 'lost') st.buzz -= 0.004; else if(out === 'nostock') st.buzz -= 0.006; else if(out === 'full') st.buzz -= 0.003; else if(out !== 'closed') st.buzz -= 0.0008;
-    if(out !== 'pricey' && out !== 'cheap') S.today.lost++;
+    if(out === 'lost') st.buzz -= 0.004; else if(out === 'nostock') st.buzz -= 0.006; else if(out === 'full') st.buzz -= 0.003; else if(out !== 'enough') st.buzz -= 0.0008;
+    if(out !== 'pricey' && out !== 'cheap' && out !== 'enough') S.today.lost++;
   }
   if(UI) fxArrival(st, side, out, out === 'buy' ? askE : st.bid);
 }
-function arbCheck(st, apRatio){
-  var Vf = st.V*Math.pow(clamp(apRatio, 0.5, 2), 0.6)*(st.pmultT/st.pmult);
-  var askE = effAsk(st), q = 0, side = 0;
-  if(askE < Vf*0.94 && st.inv > 0){ q = Math.min(4, Math.ceil((Vf*0.94 - askE)/Vf*30), st.inv); st.inv -= q; S.cash += q*askE; side = 1; }
-  else if(st.bid > Vf*1.06 && st.inv < st.cap){ q = Math.min(4, Math.ceil((st.bid - Vf*1.06)/Vf*30), st.cap - st.inv); st.inv += q; S.cash -= q*st.bid; side = -1; }
-  if(q > 0){ st.td.arb += q; S.today.arb += q; if(UI) fxArb(st, side, q); }
+function pushTrade(st, px, s){ st.trades.push({t:S.t, px:px, s:s}); if(st.trades.length > 300) st.trades.shift(); }
+function momentum(st){ return st.vr.length ? st.V/st.vr[0] - 1 : 0; }
+function arbStep(st, open, apR){
+  var Ff = st.F*Math.pow(clamp(apR, 0.5, 2), 0.5), askE = effAsk(st), q = 0, side = 0, kind = 'arb', imp = impact(st);
+  var canIn = !perishable(prod(st.p)) && st.inv < Math.min(st.cap, st.tgt || st.cap) && S.cash >= st.bid;
+  if(open && st.inv > 0 && askE < Math.min(Ff, st.F)*0.95){
+    q = Math.min(4, Math.ceil((Math.min(Ff, st.F)*0.95 - askE)/st.F*30), st.inv);
+    var tk = takeInv(st, q); S.cash += q*askE; S.today.realized += q*askE - tk.cost; side = 1; st.V *= 1 + imp*q;
+  } else if(canIn && st.bid > Math.max(Ff, st.F)*1.04){
+    q = Math.min(4, Math.ceil((st.bid - Math.max(Ff, st.F)*1.04)/st.F*30), Math.min(st.cap, st.tgt || st.cap) - st.inv, Math.floor(S.cash/st.bid));
+    addInv(st, q, st.bid); S.cash -= q*st.bid; side = -1; st.V *= 1 - imp*q;
+  } else if(st.V > st.F*1.06){
+    kind = 'rev'; st.V += (st.F - st.V)*0.08;
+    if(canIn && st.bid > st.F*1.02){ q = Math.min(3, Math.min(st.cap, st.tgt || st.cap) - st.inv); addInv(st, q, st.bid); S.cash -= q*st.bid; side = -1; }
+  } else if(st.V < st.F*0.94){
+    kind = 'rev'; st.V += (st.F - st.V)*0.08;
+    if(open && askE < st.F && st.inv > 0){ q = Math.min(3, st.inv); var tk2 = takeInv(st, q); S.cash += q*askE; S.today.realized += q*askE - tk2.cost; side = 1; }
+  }
+  if(q > 0){
+    st.td.arb += q; S.today.arb += q; S.today[side === 1 ? 'arbOut' : 'arbIn'] += q; st.tox = clamp(st.tox + 0.015*q, 0, 1);
+    pushTrade(st, side === 1 ? askE : st.bid, side);
+    if(UI) fxArb(st, side, q, kind);
+  }
+}
+function chaser(st){
+  var askE = effAsk(st), mm = Math.max(momentum(st), 0.02);
+  if(st.inv <= 0 || askE > st.V*(1 + 2*mm + 0.04)) return;
+  var q = Math.min(st.inv, 1 + Math.floor(Math.random()*3)), tk = takeInv(st, q);
+  S.cash += q*askE; S.today.realized += q*askE - tk.cost; st.V *= 1 + impact(st)*q*0.6;
+  pushTrade(st, askE, 1); st.td.arb += q;
+  if(UI) fxArb(st, 1, q, 'chase');
+}
+function spoilCheck(st){
+  var sm = shelfMin(st); if(!sm) return;
+  var gone = 0, loss = 0;
+  while(st.lots.length && S.t - st.lots[0].t > sm){ var l = st.lots.shift(); gone += l.q; loss += l.q*l.c; st.inv -= l.q; }
+  if(gone){
+    st.td.spoiled += gone; S.today.spoiled += gone; S.today.spoilLoss += loss; S.today.realized -= loss; st.td.realized -= loss;
+    st.buzz = clamp(st.buzz - 0.01*gone, 0.3, 2);
+    mark(st, '報廢', '#ff4f5e');
+    note('warn', '「' + prod(st.p).n + '」有 ' + gone + ' 件過期報廢，損失 ' + money(loss));
+    if(UI) toast(prod(st.p).n + ' 報廢 ' + gone + ' 件');
+  }
+}
+function settleFwd(st){
+  var f = st.fwd, have = Math.min(st.inv, f.q), tk = takeInv(st, have), short = f.q - have;
+  S.today.realized += have*f.price - tk.cost;
+  if(short > 0){ var pen = short*st.V*1.25; S.cash -= pen; S.today.realized -= pen - short*f.price; st.buzz = clamp(st.buzz - 0.2, 0.3, 2); note('warn', '預售合約短交 ' + short + ' 件，賠償 ' + money(pen)); if(UI) banner('違約', '預售合約短交 ' + short + ' 件，賠償 ' + money(pen), '#ff4f5e'); }
+  else { note('hand', '預售合約順利交貨 ' + f.q + ' 件'); if(UI) toast('預售合約交貨完成'); }
+  st.fwd = null;
+}
+function liqStep(st, h, day, inH, arr){
+  var p = prod(st.p), m = st.mods;
+  var sp = st.pulled ? 0.3 : (st.ask - st.bid)/Math.max(1, st.V);
+  var sSp = clamp(1 - (sp - 0.02)/0.12, 0, 1);
+  var quoting = !st.pulled && (inH ? st.inv > 0 : (S.cash >= st.bid && st.inv < st.cap));
+  st.up += ((quoting ? 1 : 0) - st.up)/360;
+  var need = Math.max(3, (st.Hexp[(Math.floor(h) + 1) % 24] || 5)*0.5*3*0.26);
+  var sDep = inH ? clamp(st.inv/need, 0, 1) : clamp(Math.min(S.cash/Math.max(1, st.bid*15), (st.cap - st.inv)/15), 0, 1);
+  st.partE += (arr*60 - st.partE)/180;
+  var sPart = clamp(st.partE/25, 0, 1);
+  var sCalm = 1 - clamp(st.volE/0.004, 0, 1);
+  var sTrust = clamp(st.buzz/1.6, 0, 1);
+  st.tox = Math.max(0, st.tox - st.tox/240);
+  var evL = (m.pledgeDay === day && !m.pledgeBroken ? 1.12 : 1)*(m.transp > S.t ? 1.06 : 1);
+  var Lt = clamp(100*(0.24*sSp + 0.18*st.up + 0.14*sDep + 0.2*sPart + 0.1*sCalm + 0.14*sTrust)*(1 - 0.6*st.tox)*evL, 0, 100);
+  st.L += (Lt - st.L)/(Lt > st.L ? 900 : 180);
+  st.L = clamp(st.L, 0, 100);
+  st.lc = {sp:sSp, up:st.up, dep:sDep, part:sPart, calm:sCalm, trust:sTrust, tox:st.tox, t:Lt};
+  var tr = tierOf(st.L);
+  if(tr !== st.tier){
+    var up = tr > st.tier; st.tier = tr;
+    mark(st, '流動性' + TIERS[tr].n, up ? '#2ed6c4' : '#ff4f5e');
+    note(up ? 'up' : 'down', '「' + p.n + '」流動性' + (up ? '升到' : '掉到') + '「' + TIERS[tr].n + '」' + (up && TIER_UNLOCK[tr] ? '，解鎖' + TIER_UNLOCK[tr] : ''));
+    if(UI) banner(up ? '流動性升級' : '流動性下滑', p.n + '：' + TIERS[tr].n + (up && TIER_UNLOCK[tr] ? '，解鎖' + TIER_UNLOCK[tr] : ''), up ? '#2ed6c4' : '#ff4f5e', up);
+  }
 }
 function breakPledge(st, why){
   st.mods.pledgeBroken = true; S.cash -= 200; S.today.costs += 200; st.buzz = clamp(st.buzz - 0.2, 0.3, 2);
@@ -562,24 +722,27 @@ function breakPledge(st, why){
 function deliver(dl){
   var st = stallById(dl.sid); if(!st) return;
   var room = st.cap - st.inv, q = Math.min(room, dl.q), back = (dl.q - q)*dl.price;
-  st.inv += q; if(back > 0) S.cash += back;
-  note('truck', '批發貨到「' + prod(st.p).n + '」：' + q + ' 件' + (back > 0 ? '，倉庫放不下的已退款' : ''));
+  if(dl.lots){ var left = q; dl.lots.forEach(function(l){ var k = Math.min(left, l.q); if(k > 0) addInv(st, k, l.c + 1, l.t); left -= k; }); st.lots.sort(function(a,b){ return a.t - b.t; }); }
+  else addInv(st, q, dl.price);
+  if(back > 0) S.cash += back;
+  note('truck', (dl.lots ? '調貨' : '批發貨') + '送達「' + prod(st.p).n + '」' + DIST[st.d].n + '：' + q + ' 件' + (back > 0 ? '，倉庫放不下的已退款' : ''));
   mark(st, '到貨', '#5cc8ff');
-  if(UI){ toast('批發貨到了：' + prod(st.p).n + ' +' + q + ' 件'); if(st.d === S.sel) spawnTruck(); }
+  if(UI){ toast((dl.lots ? '調貨' : '批發貨') + '送到 ' + DIST[st.d].n + ' +' + q + ' 件'); if(st.d === S.sel) spawnTruck(); }
 }
 function sample(){
   var h = hourOf(S.t);
   S.stalls.forEach(function(st){
-    var rs = rivalSpread(st.d), pk = peakOf(st,h);
-    st.hist.push({t:S.t, H:Math.round(st.H*10)/10, V:Math.round(st.V*100)/100, b:st.bid, a:Math.round(effAsk(st)*100)/100, rb:Math.round(st.Vlag*(1-rs)*100)/100, ra:Math.round(st.Vlag*(1+rs)*100)/100, B:st.cnt.B, S:st.cnt.S, fb:st.cnt.fb, fs:st.cnt.fs, o:inSession(st,h) ? 1 : 0, pk:pk ? 1 : 0});
+    var rs = rivalSpread(st);
+    st.hist.push({t:S.t, H:Math.round(st.H*10)/10, V:Math.round(st.V*100)/100, F:Math.round(st.F*100)/100, L:Math.round(st.L*10)/10, Lt:Math.round(st.lc.t*10)/10, b:st.bid, a:Math.round(effAsk(st)*100)/100, rb:Math.round(st.Vlag*(1-rs)*100)/100, ra:Math.round(st.Vlag*(1+rs)*100)/100, B:st.cnt.B, S:st.cnt.S, fb:st.cnt.fb, fs:st.cnt.fs});
     if(st.hist.length > 150) st.hist.shift();
     st.cnt = {B:0, S:0, fb:0, fs:0};
+    st.vr.push(st.V); if(st.vr.length > 13) st.vr.shift();
   });
 }
 function hourly(h, day){
   S.stalls.forEach(function(st){
     var c = st.inv*st.V*CFG.storageH; S.cash -= c; S.today.costs += c;
-    if(st.mods.pricer && inSession(st,h)){ S.cash -= 30; S.today.costs += 30; }
+    if(st.mods.pricer && inHours(st,h)){ S.cash -= 30; S.today.costs += 30; }
   });
   if(S.t >= S.weather.until) newWeather();
   S.effects.forEach(function(e){
@@ -594,7 +757,7 @@ function hourly(h, day){
   S.stalls.forEach(function(st){
     if(st.panic && st.panic.resolveT <= S.t){
       var nm = prod(st.p).n;
-      if(st.panic.real){ st.Vb *= 0.75; pushNews('證實', '主管機關證實「' + nm + '」確有瑕疵，需求重挫', 'confirm'); note('down', '「' + nm + '」的爆料屬實，價格會下修一段時間'); }
+      if(st.panic.real){ st.Vb *= st.mods.transp > S.t ? 0.88 : 0.75; pushNews('證實', '主管機關證實「' + nm + '」確有瑕疵，需求重挫', 'confirm'); note('down', '「' + nm + '」的爆料屬實，價格會下修一段時間'); }
       else { pushNews('澄清', '品管檢驗出爐：「' + nm + '」完全合格，爆料不實', 'clarify'); note('up', '「' + nm + '」的爆料不實，價格回穩'); }
       st.pmultT = 1; if(st.pullBy === 'panic'){ st.pulled = false; st.pullBy = null; }
       mark(st, st.panic.real ? '證實' : '澄清', st.panic.real ? '#ff4f5e' : '#3ddc97');
@@ -603,28 +766,30 @@ function hourly(h, day){
     }
   });
   S.devents = S.devents.filter(function(e){ return e.until > S.t; });
+  S.cevents = S.cevents.filter(function(e){ return e.until > S.t; });
   S.wars = S.wars.filter(function(w){ return w.until > S.t; });
-  if(Math.random() < 0.055){ if(!S.pool.length){ var act = S.effects.map(function(e){ return e.id; }); S.pool = shuffle(NEWS.map(function(n){ return n.id; }).filter(function(id){ return act.indexOf(id) < 0; })); } if(S.pool.length) liveNews(); }
-  if(Math.random() < 0.03) districtEvent();
+  S.pumps = S.pumps.filter(function(t){ return S.t - t < 2880; });
+  if(Math.random() < 0.05){ if(!S.pool.length){ var act = S.effects.map(function(e){ return e.id; }); S.pool = shuffle(NEWS.map(function(n){ return n.id; }).filter(function(id){ return act.indexOf(id) < 0; })); } if(S.pool.length) liveNews(); }
+  catEvent();
+  if(Math.random() < 0.025) districtEvent();
   if(Math.random() < 0.02) viral();
   if(Math.random() < 0.012) priceWar();
   if(S.strikeUntil < S.t && Math.random() < 0.007) strike();
-  if(!S.big && Math.random() < 0.07) bigOrder();
+  if(!S.big){ var Lmax = S.stalls.reduce(function(a,st){ return Math.max(a, st.L); }, 0); if(Math.random() < 0.03 + Lmax/1500) bigOrder(); }
   if(day >= 3 && day - S.lastPanicDay >= 2 && Math.random() < 0.015) panic();
 }
 function rollover(){
   var eq = equity(), d = dayOf(S.t) - 1;
-  var rec = {day:d, pnl:eq - S.dayStartEq, fills:S.today.fills};
+  var rec = {day:d, pnl:eq - S.dayStartEq, fills:S.today.fills, realized:S.today.realized, spoiled:S.today.spoiled, costs:S.today.costs, cust:S.today.cust, sales:S.today.sales, sup:S.today.sup, bought:S.today.bought, arbIn:S.today.arbIn, arbOut:S.today.arbOut};
   S.daily.push(rec); if(S.daily.length > 30) S.daily.shift();
   S.debt *= 1 + CFG.interestD;
   S.today = newToday(); S.stalls.forEach(function(st){ st.td = newSTD(); });
   S.dayStartEq = equity(); S.missions = genMissions();
   if(UI) uiRollover(rec);
 }
-function newWeather(){
-  var r = Math.random(), acc = 0, pick = 'sun';
-  for(var k in WEATHERS){ acc += WEATHERS[k].w; if(r < acc){ pick = k; break; } }
-  var old = S.weather.id;
+function newWeather(force){
+  var pick = force, old = S.weather.id;
+  if(!pick){ var r = Math.random(), acc = 0; pick = 'sun'; for(var k in WEATHERS){ acc += WEATHERS[k].w; if(r < acc){ pick = k; break; } } }
   S.weather = {id:pick, until:S.t + Math.round((6 + Math.random()*6)*60)};
   if(pick !== old){
     markAll(WEATHERS[pick].n, '#5cc8ff');
@@ -632,7 +797,7 @@ function newWeather(){
     if(UI) banner('天氣', WEATHERS[pick].n + '：' + wxDesc(pick), '#5cc8ff');
   }
 }
-function wxDesc(id){ return {sun:'冷飲比較好賣', cloud:'人潮正常', rain:'人潮減少，熱食比較好賣', cold:'保溫、熱食需求大增', hot:'冷飲大賣、熱食退燒', typhoon:'人潮大減、供貨中斷，價格容易暴衝'}[id]; }
+function wxDesc(id){ return {sun:'冷飲比較好賣，雨衣乏人問津', cloud:'人潮正常', rain:'人潮減少，熱食和雨衣好賣', cold:'保溫和熱食需求大增', hot:'冷飲大賣、熱食退燒', typhoon:'人潮大減、供貨中斷，雨衣被搶光'}[id]; }
 function addNewsEffect(){
   var id = S.pool.pop(), n = NEWS_BY_ID[id];
   var e = {id:id, fx:n.fx, str:1};
@@ -641,6 +806,20 @@ function addNewsEffect(){
   return pushNews(n.src, n.t, 'news');
 }
 function liveNews(){ var n = addNewsEffect(); markAll(n.src === '網傳' ? '網傳' : '新聞', n.src === '網傳' ? '#ffb547' : '#eef1fb'); if(UI) banner(n.src === '網傳' ? '網傳' : '快訊', n.text, n.src === '網傳' ? '#ffb547' : '#ff4f5e', true); }
+function catEvent(){
+  var cats = {};
+  S.stalls.forEach(function(st){ var p = prod(st.p); cats[p.cat] = 1; if(perishable(p)) cats.fresh = 1; });
+  Object.keys(cats).forEach(function(cat){
+    if(Math.random() >= 0.025) return;
+    var pool = CEVENTS.filter(function(e){ return e.cat === cat && !S.cevents.some(function(x){ return x.n === e.n; }); }); if(!pool.length) return;
+    var e = rnd(pool), ev = Object.assign({}, e, {until:S.t + e.dur});
+    S.cevents.push(ev);
+    if(e.wx) newWeather(e.wx);
+    S.stalls.forEach(function(st){ var p = prod(st.p); if(p.cat === cat || (cat === 'fresh' && perishable(p))){ mark(st, e.n.slice(0,4), '#ff9ecb'); if(e.L) st.L = clamp(st.L + e.L, 0, 100); } });
+    pushNews(cat === 'fresh' ? '生鮮' : CATS[cat], e.n + '：' + e.t, 'cat');
+    if(UI) banner(cat === 'fresh' ? '生鮮' : CATS[cat], e.n + '：' + e.t, '#ff9ecb', true);
+  });
+}
 function districtEvent(){
   var c = DEVENTS.filter(function(e){ return !S.devents.some(function(x){ return x.d === e.d; }); }); if(!c.length) return;
   var e = rnd(c), ev = {d:e.d, n:e.n, mult:e.mult, until:S.t + e.dur, fw:!!e.fw};
@@ -649,7 +828,7 @@ function districtEvent(){
   if(UI) banner('活動', e.n + '！' + DIST[e.d].n + '人潮大增', '#a184ff');
 }
 function viral(){
-  var c = S.stalls.filter(function(st){ return inSession(st, hourOf(S.t)) && !st.panic; }); if(!c.length) return;
+  var c = S.stalls.filter(function(st){ return inHours(st, hourOf(S.t)) && !st.panic; }); if(!c.length) return;
   var st = rnd(c); st.mods.viral = S.t + 120; mark(st, '爆紅', '#ff5fa2');
   pushNews('網傳', '網紅打卡：「' + prod(st.p).n + '」在' + DIST[st.d].n + '爆紅！', 'event');
   if(UI) banner('爆紅', '網紅打卡「' + prod(st.p).n + '」，' + DIST[st.d].n + '熱度暴增', '#ff5fa2');
@@ -657,8 +836,8 @@ function viral(){
 function priceWar(){
   var c = S.stalls.filter(function(st){ return !S.wars.some(function(w){ return w.d === st.d; }); }); if(!c.length) return;
   var st = rnd(c); S.wars.push({d:st.d, until:S.t + 360}); mark(st, '價格戰', '#a184ff');
-  pushNews('活動', '對手在' + DIST[st.d].n + '發動價格戰，價差壓到 3.5%', 'event');
-  if(UI) banner('價格戰', '對手在' + DIST[st.d].n + '壓低價差，客人會被搶走', '#a184ff');
+  pushNews('活動', '對手在' + DIST[st.d].n + '發動價格戰，價差壓到 3%', 'event');
+  if(UI) banner('價格戰', '對手在' + DIST[st.d].n + '壓低價差，客人和供應商都會被搶走', '#a184ff');
 }
 function strike(){
   S.strikeUntil = S.t + 480; markAll('罷工', '#5cc8ff');
@@ -666,11 +845,11 @@ function strike(){
   if(UI) banner('罷工', '港口罷工，供應商變少，價格容易上漲', '#5cc8ff');
 }
 function bigOrder(){
-  var c = S.stalls.filter(function(st){ return !st.panic && !st.pulled && inSession(st, hourOf(S.t)); }); if(!c.length) return;
+  var c = S.stalls.filter(function(st){ return !st.panic && !st.pulled; }); if(!c.length) return;
   var st = rnd(c), p = prod(st.p), T = S._T || targets();
   var g = appealOf(st.d, p.pts, T)/Math.max(0.05, appealOf(st.d, p.pts, S.prefs)), side;
   if(g < 0.95 && Math.random() < 0.6) side = 'sell'; else if(g > 1.05 && Math.random() < 0.6) side = 'buy'; else side = Math.random() < 0.5 ? 'buy' : 'sell';
-  var q = Math.round((18 + Math.random()*22)*(1 + 0.15*(lvl().lv - 1)));
+  var q = Math.round((15 + Math.random()*20)*(1 + st.L/100));
   var price = Math.max(1, Math.round(side === 'buy' ? st.V*(1.06 + Math.random()*0.06) : st.V*(0.84 + Math.random()*0.06)));
   S.big = {sid:st.id, side:side, q:q, price:price, who:side === 'buy' ? rnd(BIG_BUYERS) : rnd(BIG_SELLERS), left:14000};
   if(UI) uiBig(); else S.big = null;
@@ -678,18 +857,18 @@ function bigOrder(){
 function acceptBig(){
   var b = S.big; if(!b) return;
   var st = stallById(b.sid); if(!st){ S.big = null; return; }
-  if(b.side === 'buy'){ if(st.inv < b.q){ toast('庫存不夠，接不了這張單'); return; } st.inv -= b.q; S.cash += b.q*b.price; }
-  else { if(S.cash < b.q*b.price){ toast('現金不足，可以先去任務頁融資'); return; } if(st.cap - st.inv < b.q){ toast('倉庫放不下'); return; } st.inv += b.q; S.cash -= b.q*b.price; }
-  st.buzz = clamp(st.buzz + 0.08, 0.3, 2); S.xp += Math.round(b.q/2); S.today.bigs++; S.totalFills += b.q;
+  if(b.side === 'buy'){ if(st.inv < b.q){ toast('庫存不夠，接不了這張單'); return; } var tk = takeInv(st, b.q); S.cash += b.q*b.price; S.today.realized += b.q*b.price - tk.cost; }
+  else { if(S.cash < b.q*b.price){ toast('現金不足，可以先去任務頁融資'); return; } if(st.cap - st.inv < b.q){ toast('倉庫放不下'); return; } addInv(st, b.q, b.price); S.cash -= b.q*b.price; }
+  st.buzz = clamp(st.buzz + 0.08, 0.3, 2); st.L = clamp(st.L + 2, 0, 100); S.xp += Math.round(b.q/2); S.today.bigs++; S.totalFills += b.q;
   note('hand', '接下大單：' + (b.side === 'buy' ? '賣出 ' : '買進 ') + b.q + ' 件「' + prod(st.p).n + '」');
   mark(st, '大單', '#ffb547');
   S.big = null;
-  if(UI){ hideBig(); sfx('coin'); buzz([20,40,20]); toast('接住了！口碑上升'); }
+  if(UI){ hideBig(); sfx('coin'); buzz([20,40,20]); toast('接住了！流動性和口碑上升'); }
 }
 function panic(){
-  var c = S.stalls.filter(function(st){ return st.inv > 0 && !st.panic && inSession(st, hourOf(S.t)); }); if(!c.length) return;
-  var st = rnd(c);
-  st.panic = {real:Math.random() < 0.45, resolveT:S.t + 16*60, stay:null}; st.pmultT = 0.78; S.lastPanicDay = dayOf(S.t);
+  var c = S.stalls.filter(function(st){ return st.inv > 0 && !st.panic && inHours(st, hourOf(S.t)); }); if(!c.length) return;
+  var st = rnd(c), soft = st.mods.transp > S.t;
+  st.panic = {real:Math.random() < 0.45, resolveT:S.t + 16*60, stay:null}; st.pmultT = soft ? 0.89 : 0.78; S.lastPanicDay = dayOf(S.t);
   pushNews('網傳', '網紅爆料「' + prod(st.p).n + '」品質出包，' + DIST[st.d].n + '出現恐慌拋售！', 'panic');
   mark(st, '恐慌', '#ff4f5e');
   if(UI) uiPanic(st); else decidePanic(st, true);
@@ -697,83 +876,156 @@ function panic(){
 function decidePanic(st, stay){
   if(!st.panic) return;
   st.panic.stay = stay;
-  if(stay){ note('hand', '你選擇堅守「' + prod(st.p).n + '」，當最後的買家'); }
-  else { st.pulled = true; st.pullBy = 'panic'; st.pmultT = 0.68; st.buzz = clamp(st.buzz - 0.35, 0.3, 2); note('pause', '你暫時撤出「' + prod(st.p).n + '」'); if(st.mods.pledgeDay === dayOf(S.t) && !st.mods.pledgeBroken) breakPledge(st, '恐慌時撤單'); }
+  if(stay){ note('hand', '你選擇堅守「' + prod(st.p).n + '」，當最後的買家'); st.L = clamp(st.L + 4, 0, 100); }
+  else { st.pulled = true; st.pullBy = 'panic'; st.pmultT = st.mods.transp > S.t ? 0.8 : 0.68; st.buzz = clamp(st.buzz - 0.35, 0.3, 2); st.L = clamp(st.L - 15, 0, 100); note('pause', '你暫時撤出「' + prod(st.p).n + '」'); if(st.mods.pledgeDay === dayOf(S.t) && !st.mods.pledgeBroken) breakPledge(st, '恐慌時撤單'); }
 }
 
 /* 任務 */
 var MPOOL = [
-  function(l){ var n = 50 + l*15; return {text:'今天成交 ' + n + ' 件', goal:n, k:'fills', r:150 + l*30, x:30}; },
-  function(l){ var n = Math.min(140, 70 + l*8); return {text:'任一攤位熱度衝上 ' + n, goal:n, k:'maxHeat', r:150, x:30}; },
-  function(){ return {text:'任一攤位口碑達到 4 顆星', goal:4, k:'maxStars', r:180, x:40}; },
+  function(l){ var n = 40 + l*15; return {text:'今天成交 ' + n + ' 件', goal:n, k:'fills', r:150 + l*30, x:30}; },
+  function(l){ var n = Math.min(90, 25 + l*10); return {text:'任一攤位流動性達到 ' + n, goal:n, k:'maxL', r:200 + l*30, x:40}; },
+  function(l){ var n = Math.min(140, 60 + l*8); return {text:'任一攤位熱度衝上 ' + n, goal:n, k:'maxHeat', r:150, x:30}; },
   function(){ return {text:'接下一張大單', goal:1, k:'bigs', r:200, x:40}; },
   function(){ return {text:'今天使用 3 次策略', goal:3, k:'strategies', r:120, x:25}; },
-  function(l){ var n = 250 + l*120; return {text:'今天淨值成長 $' + n, goal:n, k:'pnl', r:200 + l*40, x:50}; },
-  function(l){ var n = 25 + l*8; return {text:'向供應商收購 ' + n + ' 件', goal:n, k:'buys', r:150, x:30}; }
+  function(){ return {text:'用造市或套利策略賺錢 2 次', goal:2, k:'arbs', r:220, x:45}; },
+  function(l){ var n = 200 + l*100; return {text:'今天已實現獲利 $' + n, goal:n, k:'realized', r:200 + l*40, x:50}; },
+  function(l){ var n = 20 + l*8; return {text:'向供應商收購 ' + n + ' 件', goal:n, k:'buys', r:150, x:30}; }
 ];
 function genMissions(){ var l = S ? lvl().lv : 1; return shuffle(MPOOL.slice()).slice(0,3).map(function(f){ var m = f(l); m.done = false; return m; }); }
 function missionVal(m){ return S.today[m.k] || 0; }
 function claimable(){ return S.missions.filter(function(m){ return !m.done && missionVal(m) >= m.goal; }).length; }
 
 /* 策略 */
+function sameProdPartner(st){ return S.stalls.filter(function(x){ return x.id !== st.id && x.p === st.p; }); }
+function rivalOpp(st){ var rs = rivalSpread(st), ra = st.Vlag*(1 + rs), rb = st.Vlag*(1 - rs); if(st.panic) return null; if(ra < st.V*0.97) return {side:'buy', px:ra, edge:st.V/ra - 1}; if(rb > st.V*1.03) return {side:'sell', px:rb, edge:rb/st.V - 1}; return null; }
 function stratState(st, id){
-  var s = STRAT[id], L = lvl().lv, day = dayOf(S.t), m = st.mods;
-  if(L < s.lv) return {ok:false, why:'LV.' + s.lv + ' 解鎖'};
+  var s = STRAT[id], L = lvl().lv, day = dayOf(S.t), m = st.mods, tr = tierOf(st.L), p = prod(st.p);
+  if(s.lv && L < s.lv) return {ok:false, why:'LV.' + s.lv + ' 解鎖'};
+  if(s.tier && tr < s.tier) return {ok:false, why:'流動性達 ' + TIERS[s.tier].at + '（' + TIERS[s.tier].n + '）解鎖'};
+  if(s.perish && !p.shelf) return {ok:false, why:'這項商品不會壞，不需要'};
   if(id === 'promo' && m.promo > S.t) return {ok:false, on:true, why:'進行中，剩 ' + Math.ceil((m.promo - S.t)/60) + ' 小時', left:(m.promo - S.t)/s.dur};
   if(id === 'ad' && m.ad > S.t) return {ok:false, on:true, why:'投放中，剩 ' + Math.ceil((m.ad - S.t)/60) + ' 小時', left:(m.ad - S.t)/s.dur};
   if(id === 'influ' && m.influ > S.t) return {ok:false, on:true, why:'直播中', left:(m.influ - S.t)/s.dur};
-  if(id === 'extend' && m.extendDay === day) return {ok:false, on:true, why:'今天已延長'};
+  if(id === 'transp' && m.transp > S.t) return {ok:false, on:true, why:'公開中，剩 ' + Math.ceil((m.transp - S.t)/60) + ' 小時', left:(m.transp - S.t)/s.dur};
   if(id === 'pledge' && m.pledgeDay === day) return {ok:false, on:!m.pledgeBroken, why:m.pledgeBroken ? '今天已違約' : '承諾中'};
   if(id === 'loyal' && m.loyal) return {ok:false, on:true, why:'已加入'};
-  if(id === 'pull') return {ok:!(st.pullBy === 'panic'), on:st.pulled, why:st.pullBy === 'panic' ? '恐慌撤單中' : st.pulled ? '撤單中，按下恢復' : '隨時可用'};
+  if(id === 'cold' && m.cold) return {ok:false, on:true, why:'已安裝'};
+  if(id === 'pull') return {ok:st.pullBy !== 'panic', on:st.pulled, why:st.pullBy === 'panic' ? '恐慌撤單中' : st.pulled ? '撤單中，按下恢復' : '隨時可用'};
   if(id === 'pricer') return {ok:true, on:m.pricer, why:m.pricer ? '運作中，按下停止' : '每小時 $30'};
+  if(id === 'markdown') return {ok:true, on:m.markdown, why:m.markdown ? '已開啟，按下關閉' : '免費'};
   if(st.cds[id] && st.cds[id] > S.t) return {ok:false, cd:true, why:'冷卻 ' + Math.ceil((st.cds[id] - S.t)/60) + ' 小時'};
   if(id === 'bulk' && st.cap - st.inv - pendingQ(st) <= 0) return {ok:false, why:'倉庫已滿'};
-  if(s.cost > 0 && S.cash < s.cost) return {ok:false, why:'現金不足'};
+  if(id === 'pump' && (st.cap - st.inv < 10 || S.cash < st.V*12)) return {ok:false, why:'倉庫或現金不足'};
+  if(id === 'dump' && st.inv <= 0) return {ok:false, why:'沒有庫存'};
+  if(id === 'xfer'){ var ps = sameProdPartner(st); if(!ps.length) return {ok:false, why:'需要另一個賣「' + p.n + '」的攤位'}; }
+  if(id === 'rival'){ if(!rivalOpp(st)) return {ok:false, why:'對手報價目前沒有失真'}; }
+  if(id === 'fwd' && st.fwd) return {ok:false, on:true, why:'待交 ' + st.fwd.q + ' 件，剩 ' + Math.ceil((st.fwd.due - S.t)/60) + ' 小時'};
+  if(s.cost && id !== 'pricer' && S.cash < s.cost) return {ok:false, why:'現金不足'};
   return {ok:true};
 }
 function useStrat(st, id){
-  var s = STRAT[id], ss = stratState(st, id), m = st.mods, day = dayOf(S.t), nm = prod(st.p).n;
+  var s = STRAT[id], ss = stratState(st, id), m = st.mods, day = dayOf(S.t), p = prod(st.p), nm = p.n, imp = impact(st), q, k;
   if(!ss.ok){ if(UI) toast(ss.why); return false; }
   switch(id){
-    case 'promo': m.promo = S.t + s.dur; st.cds.promo = S.t + s.cd; mark(st, '優惠', '#ffb547'); break;
-    case 'ad': S.cash -= s.cost; S.today.costs += s.cost; m.ad = S.t + s.dur; st.cds.ad = S.t + s.cd; mark(st, '廣告', '#ffb547'); break;
     case 'bulk':
-      var q = Math.min(40, st.cap - st.inv - pendingQ(st)), price = Math.round(st.V*0.9), cost = q*price;
-      if(S.cash < cost){ q = Math.floor(S.cash/price); cost = q*price; }
+      var price = Math.round(st.F*0.9); q = Math.min(40, st.cap - st.inv - pendingQ(st), Math.floor(S.cash/price));
       if(q <= 0){ if(UI) toast('現金不足'); return false; }
-      S.cash -= cost; S.deliveries.push({sid:st.id, q:q, price:price, eta:S.t + 180}); st.cds.bulk = S.t + s.cd;
+      S.cash -= q*price; S.deliveries.push({sid:st.id, q:q, price:price, eta:S.t + 180}); st.cds.bulk = S.t + s.cd;
       note('truck', '向港口批發 ' + q + ' 件「' + nm + '」，每件 $' + price + '，3 小時後送達');
       if(UI) toast('已下單 ' + q + ' 件，3 小時後送到');
       break;
-    case 'extend': S.cash -= s.cost; S.today.costs += s.cost; m.extendDay = day; mark(st, '延長', '#5cc8ff'); break;
+    case 'cold': S.cash -= s.cost; S.today.costs += s.cost; m.cold = true; break;
+    case 'pricer': m.pricer = !m.pricer; if(UI) toast(m.pricer ? '智慧報價機啟動' : '智慧報價機已停止'); return true;
+    case 'markdown': m.markdown = !m.markdown; if(UI) toast(m.markdown ? '即期品會自動打 75 折' : '已關閉即期折扣'); return true;
     case 'pull':
       st.pulled = !st.pulled; st.pullBy = st.pulled ? 'user' : null;
-      if(st.pulled && m.pledgeDay === day && !m.pledgeBroken) breakPledge(st, '撤單');
-      if(UI) toast(st.pulled ? '已撤單，客人暫時無法交易' : '恢復報價');
+      if(st.pulled && m.pledgeDay === day && !m.pledgeBroken && inHours(st, hourOf(S.t))) breakPledge(st, '撤單');
+      if(UI) toast(st.pulled ? '已撤單，流動性會開始流失' : '恢復報價');
       return true;
+    case 'promo': m.promo = S.t + s.dur; st.cds.promo = S.t + s.cd; mark(st, '優惠', '#ffb547'); break;
+    case 'ad': S.cash -= s.cost; S.today.costs += s.cost; m.ad = S.t + s.dur; st.cds.ad = S.t + s.cd; mark(st, '廣告', '#ffb547'); break;
+    case 'transp': S.cash -= s.cost; S.today.costs += s.cost; m.transp = S.t + s.dur; st.cds.transp = S.t + s.cd; mark(st, '公開', '#3ddc97'); break;
+    case 'loyal': S.cash -= s.cost; S.today.costs += s.cost; m.loyal = true; break;
+    case 'influ': S.cash -= s.cost; S.today.costs += s.cost; m.influ = S.t + s.dur; m.influM = 1.5 + Math.random()*0.8; st.cds.influ = S.t + s.cd; mark(st, '直播', '#ff5fa2'); break;
     case 'pledge':
       if((st.ask - st.bid)/st.V > 0.065){ if(UI) toast('現在價差超過 6%，先收窄再承諾'); return false; }
       m.pledgeDay = day; m.pledgeBroken = false; mark(st, '承諾', '#3ddc97'); break;
-    case 'loyal': S.cash -= s.cost; S.today.costs += s.cost; m.loyal = true; break;
-    case 'influ': S.cash -= s.cost; S.today.costs += s.cost; m.influ = S.t + s.dur; m.influM = 1.5 + Math.random()*0.8; st.cds.influ = S.t + s.cd; mark(st, '直播', '#ff5fa2'); break;
-    case 'pricer': m.pricer = !m.pricer; if(UI) toast(m.pricer ? '智慧報價機啟動' : '智慧報價機已停止'); return true;
+    case 'pump':
+      q = Math.min(20, st.cap - st.inv, Math.floor(S.cash/(st.V*1.1))); var paid = 0, v0 = st.V;
+      for(k=0;k<q;k++){ var px = st.V*1.03; paid += px; addInv(st, 1, px); st.V *= 1 + 3*imp; }
+      S.cash -= paid; pushTrade(st, paid/q, -1);
+      m.mom = S.t + 150; m.momS = clamp((st.V/v0 - 1)*10, 0.3, 1.5);
+      S.pumps.push(S.t); st.cds.pump = S.t + s.cd; mark(st, '拉抬', '#ff7380');
+      note('up', '拉抬「' + nm + '」：掃進 ' + q + ' 件，價格從 $' + v0.toFixed(1) + ' 推到 $' + st.V.toFixed(1));
+      if(UI) toast('價格推高 ' + pct((st.V/v0 - 1)*100) + '，追漲客上門了');
+      if(S.pumps.length >= 3){ S.pumps = []; S.cash -= 300; S.today.costs += 300; S.stalls.forEach(function(x){ x.L = clamp(x.L - 15, 0, 100); x.buzz = clamp(x.buzz - 0.3, 0.3, 2); }); pushNews('官方', '主管機關約談頻繁拉抬價格的攤商，開罰 $300', 'confirm'); note('warn', '頻繁拉抬被主管機關關切：罰款 $300，所有攤位流動性下滑'); if(UI) banner('主管機關', '頻繁拉抬價格被約談：罰款 $300，流動性下滑', '#ff4f5e', true); }
+      break;
+    case 'dump':
+      q = Math.min(20, st.inv); var got = 0, cost = 0, v1 = st.V;
+      for(k=0;k<q;k++){ var px2 = st.V*0.97; got += px2; cost += takeInv(st, 1).cost; st.V *= 1 - 3*imp; }
+      S.cash += got; S.today.realized += got - cost; pushTrade(st, got/q, 1);
+      st.cds.dump = S.t + s.cd; mark(st, '拋售', '#3ddc97');
+      note('down', '出清「' + nm + '」' + q + ' 件，收回 ' + money(got) + '，價格從 $' + v1.toFixed(1) + ' 跌到 $' + st.V.toFixed(1));
+      if(UI) toast('出清 ' + q + ' 件，收回 ' + money(got));
+      break;
+    case 'xfer':
+      var all = [st].concat(sameProdPartner(st)), lo = all[0], hi = all[0];
+      all.forEach(function(x){ if(x.V < lo.V) lo = x; if(x.V > hi.V) hi = x; });
+      if(lo === hi || hi.V/lo.V < 1.03){ if(UI) toast('各區價差不到 3%，現在調貨不划算'); return false; }
+      q = Math.min(20, lo.inv, hi.cap - hi.inv - pendingQ(hi));
+      if(q <= 0){ if(UI) toast(DIST[lo.d].n + '沒有庫存，或' + DIST[hi.d].n + '倉庫已滿'); return false; }
+      var moved = takeInv(lo, q); S.cash -= q; S.deliveries.push({sid:hi.id, q:q, price:moved.cost/q + 1, lots:moved.lots, eta:S.t + 120});
+      st.cds.xfer = S.t + s.cd; mark(lo, '調出', '#5cc8ff'); mark(hi, '調入', '#5cc8ff');
+      note('swap', '從' + DIST[lo.d].n + '調 ' + q + ' 件到' + DIST[hi.d].n + '（$' + lo.V.toFixed(1) + ' → $' + hi.V.toFixed(1) + '）');
+      if(UI) toast('調貨中：' + DIST[lo.d].n + ' → ' + DIST[hi.d].n + ' ' + q + ' 件');
+      break;
+    case 'rival':
+      var o = rivalOpp(st);
+      if(o.side === 'buy'){ q = Math.min(10, st.cap - st.inv, Math.floor(S.cash/o.px)); if(q <= 0){ if(UI) toast('倉庫或現金不足'); return false; } addInv(st, q, o.px); S.cash -= q*o.px; st.Vlag += (st.V - st.Vlag)*0.5; note('bolt', '向對手以 $' + o.px.toFixed(1) + ' 買進 ' + q + ' 件（參考價 $' + st.V.toFixed(1) + '）'); }
+      else { q = Math.min(10, st.inv); if(q <= 0){ if(UI) toast('沒有庫存'); return false; } var tk3 = takeInv(st, q); S.cash += q*o.px; S.today.realized += q*o.px - tk3.cost; st.Vlag += (st.V - st.Vlag)*0.5; note('bolt', '以 $' + o.px.toFixed(1) + ' 賣給對手 ' + q + ' 件（參考價 $' + st.V.toFixed(1) + '）'); }
+      st.cds.rival = S.t + s.cd; mark(st, '吃單', '#a184ff'); pushTrade(st, o.px, o.side === 'buy' ? -1 : 1);
+      if(UI) toast('吃到對手的單 ' + q + ' 件，價差 ' + pct(o.edge*100));
+      break;
+    case 'cross':
+      q = Math.round(20 + st.L/4); var fee = q*st.V*0.03; S.cash += fee; S.today.realized += fee; st.L = clamp(st.L + 2, 0, 100); st.buzz = clamp(st.buzz + 0.05, 0.3, 2);
+      st.cds.cross = S.t + s.cd; mark(st, '撮合', '#2ed6c4'); note('link', '撮合 ' + q + ' 件交易，賺手續費 ' + money(fee));
+      if(UI) toast('撮合成功，手續費 ' + money(fee));
+      break;
+    case 'fwd':
+      var fp = Math.round(st.V*1.03*10)/10; st.fwd = {q:25, price:fp, due:S.t + 720}; S.cash += 25*fp;
+      st.cds.fwd = S.t + s.cd; mark(st, '預售', '#2ed6c4'); note('clock', '預售 25 件「' + nm + '」，每件 $' + fp + '，12 小時內要交貨');
+      if(UI) toast('預售成功，收到 ' + money(25*fp) + '，記得備貨');
+      break;
   }
   S.today.strategies++;
-  note('tag', '對「' + nm + '」使用' + s.n);
-  if(UI){ sfx('coin'); toast(s.n + '：' + nm); }
+  if(ARB_IDS[id]) S.today.arbs++;
+  if(id !== 'bulk' && id !== 'pump' && id !== 'dump' && id !== 'xfer' && id !== 'rival' && id !== 'cross' && id !== 'fwd'){ note('tag', '對「' + nm + '」使用' + s.n); if(UI) toast(s.n + '：' + nm); }
+  if(UI) sfx('coin');
   return true;
+}
+function openStallAt(d, pid, free){
+  var st = makeStall(d, pid); setupStall(st);
+  var p = prod(pid), q0 = free ? 15 : 0;
+  if(perishable(p) && ((st.open - hourOf(S.t) + 24) % 24) > p.shelf/2) q0 = 0;
+  if(q0) addInv(st, q0, Math.round(st.F*0.92*10)/10);
+  S.stalls.push(st);
+  if(!free) S.cash -= CFG.openFee;
+  return st;
 }
 
 /* ===================== 介面 ===================== */
 var SETTINGS = {sound:true, vibrate:true, pause:true, name:'熱血商行', seenHelp:false};
-try { var rs0 = localStorage.getItem('heatx5-settings'); if(rs0){ var o0 = JSON.parse(rs0); if(o0 && typeof o0 === 'object') ['sound','vibrate','pause','seenHelp'].forEach(function(k){ if(typeof o0[k] === 'boolean') SETTINGS[k] = o0[k]; }); if(o0 && typeof o0.name === 'string' && o0.name.trim()) SETTINGS.name = o0.name.slice(0,12); } } catch(e) {}
-function saveSettings(){ try { localStorage.setItem('heatx5-settings', JSON.stringify(SETTINGS)); } catch(e) {} }
-function saveGame(){ if(!S || S.over) return; try { localStorage.setItem('heatx5-save', JSON.stringify(S)); } catch(e) {} }
-function loadGame(){ try { var r = localStorage.getItem('heatx5-save'); if(!r) return false; var o = JSON.parse(r); if(!o || o.v !== 5 || !Array.isArray(o.stalls)) return false; S = o; return true; } catch(e){ return false; } }
-function hasSave(){ try { return !!localStorage.getItem('heatx5-save'); } catch(e){ return false; } }
-
-var ui = {speed:1, paused:false, hard:false, acc:0, last:0, sheet:null, auto:false, ctab:'heat', domT:0, saveT:0, dockKey:'', panicSid:null, panicEnd:0, restartArm:false, draft:null, sellStall:null, stratSid:null, seg:0, bannerT:0, newsTab:'news'};
+try { var rs0 = localStorage.getItem('heatx6-settings'); if(rs0){ var o0 = JSON.parse(rs0); if(o0 && typeof o0 === 'object') ['sound','vibrate','pause','seenHelp'].forEach(function(k){ if(typeof o0[k] === 'boolean') SETTINGS[k] = o0[k]; }); if(o0 && typeof o0.name === 'string' && o0.name.trim()) SETTINGS.name = o0.name.slice(0,12); } } catch(e) {}
+function saveSettings(){ try { localStorage.setItem('heatx6-settings', JSON.stringify(SETTINGS)); } catch(e) {} }
+function saveGame(){ if(!S || S.over || S.setup) return; try { localStorage.setItem('heatx6-save', JSON.stringify(S)); } catch(e) {} }
+function loadGame(){ try { var r = localStorage.getItem('heatx6-save'); if(!r) return false; var o = JSON.parse(r); if(!o || o.v !== 6 || !Array.isArray(o.stalls) || !o.stalls.length) return false; S = o; return true; } catch(e){ return false; } }
+function hasSave(){ try { return !!localStorage.getItem('heatx6-save'); } catch(e){ return false; } }
+var OUT = {
+  buy:{n:'買走',c:'--amber'}, sell:{n:'賣給你',c:'--cyan'}, lost:{n:'被對手搶走',c:'--violet'}, pricey:{n:'嫌貴',c:'--muted'}, cheap:{n:'嫌收購價低',c:'--muted'},
+  nostock:{n:'缺貨',c:'--hot'}, full:{n:'倉庫滿',c:'--hot'}, enough:{n:'已收夠',c:'--muted'}
+};
+var FORCE_PAUSE = {strat:1, pick:1, pickD:1, ipo:1, rnd:1};
+var ui = {speed:1, paused:false, hard:false, acc:0, last:0, sheet:null, auto:false, ctab:'heat', domT:0, saveT:0, dockKey:'', panicSid:null, panicEnd:0, restartArm:false, draft:null, stratSid:null, seg:0, bannerT:0, newsTab:'news', flow:null};
 var $ = function(id){ return document.getElementById(id); };
 
 /* ---- 圖示 ---- */
@@ -785,7 +1037,9 @@ var ICONS = {
   cup2:[['f','M7 9h10l-1.3 11.5a1.5 1.5 0 0 1-1.5 1.5H9.8a1.5 1.5 0 0 1-1.5-1.5Z','a'],['s','M7 9h10l-1.3 11.5a1.5 1.5 0 0 1-1.5 1.5H9.8a1.5 1.5 0 0 1-1.5-1.5Z','c',1.6],['s','M6.5 9a5.5 4 0 0 1 11 0Z','c',1.6],['f','M12 2.5c3 0 4.2 2 4.2 3.2c-2.2.4-4.2-.4-4.2-3.2Z','c']],
   box:[['f','M4 8l8-4 8 4v9l-8 4-8-4Z','a'],['s','M4 8l8-4 8 4v9l-8 4-8-4Z','c',1.6],['s','M4 8l8 4 8-4M12 12v9','c',1.4]],
   bag:[['f','M5 8h14l-1 13H6Z','a'],['s','M5 8h14l-1 13H6Z','c',1.6],['s','M9 8V6a3 3 0 0 1 6 0v2','c',1.6]],
-  can:[['f','M7 4h10v16H7Z','a'],['s','M7 4h10v16H7Z','c',1.6],['s','M7 7h10M7 17h10','c',1.4],['s','M10 11h4','w',1.6]]
+  can:[['f','M7 4h10v16H7Z','a'],['s','M7 4h10v16H7Z','c',1.6],['s','M7 7h10M7 17h10','c',1.4],['s','M10 11h4','w',1.6]],
+  cake:[['f','M3 13h18v7H3Z','a'],['s','M3 13h18v7H3Z','c',1.6],['s','M3 16.5h18','w',1.4],['f','M5 13c0-3 2.5-5 7-5s7 2 7 5Z','c'],['f','M10.4 5.2a1.6 1.6 0 1 0 3.2 0a1.6 1.6 0 1 0-3.2 0','#ff4f5e']],
+  coat:[['f','M8 4h8l3 5v11H5V9Z','a'],['s','M8 4h8l3 5v11H5V9Z','c',1.6],['s','M12 9v11','c',1.3],['s','M9 4c0 3 6 3 6 0','w',1.3],['s','M3 22l1.5-3M20 22l1.5-3','#5cc8ff',1.2]]
 };
 var CUSTOM_ICONS = [['box','箱裝'],['bag','提袋'],['can','罐裝'],['tea','杯裝'],['bento','餐盒']];
 var CUSTOM_COLORS = ['#ff9f43','#c56cf0','#2ed6c4','#ff6bb5','#9fd356','#f7d046'];
@@ -806,7 +1060,7 @@ function drawIcon(c, kind, color, x, y, size){
 var SICON = {
   tag:'M3 12V4h8l10 10-8 8ZM7.5 7.5h.01', mega:'M3 10v4h3l6 4V6L6 10ZM16 9a4 4 0 0 1 0 6M18.5 6.5a8 8 0 0 1 0 11', truck:'M2 7h11v9H2ZM13 10h4l3 3v3h-7ZM6 19a1.5 1.5 0 1 0 .01 0M17 19a1.5 1.5 0 1 0 .01 0',
   clock:'M12 3a9 9 0 1 0 .01 0M12 7v5l3 2', pause:'M8 5v14M16 5v14', hand:'M3 12l4-4 4 2 3-2 7 5M7 15l3 3M10 13l3 3M13 11l3 3', card:'M3 6h18v12H3ZM3 10h18M7 15h3',
-  cam:'M4 8h4l2-2h4l2 2h4v11H4ZM12 10.5a3 3 0 1 0 .01 0', up:'M4 16l6-6 4 4 6-6M14 8h6v6', down:'M4 8l6 6 4-4 6 6M14 16h6v-6', warn:'M12 3l10 18H2ZM12 10v5M12 18h.01', chip:'M7 7h10v10H7ZM10 3v4M14 3v4M10 17v4M14 17v4M3 10h4M3 14h4M17 10h4M17 14h4', play:'M8 5v14l11-7Z'
+  cam:'M4 8h4l2-2h4l2 2h4v11H4ZM12 10.5a3 3 0 1 0 .01 0', up:'M4 16l6-6 4 4 6-6M14 8h6v6', down:'M4 8l6 6 4-4 6 6M14 16h6v-6', warn:'M12 3l10 18H2ZM12 10v5M12 18h.01', chip:'M7 7h10v10H7ZM10 3v4M14 3v4M10 17v4M14 17v4M3 10h4M3 14h4M17 10h4M17 14h4', snow:'M12 2v20M4 6l16 12M20 6 4 18', eye:'M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12ZM12 9a3 3 0 1 0 .01 0', swap:'M4 8h13l-3-3M20 16H7l3 3', bolt:'M13 2 4 14h7l-1 8 9-12h-7Z', link:'M9 15l6-6M10 6l1-1a4 4 0 0 1 6 6l-1 1M14 18l-1 1a4 4 0 0 1-6-6l1-1', play:'M8 5v14l11-7Z'
 };
 function sicon(k, size){ return '<svg width="' + (size||20) + '" height="' + (size||20) + '" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="' + SICON[k] + '"/></svg>'; }
 var HEART = 'M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10Z';
@@ -825,6 +1079,7 @@ function timeIcon(h){
   if((h > 5 && h < 8) || (h > 16.5 && h < 19.5)) return '<svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 16a8 8 0 0 1 16 0Z" fill="#ff9a5a"/><path d="M2 16h20M5 19h14M12 4v2.5M5.6 7.6l1.6 1.6M18.4 7.6l-1.6 1.6" stroke="#ffd27a" stroke-width="1.8" stroke-linecap="round"/></svg>';
   return '<svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="5" fill="#ffd27a"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M4.9 19.1 7 17M17 7l2.1-2.1" stroke="#ffd27a" stroke-width="1.8" stroke-linecap="round"/></svg>';
 }
+
 
 /* ---- 聲音與震動 ---- */
 var AC = null, lastPop = 0;
@@ -846,6 +1101,7 @@ function sfx(kind, arg){
   } catch(e) {}
 }
 function buzz(p){ if(!SETTINGS.vibrate || !navigator.vibrate) return; try { navigator.vibrate(p); } catch(e) {} }
+
 
 /* ---- 場景 ---- */
 var SC = {cv:null, c:null, W:0, H:0, dpr:1, key:'', day:null, night:null, agents:[], back:[], scooters:[], floats:[], parts:[], stars:[], rain:[], combo:0, comboT:0, keeperBob:0, trucks:[], hit:null};
@@ -919,7 +1175,7 @@ function paintSky(list, W, hor, dpr, style, night){
 }
 var PAL = {
   stu:{leg:'#2b3a6b', body:'#4a6cf0'}, off:{leg:'#1d2238', body:'#33385a'}, offw:{leg:'#1d2238', body:'#6a4f9e'}, fam:{leg:'#24304f', body:'#3ad08f'},
-  sen:{leg:'#5b5f78', body:'#a98bff'}, sup:{leg:'#39405e', body:'#ff8a3a'}, arb:{leg:'#111', body:'#1a1a22'}, inf:{leg:'#2a2140', body:'#ff5fa2'}, kid:{leg:'#24304f', body:'#ffb547'}
+  sen:{leg:'#5b5f78', body:'#a98bff'}, sup:{leg:'#39405e', body:'#ff8a3a'}, arb:{leg:'#111', body:'#1a1a22'}, chase:{leg:'#1d2238', body:'#3ddc97'}, inf:{leg:'#2a2140', body:'#ff5fa2'}, kid:{leg:'#24304f', body:'#ffb547'}
 };
 var SKINS = ['#f2c79b','#e8b48a','#d9a173','#f5d2ad'];
 function rr(c, x, y, w, h, r, col){ c.fillStyle = col; c.beginPath(); if(c.roundRect) c.roundRect(x, y, w, h, r); else c.rect(x, y, w, h); c.fill(); }
@@ -964,12 +1220,12 @@ function fxArrival(st, side, out, price){
     target:buyer ? g.stallX - g.stallW*0.3 - Math.random()*22 : g.stallX + g.stallW*0.3 + Math.random()*22, state:'in', t:0, phase:Math.random()*6, moving:true,
     sp:(70 + Math.random()*25)*g.s, skin:rnd(SKINS), alpha:1, depth:Math.random()*6});
 }
-function fxArb(st, side, q){
+function fxArb(st, side, q, kind){
   if(st.d === S.sel){
-    var g = geom();
-    SC.agents.push({kind:'arb', buyer:true, out:side === 1 ? 'arbB' : 'arbS', price:0, x:-30, face:1, target:g.stallX - g.stallW*0.15, state:'in', t:0, phase:0, moving:true, sp:160*g.s, skin:SKINS[1], alpha:1, depth:3, q:q});
-    sfx('zap'); buzz([15,30,15]);
-  } else if(Math.random() < 0.5) toast('套利客在' + DIST[st.d].n + '掃了 ' + q + ' 件');
+    var g = geom(), out = kind === 'chase' ? 'chase' : kind === 'rev' ? (side === 1 ? 'revB' : 'revS') : (side === 1 ? 'arbB' : 'arbS');
+    if(SC.agents.length < 16) SC.agents.push({kind:kind === 'chase' ? 'chase' : 'arb', buyer:true, out:out, price:0, x:-30, face:1, target:g.stallX - g.stallW*0.15, state:'in', t:0, phase:0, moving:true, sp:(kind === 'chase' ? 120 : 160)*g.s, skin:SKINS[1], alpha:1, depth:3, q:q});
+    if(kind !== 'chase'){ sfx('zap'); buzz([15,30,15]); } else sfx('pop', 6);
+  } else if(kind !== 'chase' && Math.random() < 0.4) toast('套利客在' + DIST[st.d].n + '交易了 ' + q + ' 件');
 }
 function addFloat(text, color, fx, fy, size){ SC.floats.push({text:text, color:color, x:SC.W*fx, y:SC.H*fy, t:0, size:size || 16}); }
 function spawnTruck(){ SC.trucks.push({x:SC.W + 60, t:0}); }
@@ -983,8 +1239,12 @@ function bubbleOf(a){
     case 'full': return ['滿倉', '#ff4f5e', '#fff'];
     case 'lost': return ['去對面', '#a184ff', '#fff'];
     case 'closed': return ['沒開？', '#eef1fb', '#141a3a'];
-    case 'arbB': return ['掃貨 ' + a.q + ' 件', '#ff4f5e', '#fff'];
-    case 'arbS': return ['倒貨 ' + a.q + ' 件', '#ff4f5e', '#fff'];
+    case 'arbB': return ['低價掃 ' + a.q + ' 件', '#ff4f5e', '#fff'];
+    case 'arbS': return ['高價倒 ' + a.q + ' 件', '#ff4f5e', '#fff'];
+    case 'revB': return ['撿便宜 ' + a.q + ' 件', '#3ddc97', '#062016'];
+    case 'revS': return ['賣回 ' + a.q + ' 件', '#3ddc97', '#062016'];
+    case 'chase': return ['追漲買 ' + a.q + ' 件', '#ff7380', '#fff'];
+    case 'enough': return ['收夠了？', '#eef1fb', '#141a3a'];
   }
   return ['…', '#eef1fb', '#141a3a'];
 }
@@ -999,11 +1259,11 @@ function updateScene(dt){
     else if(a.state === 'react'){
       if(a.t > 0.9){
         a.moving = true;
-        if(a.out === 'buy' || a.out === 'sell' || a.out === 'arbB' || a.out === 'arbS'){
+        if(a.out === 'buy' || a.out === 'sell' || a.q){
           a.state = 'done'; a.t = 0;
           if(a.out === 'buy') addFloat('+$' + Math.round(a.price), '#ffb547', (g.stallX + 10)/g.W, 0.55);
           if(a.out === 'sell') addFloat('進貨 $' + Math.round(a.price), '#5cc8ff', (g.stallX + 10)/g.W, 0.55);
-          if(a.out === 'arbB' || a.out === 'arbS'){ addFloat('套利客' + (a.out === 'arbB' ? '掃走 ' : '倒給你 ') + a.q + ' 件', '#ff6b78', 0.5, 0.4, 15); a.face = -1; a.target = -40; a.state = 'out'; }
+          if(a.q){ addFloat(bubbleOf(a)[0], a.out === 'chase' ? '#ffb547' : '#ff6b78', 0.5, 0.4, 15); a.face = -1; a.target = -40; a.state = 'out'; }
         } else if(a.out === 'lost'){ a.state = 'out'; a.target = g.rivalX; a.face = 1; }
         else { a.state = 'out'; a.face = -a.face; a.target = a.buyer ? -40 : g.W + 40; }
       }
@@ -1105,10 +1365,10 @@ function awning(c, x0, w, y, hgt, colA, colB, n){
   if(n > 0.3){ c.fillStyle = 'rgba(0,0,20,' + 0.25*n + ')'; c.fillRect(x0, y, w, hgt); }
 }
 function drawStall(c, g, st, n, ts){
-  var p = prod(st.p), s = g.s, x = g.stallX, w = g.stallW, base = g.front - 2, h = hourOf(S.t), open = inSession(st,h);
+  var p = prod(st.p), s = g.s, x = g.stallX, w = g.stallW, base = g.front - 2, h = hourOf(S.t), open = inHours(st,h);
   var cH = 38*s, cTop = base - cH, aY = cTop - 72*s, aH = 20*s, x0 = x - w/2;
   c.fillStyle = '#4a3a6a'; c.fillRect(x0 + 4*s, aY, 4*s, base - aY); c.fillRect(x0 + w - 8*s, aY, 4*s, base - aY);
-  if(open && !st.pulled){
+  if(!st.pulled){
     var bob = SC.keeperBob*3*s, kx = x + w*0.18;
     rr(c, kx - 14*s, cTop - 18*s - bob, 28*s, 20*s, 7*s, '#ff7a4a');
     c.fillStyle = '#f2c79b'; c.beginPath(); c.arc(kx, cTop - 26*s - bob, 9*s, 0, Math.PI*2); c.fill();
@@ -1120,10 +1380,10 @@ function drawStall(c, g, st, n, ts){
   else { c.fillStyle = p.color; c.fillRect(x0 - 4*s, aY, w + 8*s, 7*s); c.fillStyle = '#fff1d6'; c.fillRect(x0 - 4*s, aY + 7*s, w + 8*s, 3*s); }
   if(n > 0.25 && open){ var bl = c.createRadialGradient(x, cTop - 10*s, 2, x, cTop - 10*s, w*0.7); bl.addColorStop(0, 'rgba(255,214,140,' + 0.35*n + ')'); bl.addColorStop(1, 'rgba(255,214,140,0)'); c.fillStyle = bl; c.fillRect(x0 - 20, aY, w + 40, base - aY + 10); }
   rr(c, x0, cTop, w, cH, 3*s, '#3a2c5e'); c.fillStyle = p.color; c.fillRect(x0, cTop + 6*s, w, 4*s);
-  if(open && !st.pulled){
+  if(!st.pulled){
     var slots = Math.min(6, Math.ceil(st.inv/(st.cap/6)));
     for(var i=0;i<slots;i++) drawIcon(c, p.icon, p.color, x0 + 14*s + i*16*s, cTop - 8*s, 16*s);
-    if(st.inv === 0){ rr(c, x0 + 8*s, cTop - 20*s, 44*s, 16*s, 4*s, '#ff4f5e'); c.fillStyle = '#fff'; c.font = '900 ' + Math.round(11*s) + 'px "Noto Sans TC", sans-serif'; c.textAlign = 'center'; c.textBaseline = 'middle'; c.fillText('缺貨', x0 + 30*s, cTop - 12*s); c.textBaseline = 'alphabetic'; }
+    if(st.inv === 0 && open){ rr(c, x0 + 8*s, cTop - 20*s, 44*s, 16*s, 4*s, '#ff4f5e'); c.fillStyle = '#fff'; c.font = '900 ' + Math.round(11*s) + 'px "Noto Sans TC", sans-serif'; c.textAlign = 'center'; c.textBaseline = 'middle'; c.fillText('缺貨', x0 + 30*s, cTop - 12*s); c.textBaseline = 'alphabetic'; }
   }
   if(st.pulled){ c.fillStyle = '#4a4f70'; c.fillRect(x0, aY + aH, w, base - aY - aH); c.strokeStyle = '#6a7090'; c.lineWidth = 1; for(var yy = aY + aH + 4; yy < base; yy += 6){ c.beginPath(); c.moveTo(x0, yy); c.lineTo(x0 + w, yy); c.stroke(); } c.fillStyle = '#fff'; c.font = '900 ' + Math.round(14*s) + 'px "Noto Sans TC", sans-serif'; c.textAlign = 'center'; c.fillText(st.pullBy === 'panic' ? '恐慌撤單中' : '暫停營業', x, (aY + base)/2 + 8*s); }
   var sw2 = Math.min(w*0.86, 120*s), sh = 26*s, sY = aY - sh - 6*s;
@@ -1131,7 +1391,7 @@ function drawStall(c, g, st, n, ts){
   drawIcon(c, p.icon, p.color, x - sw2/2 + 15*s, sY + sh/2, 16*s);
   c.textAlign = 'center'; c.textBaseline = 'middle';
   if(open){ c.fillStyle = st.mods.promo > S.t ? '#ff6b78' : '#ffb547'; c.font = 'italic 700 ' + Math.round(19*s) + 'px "Barlow Condensed", sans-serif'; c.fillText('$' + (Math.round(effAsk(st)*10)/10), x + 8*s, sY + sh/2 + 1); }
-  else { c.fillStyle = '#a2abcb'; c.font = '700 ' + Math.round(11*s) + 'px "Noto Sans TC", sans-serif'; c.fillText('休市 ' + hh(p.open) + ' 開', x + 8*s, sY + sh/2); }
+  else { c.fillStyle = '#5cc8ff'; c.font = '700 ' + Math.round(11*s) + 'px "Noto Sans TC", sans-serif'; c.fillText('進貨中 收 $' + st.bid, x + 8*s, sY + sh/2); }
   c.textBaseline = 'alphabetic';
   if(st.mods.promo > S.t && open){ rr(c, x0 - 6*s, aY + aH + 4*s, 62*s, 16*s, 4*s, '#ff4f5e'); c.fillStyle = '#fff'; c.font = '900 ' + Math.round(10*s) + 'px "Noto Sans TC", sans-serif'; c.textAlign = 'center'; c.fillText('限時 95 折', x0 + 25*s, aY + aH + 15*s); }
   if(open && !st.pulled){
@@ -1146,7 +1406,7 @@ function drawStall(c, g, st, n, ts){
 }
 function drawRival(c, g, st, n){
   var s = g.s, x = g.rivalX, w = g.rivalW, base = g.front - 4, cH = 34*s, cTop = base - cH, aY = cTop - 64*s, x0 = x - w/2;
-  var open = st ? inSession(st, hourOf(S.t)) && !st.panic : true;
+  var open = st ? inHours(st, hourOf(S.t)) && !st.panic : true;
   c.fillStyle = '#3a3460'; c.fillRect(x0 + 3*s, aY, 3*s, base - aY); c.fillRect(x0 + w - 6*s, aY, 3*s, base - aY);
   awning(c, x0 - 3*s, w + 6*s, aY, 16*s, '#8b6cff', '#e9e3ff', n);
   rr(c, x0, cTop, w, cH, 3*s, '#2c2452');
@@ -1154,7 +1414,7 @@ function drawRival(c, g, st, n){
   var sw2 = Math.min(w*0.9, 80*s), sY = aY - 26*s;
   rr(c, x - sw2/2, sY, sw2, 22*s, 6*s, '#0c0f22');
   c.fillStyle = '#d9cfff'; c.textAlign = 'center'; c.textBaseline = 'middle';
-  if(st && open){ c.font = 'italic 700 ' + Math.round(15*s) + 'px "Barlow Condensed", sans-serif'; c.fillText('對手 $' + Math.round(st.Vlag*(1 + rivalSpread(st.d))), x, sY + 11*s); }
+  if(st && open){ c.font = 'italic 700 ' + Math.round(15*s) + 'px "Barlow Condensed", sans-serif'; c.fillText('對手 $' + Math.round(st.Vlag*(1 + rivalSpread(st))), x, sY + 11*s); }
   else { c.font = '700 ' + Math.round(10*s) + 'px "Noto Sans TC", sans-serif'; c.fillText(st && st.panic ? '對手撤單' : '對手', x, sY + 11*s); }
   c.textBaseline = 'alphabetic';
 }
@@ -1177,79 +1437,91 @@ function drawPort(c, g, n, ts){
   if(S.strikeUntil > S.t){ c.fillStyle = '#ff4f5e'; c.font = '900 ' + Math.round(13*s) + 'px "Noto Sans TC", sans-serif'; c.textAlign = 'center'; c.fillText('罷工中', x, base - 130*s); }
 }
 
+
 /* ---- 圖表 ---- */
 var CH = {c:null, W:0, H:0, dpr:1};
 function resizeChart(){ var cv = $('chart'), r = cv.getBoundingClientRect(), dpr = Math.min(2, window.devicePixelRatio || 1); cv.width = Math.round(r.width*dpr); cv.height = Math.round(r.height*dpr); CH.c = cv.getContext('2d'); CH.W = r.width; CH.H = r.height; CH.dpr = dpr; }
+function line(c, all, X, Y, k){ c.beginPath(); all.forEach(function(p,i){ if(i) c.lineTo(X(p.t), Y(p[k])); else c.moveTo(X(p.t), Y(p[k])); }); c.stroke(); }
+function dot(c, x, y, col){ var r = 3 + Math.abs(Math.sin(performance.now()/250))*2; c.fillStyle = rgba(col, 0.3); c.beginPath(); c.arc(x, y, r + 3, 0, Math.PI*2); c.fill(); c.fillStyle = col; c.beginPath(); c.arc(x, y, 3, 0, Math.PI*2); c.fill(); }
+function axisLabel(c, W, Y, hi, lo, dec, pre){ c.fillStyle = '#a2abcb'; c.font = '600 9px "Barlow Condensed", sans-serif'; c.textAlign = 'left'; c.fillText((pre || '') + hi.toFixed(dec), W - 27, Y(hi) + 8); c.fillText((pre || '') + lo.toFixed(dec), W - 27, Y(lo) - 2); }
 function drawChart(){
   var c = CH.c; if(!c || !CH.W) return;
   var W = CH.W, H = CH.H; c.setTransform(CH.dpr,0,0,CH.dpr,0,0); c.clearRect(0,0,W,H);
   var st = stallIn(S.sel);
   c.font = '600 10px "Noto Sans TC", sans-serif';
-  if(!st){ c.fillStyle = '#a2abcb'; c.textAlign = 'center'; c.fillText(S.sel === 'port' ? '港口是批發中心，這裡沒有零售攤位' : '這一區還沒有攤位', W/2, H/2); return; }
+  if(!st){ c.fillStyle = '#a2abcb'; c.textAlign = 'center'; c.fillText(S.sel === 'port' ? '港口是批發倉，這裡沒有零售攤位' : '這一區還沒有攤位', W/2, H/2); return; }
   var now = S.t + ui.acc, t0 = now - 720, L = 4, R = 30, T = 10, B = 14;
   var X = function(t){ return L + (t - t0)/720*(W - L - R); };
-  for(var t = Math.floor(t0/15)*15; t < now; t += 15){ var hh2 = hourOf(t), x1 = Math.max(L, X(t)), x2 = Math.min(W - R, X(t + 15)); if(x2 <= x1) continue; if(!inSession(st, hh2)){ c.fillStyle = 'rgba(0,0,0,.28)'; c.fillRect(x1, T, x2 - x1, H - T - B); } else if(peakOf(st, hh2)){ c.fillStyle = 'rgba(255,181,71,.10)'; c.fillRect(x1, T, x2 - x1, H - T - B); } }
+  for(var t = Math.floor(t0/15)*15; t < now; t += 15){ var hh2 = hourOf(t), x1 = Math.max(L, X(t)), x2 = Math.min(W - R, X(t + 15)); if(x2 <= x1) continue; if(!inHours(st, hh2)){ c.fillStyle = 'rgba(0,0,0,.28)'; c.fillRect(x1, T, x2 - x1, H - T - B); } else if(peakOf(st, hh2)){ c.fillStyle = 'rgba(255,181,71,.10)'; c.fillRect(x1, T, x2 - x1, H - T - B); } }
   c.fillStyle = '#a2abcb'; c.textAlign = 'center';
   for(var th = Math.ceil(t0/180)*180; th < now; th += 180){ var xx = X(th); if(xx > L + 10 && xx < W - R - 10) c.fillText(clockOf(th), xx, H - 2); }
   var pts = st.hist.filter(function(p){ return p.t >= t0 - 5; });
-  var live = {t:now, H:st.H, V:st.V, b:st.bid, a:effAsk(st), rb:st.Vlag*(1 - rivalSpread(st.d)), ra:st.Vlag*(1 + rivalSpread(st.d)), B:st.cnt.B, S:st.cnt.S};
+  var rs = rivalSpread(st);
+  var live = {t:now, H:st.H, V:st.V, F:st.F, L:st.L, Lt:st.lc.t, b:st.bid, a:effAsk(st), rb:st.Vlag*(1 - rs), ra:st.Vlag*(1 + rs), B:st.cnt.B, S:st.cnt.S};
   var all = pts.concat([live]);
-  st.marks.forEach(function(m){ if(m.t < t0) return; var xm = X(m.t); c.strokeStyle = rgba(m.color.length === 7 ? m.color : '#eef1fb', 0.6); c.setLineDash([3,3]); c.beginPath(); c.moveTo(xm, T); c.lineTo(xm, H - B); c.stroke(); c.setLineDash([]); c.font = '700 9px "Noto Sans TC", sans-serif'; var tw = c.measureText(m.text).width + 6; rr(c, Math.min(xm - tw/2, W - R - tw), 0, tw, 11, 3, m.color); c.fillStyle = '#0b0e1f'; c.textAlign = 'center'; c.fillText(m.text, Math.min(xm, W - R - tw/2), 8.5); });
+  st.marks.forEach(function(m){ if(m.t < t0) return; var xm = X(m.t); c.strokeStyle = rgba(m.color, 0.6); c.setLineDash([3,3]); c.beginPath(); c.moveTo(xm, T); c.lineTo(xm, H - B); c.stroke(); c.setLineDash([]); c.font = '700 9px "Noto Sans TC", sans-serif'; var tw = c.measureText(m.text).width + 6; rr(c, Math.min(xm - tw/2, W - R - tw), 0, tw, 11, 3, m.color); c.fillStyle = '#0b0e1f'; c.textAlign = 'center'; c.fillText(m.text, Math.min(xm, W - R - tw/2), 8.5); });
   var Y, lo, hi;
   if(ui.ctab === 'heat'){
     hi = Math.max(40, Math.max.apply(null, all.map(function(p){ return p.H; }))*1.15); lo = 0;
     Y = function(v){ return H - B - (v - lo)/(hi - lo)*(H - T - B); };
     var ag = c.createLinearGradient(0, T, 0, H - B); ag.addColorStop(0, 'rgba(255,90,60,.55)'); ag.addColorStop(1, 'rgba(255,90,60,0)');
     c.beginPath(); c.moveTo(X(all[0].t), H - B); all.forEach(function(p){ c.lineTo(X(p.t), Y(p.H)); }); c.lineTo(X(now), H - B); c.closePath(); c.fillStyle = ag; c.fill();
-    c.beginPath(); all.forEach(function(p,i){ if(i) c.lineTo(X(p.t), Y(p.H)); else c.moveTo(X(p.t), Y(p.H)); }); c.strokeStyle = '#ff8a5a'; c.lineWidth = 2; c.stroke();
-    dot(c, X(now), Y(st.H), '#ff8a5a');
-    axisLabel(c, W, Y, hi, lo, 0);
+    c.strokeStyle = '#ff8a5a'; c.lineWidth = 2; line(c, all, X, Y, 'H');
+    dot(c, X(now), Y(st.H), '#ff8a5a'); axisLabel(c, W, Y, hi, lo, 0);
+  } else if(ui.ctab === 'liq'){
+    lo = 0; hi = 100; Y = function(v){ return H - B - v/100*(H - T - B); };
+    c.font = '700 8px "Noto Sans TC", sans-serif'; c.textAlign = 'left';
+    TIERS.slice(1).forEach(function(tr){ c.strokeStyle = 'rgba(255,255,255,.12)'; c.beginPath(); c.moveTo(L, Y(tr.at)); c.lineTo(W - R, Y(tr.at)); c.stroke(); c.fillStyle = 'rgba(255,255,255,.4)'; c.fillText(tr.n, W - R + 3, Y(tr.at) + 3); });
+    var lg = c.createLinearGradient(0, T, 0, H - B); lg.addColorStop(0, 'rgba(46,214,196,.5)'); lg.addColorStop(1, 'rgba(46,214,196,0)');
+    c.beginPath(); c.moveTo(X(all[0].t), H - B); all.forEach(function(p){ c.lineTo(X(p.t), Y(p.L)); }); c.lineTo(X(now), H - B); c.closePath(); c.fillStyle = lg; c.fill();
+    c.setLineDash([4,3]); c.strokeStyle = 'rgba(255,255,255,.55)'; c.lineWidth = 1.2; line(c, all, X, Y, 'Lt'); c.setLineDash([]);
+    c.strokeStyle = '#2ed6c4'; c.lineWidth = 2; line(c, all, X, Y, 'L');
+    dot(c, X(now), Y(st.L), '#2ed6c4');
   } else if(ui.ctab === 'price'){
-    var vals = []; all.forEach(function(p){ vals.push(p.V, p.b, p.a); });
+    var vals = []; all.forEach(function(p){ vals.push(p.V, p.b, p.a, p.F); });
     lo = Math.min.apply(null, vals)*0.97; hi = Math.max.apply(null, vals)*1.03;
     Y = function(v){ return H - B - (v - lo)/(hi - lo)*(H - T - B); };
-    c.setLineDash([4,3]); c.strokeStyle = 'rgba(161,132,255,.7)'; c.lineWidth = 1; line(c, all, X, Y, 'ra'); line(c, all, X, Y, 'rb'); c.setLineDash([]);
-    c.fillStyle = 'rgba(255,255,255,.05)'; c.beginPath(); all.forEach(function(p,i){ if(i) c.lineTo(X(p.t), Y(p.a)); else c.moveTo(X(p.t), Y(p.a)); }); for(var i=all.length-1;i>=0;i--) c.lineTo(X(all[i].t), Y(all[i].b)); c.closePath(); c.fill();
+    c.setLineDash([4,3]); c.strokeStyle = 'rgba(161,132,255,.7)'; c.lineWidth = 1; line(c, all, X, Y, 'ra'); line(c, all, X, Y, 'rb');
+    c.strokeStyle = '#3ddc97'; c.lineWidth = 1.4; line(c, all, X, Y, 'F'); c.setLineDash([]);
     c.lineWidth = 1.6; c.strokeStyle = '#ffb547'; line(c, all, X, Y, 'a'); c.strokeStyle = '#5cc8ff'; line(c, all, X, Y, 'b');
     c.lineWidth = 2; c.strokeStyle = '#ffffff'; line(c, all, X, Y, 'V');
     st.trades.forEach(function(tr){ if(tr.t < t0) return; c.fillStyle = tr.s === 1 ? '#ffb547' : '#5cc8ff'; c.beginPath(); c.arc(X(tr.t), Y(tr.px), 2.2, 0, Math.PI*2); c.fill(); });
-    dot(c, X(now), Y(st.V), '#ffffff');
-    axisLabel(c, W, Y, hi, lo, 1, '$');
+    dot(c, X(now), Y(st.V), '#ffffff'); axisLabel(c, W, Y, hi, lo, 1, '$');
   } else {
     var mx = 4; all.forEach(function(p){ mx = Math.max(mx, p.B, p.S); });
     var mid = (T + H - B)/2, sc = (mid - T)/mx, bw = Math.max(1.5, (W - L - R)/150 - 1);
     all.forEach(function(p){ var xb = X(p.t) - bw/2; c.fillStyle = '#ffb547'; c.fillRect(xb, mid - p.B*sc, bw, p.B*sc); c.fillStyle = '#5cc8ff'; c.fillRect(xb, mid, bw, p.S*sc); });
     c.fillStyle = 'rgba(255,255,255,.25)'; c.fillRect(L, mid, W - L - R, 1);
-    c.font = '700 9px "Noto Sans TC", sans-serif'; c.textAlign = 'left'; c.fillStyle = '#ffb547'; c.fillText('買家', W - R + 3, T + 8); c.fillStyle = '#5cc8ff'; c.fillText('供應商', W - R + 1, H - B - 2);
+    c.font = '700 9px "Noto Sans TC", sans-serif'; c.textAlign = 'left'; c.fillStyle = '#ffb547'; c.fillText('客人', W - R + 3, T + 8); c.fillStyle = '#5cc8ff'; c.fillText('供應商', W - R + 1, H - B - 2);
   }
   c.fillStyle = 'rgba(255,255,255,.5)'; c.fillRect(X(now), T, 1, H - T - B);
 }
-function line(c, all, X, Y, k){ c.beginPath(); all.forEach(function(p,i){ if(i) c.lineTo(X(p.t), Y(p[k])); else c.moveTo(X(p.t), Y(p[k])); }); c.stroke(); }
-function dot(c, x, y, col){ var r = 3 + Math.abs(Math.sin(performance.now()/250))*2; c.fillStyle = rgba(col.length === 7 ? col : '#ffffff', 0.3); c.beginPath(); c.arc(x, y, r + 3, 0, Math.PI*2); c.fill(); c.fillStyle = col; c.beginPath(); c.arc(x, y, 3, 0, Math.PI*2); c.fill(); }
-function axisLabel(c, W, Y, hi, lo, dec, pre){ c.fillStyle = '#a2abcb'; c.font = '600 9px "Barlow Condensed", sans-serif'; c.textAlign = 'left'; c.fillText((pre || '') + hi.toFixed(dec), W - 27, Y(hi) + 8); c.fillText((pre || '') + lo.toFixed(dec), W - 27, Y(lo) - 2); }
 
 /* ---- DOM ---- */
 function buildStatic(){
   $('dtabs').innerHTML = DISTS.map(function(d){ return '<button class="dt" data-act="dist" data-d="' + d.id + '" style="--dc:' + d.color + '" aria-pressed="false"><span>' + d.n + '</span><span class="tb"><i id="tb-' + d.id + '"></i></span><span class="ev" id="ev-' + d.id + '" hidden></span></button>'; }).join('');
-  $('qa').innerHTML = [['promo','tag','促銷'],['ad','mega','廣告'],['bulk','truck','進貨'],['pull','pause','撤單']].map(function(q){ return '<button class="qb" data-act="qa" data-s="' + q[0] + '" id="qa-' + q[0] + '"><span class="fill"></span>' + sicon(q[1], 18) + '<span>' + q[2] + '</span></button>'; }).join('');
+  $('qa').innerHTML = [['promo','tag','促銷'],['ad','mega','廣告'],['bulk','truck','進貨']].map(function(q){ return '<button class="qb" data-act="qa" data-s="' + q[0] + '" id="qa-' + q[0] + '"><span class="fill"></span>' + sicon(q[1], 18) + '<span>' + q[2] + '</span></button>'; }).join('') +
+    '<button class="qb" data-act="sheet" data-s="strat" id="qa-more"><span class="fill"></span>' + sicon('bolt', 18) + '<span>策略</span></button>';
 }
 function statusOf(st){
-  var h = hourOf(S.t), p = prod(st.p);
+  var h = hourOf(S.t);
   if(st.panic) return {cls:'panic', t:st.panic.stay === false ? '恐慌撤單中' : '恐慌拋售中，堅守市場'};
   if(st.pulled) return {cls:'pulled', t:'已撤單，暫停交易'};
-  if(!inSession(st,h)) return {cls:'closed', t:'休市，' + hh(p.open) + ' 開市'};
+  if(!inHours(st,h)) return {cls:'closed', t:'進貨時段，' + hh(st.open) + ' 開店'};
   var pk = peakOf(st,h);
-  if(pk) return {cls:'peak', t:pk[2] + '，報價鎖到 ' + hh(pk[1])};
-  var nx = null; DIST[st.d].peaks.forEach(function(w){ var d = ((w[0] - h) + 24) % 24; if(nx === null || d < nx.d) nx = {d:d, w:w}; });
-  return {cls:'off', t:'離峰可改價' + (nx && nx.d < 6 ? '，' + hh(nx.w[0]) + ' 起' + nx.w[2] : '')};
+  if(pk) return {cls:'peak', t:pk[2] + '，報價鎖到 ' + hh(Math.min(pk[1], st.close))};
+  return {cls:'off', t:'營業中，離峰可改價（' + hh(st.close) + ' 打烊）'};
+}
+function stepper(side, label, val){
+  return '<div class="qs ' + side + '"><button data-act="q" data-side="' + side + '" data-d="-1" aria-label="' + label + '減 1">−</button><div class="qv"><small>' + label + '</small><b class="num" id="dk-' + side + '">' + val + '</b></div><button data-act="q" data-side="' + side + '" data-d="1" aria-label="' + label + '加 1">+</button></div>';
 }
 function renderDock(force){
   var st = stallIn(S.sel), el = $('dock');
   if(!st){
-    var key0 = 'none-' + S.sel + '-' + (S.sel === 'port');
+    var key0 = 'none-' + S.sel;
     if(!force && ui.dockKey === key0) return; ui.dockKey = key0;
-    if(S.sel === 'port') el.innerHTML = '<div class="dk-empty"><span class="dk-ic">' + avatarSVG('sup', 28) + '</span><p>港口是你的批發倉。在「策略」裡下批發單，貨車會從這裡出發。</p><button class="btn amber" data-act="sheet" data-s="strat">批發進貨</button></div>';
-    else el.innerHTML = '<div class="dk-empty"><span class="dk-ic">' + avatarSVG(SEGS[DIST[S.sel].main].kind, 28) + '</span><p>' + DIST[S.sel].n + '還沒有攤位。這裡以' + SEGS[DIST[S.sel].main].n + '為主。</p><button class="btn amber" data-act="openStall">開店 ' + money(CFG.openFee) + '</button></div>';
+    if(S.sel === 'port') el.innerHTML = '<div class="dk-empty"><span class="dk-ic">' + avatarSVG('sup', 28) + '</span><p>港口是批發倉。下批發單或跨區調貨時，貨車會從這裡出發。</p><button class="btn amber" data-act="sheet" data-s="strat">策略</button></div>';
+    else el.innerHTML = '<div class="dk-empty"><span class="dk-ic">' + avatarSVG(SEGS[DIST[S.sel].main].kind, 28) + '</span><p>' + DIST[S.sel].n + '還沒有攤位，這裡以' + SEGS[DIST[S.sel].main].n + '為主。</p><button class="btn amber" data-act="newStall" data-d="' + S.sel + '"' + (S.stalls.length >= maxStalls() ? ' disabled' : '') + '>' + (S.stalls.length >= maxStalls() ? '升級才能開' : '開店 ' + money(CFG.openFee)) + '</button></div>';
     return;
   }
   var p = prod(st.p), so = statusOf(st), lk = locked(st);
@@ -1257,17 +1529,23 @@ function renderDock(force){
   if(force || ui.dockKey !== key){
     ui.dockKey = key;
     var lockHTML = '';
-    if(st.pulled || st.panic && st.panic.stay === false) lockHTML = '<div class="dk-lock">' + sicon('pause', 16) + '已撤單，按「撤單」鍵恢復</div>';
-    else if(lk) lockHTML = '<div class="dk-lock"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>尖峰中報價鎖定，離峰再調整，或啟用智慧報價機</div>';
+    if(st.pulled) lockHTML = '<div class="dk-lock">' + sicon('pause', 16) + '已撤單，到策略頁按「撤單」恢復</div>';
+    else if(lk) lockHTML = '<div class="dk-lock"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>尖峰中報價鎖定，離峰或打烊後再調整</div>';
+    var ticks = TIERS.slice(1).map(function(t){ return '<b style="left:' + t.at + '%"></b>'; }).join('');
     el.innerHTML = '<div class="dk-r1"><span class="dk-ic">' + iconSVG(p.icon, p.color, 26) + '</span><div class="dk-nm"><b>' + esc(p.n) + '</b><span class="stc ' + so.cls + '" id="dkSt">' + so.t + '</span></div>' +
-      '<div class="dk-inv"><span>庫存 <b class="num" id="dkInv">' + st.inv + '</b>/' + st.cap + '</span><span class="hearts" id="dkHearts">' + heartsHTML(st.buzz) + '</span></div></div>' +
-      '<div class="dk-r2"><div class="qs bid"><button data-act="q" data-side="bid" data-d="-1" aria-label="收購價減 1">−</button><div class="qv"><small>收購</small><b class="num" id="dkBid">$' + st.bid + '</b></div><button data-act="q" data-side="bid" data-d="1" aria-label="收購價加 1">+</button></div>' +
-      '<div class="qs ask"><button data-act="q" data-side="ask" data-d="-1" aria-label="售價減 1">−</button><div class="qv"><small>售價</small><b class="num" id="dkAsk">$' + st.ask + '</b></div><button data-act="q" data-side="ask" data-d="1" aria-label="售價加 1">+</button></div>' +
-      '<button class="dk-al" data-act="align">對齊</button>' + lockHTML + '</div>';
-  } else {
-    $('dkInv').textContent = st.inv; $('dkBid').textContent = '$' + st.bid; $('dkAsk').textContent = '$' + st.ask; $('dkHearts').innerHTML = heartsHTML(st.buzz);
+      '<div class="dk-inv"><span>庫存 <b class="num" id="dkInv">' + st.inv + '</b></span><span id="dkSub"></span></div></div>' +
+      '<div class="lq"><span class="lq-l">流動性</span><span class="lq-bar"><i id="lqFill"></i><i class="tg" id="lqTgt"></i>' + ticks + '</span><span class="lq-v"><b class="num" id="lqV"></b><span id="lqT"></span></span><button class="lq-al" data-act="align"' + (lk || st.pulled ? ' disabled' : '') + '>對齊</button></div>' +
+      '<div class="dk-r2">' + stepper('bid', '收購價', '$' + st.bid) + stepper('ask', '售價', '$' + st.ask) + stepper('tgt', '進貨目標', st.tgt) + lockHTML + '</div>';
   }
+  $('dkInv').textContent = st.inv;
+  var sub = '均價 $' + (st.inv ? avgCost(st).toFixed(1) : '—'), ol = oldestLeft(st);
+  if(ol != null) sub += '<br><span class="' + (ol < 90 ? 'hotc' : '') + '">保鮮 ' + (ol/60).toFixed(1) + 'h</span>';
+  $('dkSub').innerHTML = sub;
+  $('dk-bid').textContent = '$' + st.bid; $('dk-ask').textContent = '$' + st.ask; $('dk-tgt').textContent = st.tgt;
+  $('lqFill').style.width = st.L + '%'; $('lqTgt').style.left = st.lc.t + '%';
+  $('lqV').textContent = Math.round(st.L); $('lqT').textContent = TIERS[tierOf(st.L)].n;
 }
+function chipHTML(label, v, good){ var cls = good == null ? '' : good ? 'up2' : 'down2'; return '<span class="dv">' + label + '<b class="' + cls + '">' + v + '</b></span>'; }
 function updateDOM(){
   var L = lvl(), N = nextLvl(), eq = equity(), h = hourOf(S.t);
   $('lvNum').textContent = L.lv;
@@ -1283,36 +1561,58 @@ function updateDOM(){
   var nb = Math.max(0, S.news.length + S.notes.length - S.newsSeen); var nbe = $('newsBd'); nbe.hidden = !nb; nbe.textContent = nb > 99 ? '99' : nb;
   var cl = claimable(), tb = $('taskBd'); tb.hidden = !cl; tb.textContent = cl;
   DISTS.forEach(function(d){
-    var st = stallIn(d.id), v = st ? clamp(st.H/110*100, 0, 100) : d.port ? clamp(supplyCurve(h)*60*(S.strikeUntil > S.t ? 0.4 : 1), 0, 100) : clamp(trafficOf(d.id,h)*55, 0, 100);
+    var st = stallIn(d.id), v = st ? clamp(st.H/110*100, 0, 100) : d.port ? clamp(supplyFeel(h), 0, 100) : clamp(trafficOf(d.id,h)*55, 0, 100);
     $('tb-' + d.id).style.width = v + '%';
     $('ev-' + d.id).hidden = !(S.devents.some(function(e){ return e.d === d.id; }) || (st && (st.panic || st.mods.viral > S.t)) || S.wars.some(function(w){ return w.d === d.id; }));
     var btn = document.querySelector('[data-act="dist"][data-d="' + d.id + '"]'); if(btn) btn.setAttribute('aria-pressed', String(S.sel === d.id));
   });
   var st = stallIn(S.sel), chips = [];
-  if(st){ var so = statusOf(st); if(so.cls === 'peak' || so.cls === 'panic') chips.push('<span class="chip"><i class="dot"></i>' + (so.cls === 'peak' ? peakOf(st,h)[2] : '恐慌拋售') + '</span>'); chips.push('<span class="chip">成交 <b>' + (st.td.buy + st.td.sell) + '</b> 流失 <b>' + (st.td.lost + st.td.nostock + st.td.full + st.td.closed) + '</b></span>'); }
+  if(st){
+    var so = statusOf(st);
+    if(so.cls === 'peak') chips.push('<span class="chip"><i class="dot"></i>' + peakOf(st,h)[2] + '</span>');
+    else if(so.cls === 'closed') chips.push('<span class="chip" style="color:#9fe0ff">進貨時段</span>');
+    else if(so.cls === 'panic') chips.push('<span class="chip"><i class="dot"></i>恐慌拋售</span>');
+    chips.push('<span class="chip" style="color:#7ff0e2">流動性 ' + TIERS[tierOf(st.L)].n + '</span>');
+    if(st.fwd) chips.push('<span class="chip">預售待交 <b>' + st.fwd.q + '</b> 件，剩 ' + Math.ceil((st.fwd.due - S.t)/60) + 'h</span>');
+    if(st.mods.mom > S.t) chips.push('<span class="chip" style="color:#ff9aa3">追漲客進場</span>');
+  }
   S.devents.forEach(function(e){ if(e.d === S.sel) chips.push('<span class="chip" style="color:#d9cfff"><i class="dot" style="background:#a184ff"></i>' + e.n + '</span>'); });
+  if(st) catEvents(prod(st.p)).slice(0,1).forEach(function(e){ chips.push('<span class="chip" style="color:#ffc6e2">' + e.n + '</span>'); });
   if(S.wars.some(function(w){ return w.d === S.sel; })) chips.push('<span class="chip" style="color:#d9cfff">對手價格戰</span>');
   if(S.sel === 'port' && S.strikeUntil > S.t) chips.push('<span class="chip"><i class="dot"></i>港口罷工</span>');
-  $('sTL').innerHTML = chips.join('');
-  ['promo','ad','bulk','pull'].forEach(function(id){
+  $('sTL').innerHTML = chips.slice(0,4).join('');
+  ['promo','ad','bulk'].forEach(function(id){
     var b = $('qa-' + id); if(!b) return;
     if(!st){ b.disabled = true; b.className = 'qb'; return; }
     var ss = stratState(st, id); b.disabled = false;
-    b.className = 'qb' + (ss.on ? ' on' : '') + (ss.cd ? ' cd' : '') + (id === 'pull' && st.pulled ? ' warn' : '');
+    b.className = 'qb' + (ss.on ? ' on' : '') + (ss.cd ? ' cd' : '');
     b.querySelector('.fill').style.height = (ss.left ? clamp(ss.left, 0, 1)*100 : 0) + '%';
     b.setAttribute('aria-label', STRAT[id].n + '：' + (ss.why || '可以使用'));
   });
   if(st){
-    var d = st.drv, ups = [['人流', d.traffic], ['流動性', d.liq], ['價格', d.price], ['事件', d.event]];
-    $('drv').innerHTML = ups.map(function(u){ var v = (u[1] - 1)*100; return '<span class="dv">' + u[0] + '<b class="' + (v > 1 ? 'up' : v < -1 ? 'down' : '') + '">' + (v > 0 ? '+' : v < 0 ? '−' : '') + Math.abs(Math.round(v)) + '%</b></span>'; }).join('');
-    var hist = st.hist, ago = hist.length > 12 ? hist[hist.length - 12] : hist[0];
-    if(ui.ctab === 'heat'){ var dH = ago ? st.H - ago.H : 0; $('cval').innerHTML = '熱度 <b class="num">' + Math.round(st.H) + '</b> <span class="' + dirc(dH) + '">' + (dH >= 0 ? '▲' : '▼') + Math.abs(Math.round(dH)) + '</span>'; }
-    else if(ui.ctab === 'price'){ var dV = ago ? (st.V/ago.V - 1)*100 : 0; $('cval').innerHTML = '參考價 <b class="num">$' + st.V.toFixed(1) + '</b> <span class="' + dirc(dV) + '">' + pct(dV) + '</span>'; }
-    else { var lb = hist.slice(-12).reduce(function(a,p){ return a + p.B; }, 0), ls = hist.slice(-12).reduce(function(a,p){ return a + p.S; }, 0); $('cval').innerHTML = '一小時 買 <b class="num" style="color:var(--amber)">' + lb + '</b> 賣 <b class="num" style="color:var(--cyan)">' + ls + '</b>'; }
+    var d = st.drv, lc = st.lc, hist = st.hist, ago = hist.length > 12 ? hist[hist.length - 12] : hist[0];
+    var pc = function(v){ v = (v - 1)*100; return (v > 0 ? '+' : v < 0 ? '−' : '') + Math.abs(Math.round(v)) + '%'; };
+    var sc = function(v){ return Math.round(v*100); };
+    if(ui.ctab === 'heat'){
+      $('drv').innerHTML = chipHTML('人流', pc(d.traffic), d.traffic >= 1) + chipHTML('流動性', pc(d.liq), d.liq >= 1) + chipHTML('價格', pc(d.price), d.price >= 1) + chipHTML('事件', pc(d.event), d.event >= 1);
+      var dH = ago ? st.H - ago.H : 0; $('cval').innerHTML = '熱度 <b class="num">' + Math.round(st.H) + '</b> <span class="' + dirc(dH) + '">' + (dH >= 0 ? '▲' : '▼') + Math.abs(Math.round(dH)) + '</span>';
+    } else if(ui.ctab === 'liq'){
+      $('drv').innerHTML = chipHTML('價差', sc(lc.sp), lc.sp >= 0.5) + chipHTML('穩定', sc(lc.up), lc.up >= 0.5) + chipHTML('參與', sc(lc.part), lc.part >= 0.5) + chipHTML('毒性', sc(lc.tox), lc.tox < 0.25);
+      $('cval').innerHTML = '流動性 <b class="num">' + Math.round(st.L) + '</b> → 目標 <b class="num" style="font-size:16px">' + Math.round(lc.t) + '</b>';
+    } else if(ui.ctab === 'price'){
+      var dev = (st.V/st.F - 1)*100, mo = momentum(st)*100;
+      $('drv').innerHTML = chipHTML('合理價', '$' + st.F.toFixed(1)) + chipHTML('偏離', pct(dev), Math.abs(dev) < 4) + chipHTML('動能', pct(mo)) + chipHTML('對手價差', '±' + (rivalSpread(st)*100).toFixed(1) + '%');
+      var dV = ago ? (st.V/ago.V - 1)*100 : 0; $('cval').innerHTML = '參考價 <b class="num">$' + st.V.toFixed(1) + '</b> <span class="' + dirc(dV) + '">' + pct(dV) + '</span>';
+    } else {
+      var td = st.td;
+      $('drv').innerHTML = chipHTML('賣出', td.buy) + chipHTML('收購', td.sell) + chipHTML('流失', td.lost + td.nostock + td.full, (td.lost + td.nostock) < td.buy) + chipHTML('報廢', td.spoiled, td.spoiled === 0);
+      var lb = hist.slice(-12).reduce(function(a,p){ return a + p.B; }, 0), ls = hist.slice(-12).reduce(function(a,p){ return a + p.S; }, 0); $('cval').innerHTML = '一小時 客 <b class="num" style="color:var(--amber)">' + lb + '</b> 供 <b class="num" style="color:var(--cyan)">' + ls + '</b>';
+    }
   } else { $('drv').innerHTML = ''; $('cval').innerHTML = ''; }
   renderDock(false);
   if(L.lv > S.bestLv){ S.bestLv = L.lv; S.stalls.forEach(function(x){ x.cap = capOf(); }); queueSheet('level', {lv:L.lv}); sfx('level'); }
 }
+function supplyFeel(h){ return 60*(0.4 + 0.9*bump(h, 6, 2))*(S.strikeUntil > S.t ? 0.4 : 1); }
 function banner(k, text, color, loud){
   var el = $('banner'); el.innerHTML = '<span class="k" style="background:' + color + '">' + esc(k) + '</span><p>' + esc(text) + '</p>';
   el.classList.add('show'); clearTimeout(ui.bannerT); ui.bannerT = setTimeout(function(){ el.classList.remove('show'); }, 4200);
@@ -1327,38 +1627,32 @@ function uiBig(){
   el.hidden = false; sfx('coin'); buzz([20,40,20]);
 }
 function hideBig(){ var el = $('bigcard'); el.hidden = true; el.innerHTML = ''; }
-function uiPanic(st){
-  S.sel = st.d; ui.panicSid = st.id; ui.panicEnd = performance.now() + 9000; ui.hard = true;
-  openSheet('panic', {sid:st.id}); sfx('alarm'); buzz([80,60,80,60,120]);
-}
-function uiRollover(rec){ toast('第 ' + rec.day + ' 天結算 ' + smoney(rec.pnl) + '，成交 ' + rec.fills + ' 件'); saveGame(); }
+function uiPanic(st){ S.sel = st.d; ui.panicSid = st.id; ui.panicEnd = performance.now() + 9000; ui.hard = true; openSheet('panic', {sid:st.id}); sfx('alarm'); buzz([80,60,80,60,120]); }
+function uiRollover(rec){ toast('第 ' + rec.day + ' 天結算 ' + smoney(rec.pnl) + '，已實現 ' + smoney(rec.realized)); saveGame(); }
 function uiGameOver(){ ui.hard = true; queueSheet('over', {}); }
-function pulseMap(){ }
+function pulseMap(){}
 
 /* ---- 子畫面 ---- */
 var queue = [];
 function queueSheet(type, extra){ if(ui.sheet){ queue.push([type, extra]); return; } openSheet(type, extra); }
 function openSheet(type, extra){
   ui.sheet = Object.assign({type:type}, extra || {}); ui.restartArm = false;
-  if(SETTINGS.pause && !ui.paused && type !== 'panic'){ ui.auto = true; }
+  if(type !== 'panic' && (FORCE_PAUSE[type] || SETTINGS.pause) && !ui.paused) ui.auto = true;
   renderSheet();
 }
-function closeSheet(){
-  if(ui.sheet && (ui.sheet.type === 'panic' || ui.sheet.type === 'over')) return;
-  dismissSheet();
-}
+function closeSheet(){ if(ui.sheet && LOCKED[ui.sheet.type]) return; dismissSheet(); }
 function dismissSheet(){
   ui.sheet = null; ui.auto = false; $('sheet').innerHTML = ''; ui.dockKey = '';
   if(queue.length){ var q = queue.shift(); openSheet(q[0], q[1]); }
 }
-var LOCKED = {panic:true, over:true};
+var LOCKED = {panic:true, over:true, pick:false};
 function renderSheet(){
   var el = $('sheet'); if(!ui.sheet){ el.innerHTML = ''; return; }
   var old = el.querySelector('.sh-body'), keep = old ? old.scrollTop : 0, same = old && el.dataset.type === ui.sheet.type;
-  var r = sheetContent(ui.sheet);
+  var r = sheetContent(ui.sheet), locked2 = LOCKED[ui.sheet.type] || (S.setup && (ui.sheet.type === 'pick' || ui.sheet.type === 'pickD' || ui.sheet.type === 'ipo'));
   el.dataset.type = ui.sheet.type;
-  el.innerHTML = '<div class="scrim" data-act="scrim"><div class="sheet" role="dialog" aria-modal="true" aria-label="' + esc(r[0]) + '"><div class="sh-head"><h2>' + r[0] + '</h2>' + (LOCKED[ui.sheet.type] ? '' : '<button class="sh-x" data-act="close" aria-label="關閉"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button>') + '</div><div class="sh-body">' + r[1] + '</div></div></div>';
-  var nb = el.querySelector('.sh-body'); if(same){ el.querySelector('.sheet').style.animation = 'none'; nb.scrollTop = keep; }
+  el.innerHTML = '<div class="scrim" data-act="scrim"><div class="sheet" role="dialog" aria-modal="true" aria-label="' + esc(r[0]) + '"><div class="sh-head"><h2>' + r[0] + '</h2>' + (FORCE_PAUSE[ui.sheet.type] ? '<span class="pill" style="color:var(--amber)">遊戲暫停中</span>' : '') + (locked2 ? '' : '<button class="sh-x" data-act="close" aria-label="關閉"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button>') + '</div><div class="sh-body">' + r[1] + '</div></div></div>';
+  var nb = el.querySelector('.sh-body'); if(same){ el.querySelector('.sheet').style.animation = 'none'; nb.scrollTop = keep; } else nb.scrollTop = 0;
   if(ui.sheet.type === 'map') drawMap();
 }
 function sheetContent(sh){
@@ -1369,33 +1663,35 @@ function sheetContent(sh){
   if(t === 'map') return ['熱度市地圖', mapHTML()];
   if(t === 'strat') return ['策略', stratHTML()];
   if(t === 'prod') return ['攤位與商品', prodHTML()];
-  if(t === 'tasks') return ['任務與財務', tasksHTML()];
+  if(t === 'tasks') return ['任務與帳本', tasksHTML()];
   if(t === 'research') return ['市場調查', researchHTML()];
-  if(t === 'open') return ['開設攤位：' + DIST[sh.d].n, openHTML(sh.d)];
+  if(t === 'pick') return [S.setup ? '選擇你的第一個商品' : sh.swap ? '換一個商品' : '選擇商品', pickHTML()];
+  if(t === 'pickD') return ['選擇開店地點', pickDHTML()];
+  if(t === 'ipo') return ['系統初步定價', ipoHTML()];
   if(t === 'rnd') return ['新品研發', rndHTML()];
   if(t === 'panic') return ['恐慌拋售', panicHTML(sh)];
   if(t === 'level') return ['升級', levelHTML(sh.lv)];
-  if(t === 'over') return ['破產了', '<p>淨值跌破 −$800，這一局結束了。市場很殘酷，但下一局你會更懂流動性。</p><button class="btn hot wide" data-act="newgame">重新開始</button>'];
+  if(t === 'over') return ['破產了', '<p>淨值跌破 −$800，這一局結束了。流動性枯竭時資金最先撐不住，下一局記得留現金。</p><button class="btn hot wide" data-act="newgame">重新開始</button>'];
   return ['', ''];
 }
 function helpHTML(){
-  return '<p>你是「造市商」，在城市各區擺攤，同時掛出<b>收購價</b>和<b>售價</b>：讓想買的客人和想賣的供應商都能成交，賺中間的價差。</p>' +
-    '<ul style="padding-left:1.1em;margin:8px 0;line-height:1.7">' +
-    '<li>市場二十四小時不停運作，有白天也有黑夜。每種商品有自己的交易時段。</li>' +
-    '<li><b>尖峰時段報價會鎖住</b>，要在離峰或休市時先調好，或者啟用智慧報價機。</li>' +
-    '<li>每一區住著不同族群：大學城學生多、商辦區上班族多、住宅區家庭多、老街銀髮族多，港口是批發倉。</li>' +
-    '<li><b>市場熱度</b>由人流、流動性（口碑）、價格、事件共同推動，下方即時圖表會告訴你是誰在帶動。</li>' +
-    '<li>客人只會跟價格較好的一方成交，報價輸給對手，人就被搶走；缺貨、撤單會讓口碑下滑。</li>' +
-    '<li>新聞、天氣、廟會、網紅、價格戰、罷工、大單、恐慌拋售會隨機出現，套利客會吃掉落後的報價。</li>' +
-    '<li>用策略提高流動性和銷量：限時優惠、廣告、批發進貨、延長營業、造市承諾、會員集點、網紅合作、智慧報價機，還能開新攤位、研發新商品。</li></ul>' +
-    (hasSave() && S && S.t > 6*60 + 1 ? '<button class="btn amber wide" data-act="close">繼續上次的進度</button><button class="btn ghost wide" data-act="newgame">開新局</button>' : '<button class="btn hot wide" data-act="close">開始營業</button>');
+  return '<p>你是「造市商」：替商品同時掛出<b>收購價</b>和<b>售價</b>，在進貨時段向供應商收貨，在營業時間賣給客人，賺中間的價差。</p>' +
+    '<ul class="rules">' +
+    '<li><b>流動性是一切的核心。</b>新市場一開始很冷清，靠窄價差、穩定供貨、充足庫存、口碑和人潮，流動性會慢慢升高。</li>' +
+    '<li>流動性越高，客人和供應商越多，你的單筆交易對價格的衝擊越小，也會解鎖更多套利手法：起步（拉抬、拋售）、活絡（跨區調貨）、熱絡（吃對手單）、沸騰（撮合大單、預售合約）。</li>' +
+    '<li>流動性枯竭的原因：價差太寬、缺貨或撤單、價格大幅波動、被套利客反覆吃單（毒性高），以及恐慌事件。</li>' +
+    '<li>客人只在營業時間上門，供應商只在打烊後來。營業越久人力成本越高，進貨時間也越少。</li>' +
+    '<li>尖峰時段報價會鎖住，要在離峰或打烊時調好，或啟用智慧報價機。</li>' +
+    '<li>生鮮商品有保存期限，賣不掉就報廢。用「進貨目標」控制收多少貨，或開啟即期折扣。</li>' +
+    '<li>大量溢價買進會推高價格、吸引追漲客，但回歸套利客會把價格壓回合理價，太頻繁還會被主管機關約談。</li></ul>' +
+    (hasSave() && !S.setup ? '<button class="btn amber wide" data-act="close">繼續上次的進度</button><button class="btn ghost wide" data-act="newgame">開新局</button>' : '<button class="btn hot wide" data-act="close">' + (S.setup ? '挑選第一個商品' : '回到交易所') + '</button>');
 }
 function settingsHTML(){
   return '<label class="field" for="coName2">公司名稱</label><input id="coName2" class="text-in" maxlength="12" value="' + esc(SETTINGS.name) + '">' +
     '<div class="setrow"><span>音效</span><button class="toggle" data-act="set" data-k="sound" aria-pressed="' + SETTINGS.sound + '" aria-label="音效"></button></div>' +
     '<div class="setrow"><span>震動（支援的手機）</span><button class="toggle" data-act="set" data-k="vibrate" aria-pressed="' + SETTINGS.vibrate + '" aria-label="震動"></button></div>' +
-    '<div class="setrow"><span>打開子畫面時暫停</span><button class="toggle" data-act="set" data-k="pause" aria-pressed="' + SETTINGS.pause + '" aria-label="打開子畫面時暫停"></button></div>' +
-    '<p class="small muted">進度會自動存在這台裝置的瀏覽器裡。</p>' +
+    '<div class="setrow"><span>打開其他子畫面時也暫停</span><button class="toggle" data-act="set" data-k="pause" aria-pressed="' + SETTINGS.pause + '" aria-label="打開子畫面時暫停"></button></div>' +
+    '<p class="small muted">策略頁一定會暫停遊戲。進度會自動存在這台裝置的瀏覽器裡。</p>' +
     '<button class="btn ghost wide" data-act="sheet" data-s="help">遊戲說明</button>' +
     '<button class="btn ' + (ui.restartArm ? 'armed' : 'ghost') + ' wide" data-act="restart">' + (ui.restartArm ? '再按一次，確定重新開始' : '重新開始') + '</button>';
 }
@@ -1403,7 +1699,7 @@ function newsHTML(){
   var tab = ui.newsTab, list = tab === 'news' ? S.news : S.notes;
   var cls = {'官方':'', '媒體':'', '網傳':'rumor', '澄清':'clarify', '證實':'confirm', '活動':'event', '天氣':'wx'};
   return '<div class="seg-chips"><button data-act="ntab" data-v="news" aria-pressed="' + (tab === 'news') + '">新聞</button><button data-act="ntab" data-v="notes" aria-pressed="' + (tab === 'notes') + '">通知</button></div>' +
-    (list.length ? list.map(function(n){ return '<div class="list-item">' + (tab === 'news' ? '<span class="src ' + (n.kind === 'panic' ? 'panic' : cls[n.src] || '') + '">' + esc(n.src) + '</span>' : '<span style="color:var(--amber)">' + sicon(SICON[n.icon] ? n.icon : 'tag', 18) + '</span>') + '<p>' + esc(n.text) + '</p><span class="when">第 ' + dayOf(n.t) + ' 天 ' + clockOf(n.t) + '</span></div>'; }).join('') : '<p class="muted">目前沒有內容。</p>') +
+    (list.length ? list.map(function(n){ return '<div class="list-item">' + (tab === 'news' ? '<span class="src ' + (n.kind === 'panic' ? 'panic' : n.kind === 'cat' ? 'cat' : cls[n.src] || '') + '">' + esc(n.src) + '</span>' : '<span style="color:var(--amber)">' + sicon(SICON[n.icon] ? n.icon : 'tag', 18) + '</span>') + '<p>' + esc(n.text) + '</p><span class="when">第 ' + dayOf(n.t) + ' 天 ' + clockOf(n.t) + '</span></div>'; }).join('') : '<p class="muted">目前沒有內容。</p>') +
     '<p class="small muted" style="margin-top:12px">「網傳」的消息大約一半是假的，一兩天後會被澄清或證實。</p>';
 }
 function mapHTML(){
@@ -1411,9 +1707,9 @@ function mapHTML(){
   return '<canvas id="mapCv" height="260" aria-label="城市地圖，點區域切換"></canvas>' +
     DISTS.map(function(d){
       var st = stallIn(d.id), p = st ? prod(st.p) : null, ev = S.devents.filter(function(e){ return e.d === d.id; });
-      var info = d.port ? '批發倉與供應商集散地。供貨量 ' + Math.round(supplyCurve(h)*(S.strikeUntil > S.t ? 40 : 100)) + '%' : '主要族群：' + SEGS[d.main].n + '，目前人流 ' + Math.round(trafficOf(d.id,h)*distMult(d.id)*100) + '%';
+      var info = d.port ? '批發倉與供應商集散地' + (S.strikeUntil > S.t ? '，罷工中' : '') : '主要族群：' + SEGS[d.main].n + '，目前人流 ' + Math.round(trafficOf(d.id,h)*distMult(d.id)*100) + '%，租金每小時 $' + d.rent;
       return '<div class="card"><div class="row">' + avatarSVG(d.port ? 'sup' : SEGS[d.main].kind, 34) + '<div class="sp"><h3 style="color:' + d.color + '">' + d.n + '</h3><p class="small muted" style="margin:2px 0">' + info + (ev.length ? '，' + ev.map(function(e){ return e.n; }).join('、') + '進行中' : '') + '</p>' +
-        (st ? '<p class="small" style="margin:0">攤位：' + esc(p.n) + '，熱度 ' + Math.round(st.H) + '，參考價 $' + st.V.toFixed(1) + '</p>' : '') + '</div><button class="btn ' + (S.sel === d.id ? 'ghost' : '') + '" data-act="goto" data-d="' + d.id + '">' + (S.sel === d.id ? '目前所在' : '前往') + '</button></div></div>';
+        (st ? '<p class="small" style="margin:0">攤位：' + esc(p.n) + '，流動性 ' + Math.round(st.L) + '（' + TIERS[tierOf(st.L)].n + '），參考價 $' + st.V.toFixed(1) + '</p>' : '') + '</div><button class="btn ' + (S.sel === d.id ? 'ghost' : '') + '" data-act="goto" data-d="' + d.id + '">' + (S.sel === d.id ? '目前所在' : '前往') + '</button></div></div>';
     }).join('');
 }
 var MAPP = {uni:[[12,12],[140,9],[150,62],[122,105],[12,100]], biz:[[196,11],[346,11],[346,103],[264,116],[206,89],[190,46]], home:[[12,117],[118,121],[156,142],[168,180],[130,249],[12,249]], old:[[146,249],[172,201],[230,189],[258,212],[274,249]], port:[[278,130],[346,119],[346,198],[304,206],[286,169]]};
@@ -1434,86 +1730,147 @@ function drawMap(){
   });
   c.strokeStyle = '#1c4290'; c.lineWidth = 18; c.lineCap = 'round'; c.beginPath(); c.moveTo(168,-10); c.bezierCurveTo(178,36,150,71,178,107); c.bezierCurveTo(206,143,250,142,262,178); c.bezierCurveTo(274,214,296,228,330,270); c.stroke();
   c.strokeStyle = 'rgba(120,170,255,.5)'; c.lineWidth = 1.5; c.setLineDash([4,12]); c.lineDashOffset = -ts/60; c.stroke(); c.setLineDash([]);
-  c.fillStyle = '#3a4470'; c.save(); c.translate(172,58); c.rotate(-0.14); c.fillRect(-22,-3.5,44,7); c.restore(); c.save(); c.translate(256,152); c.rotate(0.52); c.fillRect(-20,-3.5,40,7); c.restore();
   DISTS.forEach(function(d){
     var ct = MAPC[d.id], st = stallIn(d.id), heat = st ? st.H : trafficOf(d.id,h)*40;
     var gr = c.createRadialGradient(ct[0], ct[1], 2, ct[0], ct[1], 18 + heat*0.35);
     gr.addColorStop(0, 'rgba(255,170,70,' + clamp(heat/120, 0.1, 0.7)*(0.8 + 0.2*Math.sin(ts/300)) + ')'); gr.addColorStop(1, 'rgba(255,170,70,0)');
     c.fillStyle = gr; c.beginPath(); c.arc(ct[0], ct[1], 18 + heat*0.35, 0, Math.PI*2); c.fill();
-    for(var i=0;i<5;i++){ var a = ts/(1600 + i*300) + i*1.3, rr2 = 10 + i*5; c.fillStyle = i % 2 ? d.color : '#eef1fb'; c.fillRect(ct[0] + Math.cos(a)*rr2, ct[1] + Math.sin(a)*rr2*0.6, 2.4, 2.4); }
-    c.fillStyle = '#eef1fb'; c.font = '900 12px "Noto Sans TC", sans-serif'; c.textAlign = 'center'; c.fillText(d.n, ct[0], ct[1] - 14);
-    c.font = '600 10px "Noto Sans TC", sans-serif'; c.fillStyle = '#c8d0ee'; c.fillText(d.port ? '供應商' : SEGS[d.main].n, ct[0], ct[1] + 26);
-    if(st){ var p = prod(st.p); c.fillStyle = '#0b0e1f'; c.beginPath(); c.arc(ct[0], ct[1] + 4, 11, 0, Math.PI*2); c.fill(); c.strokeStyle = p.color; c.lineWidth = 2; c.stroke(); drawIcon(c, p.icon, p.color, ct[0], ct[1] + 4, 14); }
-    if(S.devents.some(function(e){ return e.d === d.id; })){ c.fillStyle = '#a184ff'; c.beginPath(); c.arc(ct[0] + 20, ct[1] - 20, 5, 0, Math.PI*2); c.fill(); }
+    if(st){ c.strokeStyle = '#2ed6c4'; c.lineWidth = 3; c.beginPath(); c.arc(ct[0], ct[1] + 4, 15, -Math.PI/2, -Math.PI/2 + Math.PI*2*st.L/100); c.stroke(); }
+    c.fillStyle = '#eef1fb'; c.font = '900 12px "Noto Sans TC", sans-serif'; c.textAlign = 'center'; c.fillText(d.n, ct[0], ct[1] - 16);
+    c.font = '600 10px "Noto Sans TC", sans-serif'; c.fillStyle = '#c8d0ee'; c.fillText(d.port ? '供應商' : SEGS[d.main].n, ct[0], ct[1] + 30);
+    if(st){ var p = prod(st.p); c.fillStyle = '#0b0e1f'; c.beginPath(); c.arc(ct[0], ct[1] + 4, 11, 0, Math.PI*2); c.fill(); drawIcon(c, p.icon, p.color, ct[0], ct[1] + 4, 14); }
   });
   if(n > 0.3){ c.fillStyle = 'rgba(3,6,20,' + 0.3*n + ')'; c.fillRect(0,0,358,260); }
+}
+function hourEditor(st){
+  var len = st.close - st.open, dc = dailyCost(st), sup = 24 - len;
+  return '<div class="card"><h3>營業時間</h3><p class="small muted" style="margin:4px 0 8px">客人只在營業時間上門，供應商只在打烊後來。營業越久人力成本越高（超過 8 小時加班 1.5 倍、超過 12 小時 2 倍，深夜再加 40%）。</p>' +
+    '<div class="row"><div class="sp"><span class="small muted">開店</span><div class="row" style="gap:6px"><button class="rb" data-act="hrs" data-k="open" data-d="-1" aria-label="提早開店">−</button><b class="num" style="font-size:22px">' + hh(st.open) + '</b><button class="rb" data-act="hrs" data-k="open" data-d="1" aria-label="延後開店">+</button></div></div>' +
+    '<div class="sp"><span class="small muted">打烊</span><div class="row" style="gap:6px"><button class="rb" data-act="hrs" data-k="close" data-d="-1" aria-label="提早打烊">−</button><b class="num" style="font-size:22px">' + hh(st.close) + '</b><button class="rb" data-act="hrs" data-k="close" data-d="1" aria-label="延後打烊">+</button></div></div></div>' +
+    '<p class="small" style="margin-top:8px">營業 ' + len + ' 小時、進貨 ' + sup + ' 小時，營運成本約 <b class="num" style="font-size:17px">' + money(dc) + '</b>/天</p></div>';
+}
+function liqPanel(st){
+  var lc = st.lc, tr = tierOf(st.L), nx = TIERS[tr + 1];
+  var bar = function(n, v, inv){ var x = clamp(v, 0, 1)*100; return '<span>' + n + '</span><span class="bar"><i style="width:' + x + '%;background:' + (inv ? (v > 0.3 ? 'var(--hot)' : 'var(--down)') : (v >= 0.5 ? '#2ed6c4' : v >= 0.3 ? 'var(--amber)' : 'var(--hot)')) + '"></i></span><span class="val">' + Math.round(x) + '</span>'; };
+  return '<div class="card"><div class="row"><div class="sp"><h3>流動性 <span class="num" style="font-size:24px;color:#2ed6c4">' + Math.round(st.L) + '</span> ' + TIERS[tr].n + '</h3><p class="small muted" style="margin:2px 0">目標 ' + Math.round(lc.t) + (nx ? '，到 ' + nx.at + ' 解鎖' + TIER_UNLOCK[tr + 1] : '，已達最高等級') + '</p></div></div>' +
+    '<div class="bars" style="margin-top:8px">' + bar('價差', lc.sp) + bar('穩定', lc.up) + bar('深度', lc.dep) + bar('參與', lc.part) + bar('平穩', lc.calm) + bar('口碑', lc.trust) + bar('毒性', lc.tox, true) + '</div>' +
+    '<p class="small muted" style="margin-bottom:0">價差越窄、不缺貨不撤單、庫存和現金充足、人潮多、價格平穩、口碑好，流動性就越高；被套利客吃單會累積毒性，讓流動性下滑。</p></div>';
 }
 function stratHTML(){
   var cands = S.stalls; if(!cands.length) return '<p>先開一個攤位。</p>';
   var sid = ui.stratSid && stallById(ui.stratSid) ? ui.stratSid : (stallIn(S.sel) || cands[0]).id; ui.stratSid = sid;
   var st = stallById(sid);
-  var chips = '<div class="seg-chips">' + cands.map(function(x){ var p = prod(x.p); return '<button data-act="spick" data-id="' + x.id + '" aria-pressed="' + (x.id === sid) + '">' + iconSVG(p.icon, p.color, 18) + DIST[x.d].n + '</button>'; }).join('') + '</div>';
-  var cards = STRATS.map(function(s){
-    var ss = stratState(st, s.id), cost = s.id === 'bulk' ? '約 ' + money(Math.min(40, Math.max(0, st.cap - st.inv - pendingQ(st)))*Math.round(st.V*0.9)) : s.id === 'pricer' ? '$30/小時' : s.cost ? money(s.cost) : '免費';
-    var label = s.id === 'pull' ? (st.pulled ? '恢復報價' : '撤單') : s.id === 'pricer' ? (st.mods.pricer ? '停止' : '啟用') : '使用';
-    return '<div class="scard"><div class="ti"><span>' + sicon(SICON[s.icon] ? s.icon : 'tag', 18) + '</span>' + s.n + '</div><p>' + s.d + '</p><div class="meta">' + cost + (ss.why ? '，' + ss.why : '') + '</div><button class="btn ' + (ss.ok ? 'amber' : 'ghost') + '" data-act="use" data-s="' + s.id + '"' + (ss.ok ? '' : ' disabled') + '>' + label + '</button></div>';
+  var chips = cands.length > 1 ? '<div class="seg-chips">' + cands.map(function(x){ var p = prod(x.p); return '<button data-act="spick" data-id="' + x.id + '" aria-pressed="' + (x.id === sid) + '">' + iconSVG(p.icon, p.color, 18) + DIST[x.d].n + '</button>'; }).join('') + '</div>' : '';
+  var groups = ['營運','行銷','造市','套利'];
+  var body = groups.map(function(g){
+    var cards = STRATS.filter(function(s){ return s.g === g; }).map(function(s){
+      var ss = stratState(st, s.id), cost;
+      if(s.id === 'bulk') cost = '約 ' + money(Math.max(0, Math.min(40, st.cap - st.inv - pendingQ(st)))*Math.round(st.F*0.9));
+      else if(s.id === 'pricer') cost = '$30/小時';
+      else if(s.id === 'pump') cost = '約 ' + money(20*st.V*1.06);
+      else if(s.id === 'rival'){ var o = rivalOpp(st); cost = o ? (o.side === 'buy' ? '向對手買 $' + o.px.toFixed(1) : '賣給對手 $' + o.px.toFixed(1)) + '（' + pct(o.edge*100) + '）' : '等待機會'; }
+      else if(s.id === 'xfer'){ var ps = sameProdPartner(st); cost = ps.length ? ps.map(function(x){ return DIST[x.d].n + ' $' + x.V.toFixed(1); }).join('、') + '，本區 $' + st.V.toFixed(1) : '運費 $1/件'; }
+      else cost = s.cost ? money(s.cost) : '免費';
+      var label = s.id === 'pull' ? (st.pulled ? '恢復報價' : '撤單') : s.id === 'pricer' ? (st.mods.pricer ? '停止' : '啟用') : s.id === 'markdown' ? (st.mods.markdown ? '關閉' : '開啟') : '使用';
+      var okBtn = ss.ok || ((s.id === 'pricer' || s.id === 'markdown') && !ss.why.match(/解鎖|需要/));
+      return '<div class="scard"><div class="ti"><span>' + sicon(SICON[s.icon] ? s.icon : 'tag', 18) + '</span>' + s.n + '</div><p>' + s.d + '</p><div class="meta">' + cost + (ss.why ? '，' + ss.why : '') + '</div><button class="btn ' + (okBtn ? 'amber' : 'ghost') + '" data-act="use" data-s="' + s.id + '"' + (okBtn ? '' : ' disabled') + '>' + label + '</button></div>';
+    }).join('');
+    return '<h3 class="grp">' + g + '</h3><div class="grid2">' + cards + '</div>';
   }).join('');
-  return '<p class="small muted" style="margin-top:0">選擇要套用的攤位：</p>' + chips + '<div class="grid2">' + cards + '</div>';
+  return chips + liqPanel(st) + hourEditor(st) + body;
 }
 function prodHTML(){
-  var h = hourOf(S.t), L = lvl().lv;
+  var L = lvl().lv;
   var cards = S.stalls.map(function(st){
-    var p = prod(st.p), so = statusOf(st), lk = locked(st), sess = sessionOf(st);
+    var p = prod(st.p), so = statusOf(st), ol = oldestLeft(st);
     var peaks = DIST[st.d].peaks.map(function(w){ return w[2] + ' ' + hh(w[0]) + '–' + hh(w[1]); }).join('、');
     return '<div class="card"><div class="row">' + iconSVG(p.icon, p.color, 34) + '<div class="sp"><h3>' + esc(p.n) + ' <span class="pill" style="color:' + DIST[st.d].color + '">' + DIST[st.d].n + '</span></h3><p class="small" style="margin:2px 0"><span class="stc ' + so.cls + '">' + so.t + '</span></p></div></div>' +
-      '<p class="small muted">交易時段 ' + hh(sess[0]) + '–' + hh(sess[1]) + '；尖峰 ' + peaks + '</p>' +
-      '<p class="small">熱度 <b class="num">' + Math.round(st.H) + '</b>，參考價 <b class="num">$' + st.V.toFixed(1) + '</b>，庫存 ' + st.inv + '/' + st.cap + '，口碑 ' + stars(st.buzz).toFixed(1) + ' 顆星</p>' +
-      '<p class="small">今天：賣出 ' + st.td.buy + '、收購 ' + st.td.sell + '、流失 ' + (st.td.lost + st.td.nostock + st.td.full + st.td.closed) + '、嫌貴或嫌便宜 ' + (st.td.pricey + st.td.cheap) + (st.td.arb ? '、被套利 ' + st.td.arb : '') + '</p>' +
-      '<div class="row" style="margin-top:8px"><div class="qs bid sp"><button data-act="sq" data-id="' + st.id + '" data-side="bid" data-d="-1" aria-label="收購價減 1"' + (lk ? ' disabled' : '') + '>−</button><div class="qv"><small>收購</small><b class="num">$' + st.bid + '</b></div><button data-act="sq" data-id="' + st.id + '" data-side="bid" data-d="1" aria-label="收購價加 1"' + (lk ? ' disabled' : '') + '>+</button></div>' +
-      '<div class="qs ask sp"><button data-act="sq" data-id="' + st.id + '" data-side="ask" data-d="-1" aria-label="售價減 1"' + (lk ? ' disabled' : '') + '>−</button><div class="qv"><small>售價</small><b class="num">$' + st.ask + '</b></div><button data-act="sq" data-id="' + st.id + '" data-side="ask" data-d="1" aria-label="售價加 1"' + (lk ? ' disabled' : '') + '>+</button></div></div>' +
+      '<p class="small muted">營業 ' + hh(st.open) + '–' + hh(st.close) + '，成本 ' + money(dailyCost(st)) + '/天；尖峰 ' + peaks + '</p>' +
+      '<p class="small">流動性 <b class="num">' + Math.round(st.L) + '</b>（' + TIERS[tierOf(st.L)].n + '），熱度 <b class="num">' + Math.round(st.H) + '</b>，參考價 <b class="num">$' + st.V.toFixed(1) + '</b>，合理價 <b class="num">$' + st.F.toFixed(1) + '</b></p>' +
+      '<p class="small">庫存 ' + st.inv + '/' + st.cap + '，均價 $' + (st.inv ? avgCost(st).toFixed(1) : '—') + (ol != null ? '，最舊一批 ' + (ol/60).toFixed(1) + ' 小時後報廢' : '') + '</p>' +
+      '<p class="small">今天：賣出 ' + st.td.buy + '、收購 ' + st.td.sell + '、流失 ' + (st.td.lost + st.td.nostock + st.td.full) + '、報廢 ' + st.td.spoiled + '、套利客 ' + st.td.arb + '，已實現 ' + smoney(st.td.realized) + '</p>' +
       (st.mods.pricer ? '<p class="small">智慧報價機價差：<button class="pill" data-act="psp" data-id="' + st.id + '" data-d="-1">−</button> ±' + (st.mods.pricerSp*100).toFixed(1) + '% <button class="pill" data-act="psp" data-id="' + st.id + '" data-d="1">+</button></p>' : '') +
-      '<div class="row" style="margin-top:8px"><button class="btn ghost sp" data-act="goto" data-d="' + st.d + '">前往這一區</button><button class="btn ghost sp" data-act="swap" data-id="' + st.id + '"' + (lk || st.panic ? ' disabled' : '') + '>換商品 ' + money(CFG.swapFee) + '</button></div></div>';
+      '<div class="row" style="margin-top:8px"><button class="btn ghost sp" data-act="goto" data-d="' + st.d + '">前往</button><button class="btn ghost sp" data-act="swap" data-id="' + st.id + '"' + (st.inv > 0 || st.panic ? ' disabled' : '') + '>換商品 ' + money(CFG.swapFee) + '</button></div>' +
+      (st.inv > 0 ? '<p class="small muted" style="margin-bottom:0">換商品前要先把庫存賣完或出清。</p>' : '') + '</div>';
   }).join('');
   var empty = DISTS.filter(function(d){ return !d.port && !stallIn(d.id); });
-  var openC = empty.length ? '<div class="card"><h3>開新攤位</h3><p class="small muted">目前等級最多 ' + maxStalls() + ' 個攤位。開店費 ' + money(CFG.openFee) + '。</p><div class="opts">' + empty.map(function(d){ return '<button data-act="openD" data-d="' + d.id + '"' + (S.stalls.length >= maxStalls() ? ' disabled' : '') + '>' + avatarSVG(SEGS[d.main].kind, 22) + d.n + '</button>'; }).join('') + '</div>' + (S.stalls.length >= maxStalls() ? '<p class="small muted">升到 LV.2 可以開第 4 個攤位。</p>' : '') + '</div>' : '';
-  var plist = '<div class="card"><h3>商品清單</h3>' + S.products.map(function(p){ var ok = L >= (p.unlock || 1); return '<div class="row" style="margin:8px 0">' + iconSVG(p.icon, p.color, 26) + '<div class="sp"><b>' + esc(p.n) + '</b><p class="small muted" style="margin:0">' + hh(p.open) + '–' + hh(p.close) + '，' + ATTRS.map(function(a,i){ return p.pts[i] ? a + p.pts[i] : ''; }).filter(Boolean).join(' ') + '</p></div>' + (ok ? '' : '<span class="pill">LV.' + p.unlock + '</span>') + '</div>'; }).join('') +
+  var full = S.stalls.length >= maxStalls();
+  var openC = empty.length ? '<div class="card"><h3>開新攤位</h3><p class="small muted">目前等級最多 ' + maxStalls() + ' 個攤位，開店費 ' + money(CFG.openFee) + '。同一種商品開在兩區，流動性夠高時就能跨區調貨套利。</p><div class="opts">' + empty.map(function(d){ return '<button data-act="newStall" data-d="' + d.id + '"' + (full ? ' disabled' : '') + '>' + avatarSVG(SEGS[d.main].kind, 22) + d.n + '</button>'; }).join('') + '</div>' + (full ? '<p class="small muted">升級後才能開更多攤位。</p>' : '') + '</div>' : '';
+  var plist = '<div class="card"><h3>商品清單</h3>' + S.products.map(function(p){ return '<div class="row" style="margin:10px 0;align-items:flex-start">' + iconSVG(p.icon, p.color, 28) + '<div class="sp"><b>' + esc(p.n) + '</b> <span class="pill">' + CATS[p.cat] + '</span><p class="small muted" style="margin:2px 0">' + shelfText(p) + '，建議營業 ' + hh(p.open) + '–' + hh(p.close) + '</p>' + (p.adv ? '<p class="small" style="margin:0">優勢：' + esc(p.adv) + '</p>' : '') + '</div></div>'; }).join('') +
     '<button class="btn amber wide" data-act="sheet" data-s="rnd"' + (L < 2 ? ' disabled' : '') + '>研發新商品 ' + money(CFG.rndFee) + (L < 2 ? '（LV.2）' : '') + '</button></div>';
   return cards + openC + plist;
 }
-function openHTML(d){
-  var L = lvl().lv, D = DIST[d];
-  var list = S.products.filter(function(p){ return L >= (p.unlock || 1); }).map(function(p){
-    var ap = appealOf(d, p.pts, S.reports.map(function(r){ return r.cur; })), heat = 100*ap;
-    var overlap = D.peaks.filter(function(w){ for(var x=w[0]; x<w[1]; x+=0.5) if(inWin(x, p.open, p.close)) return true; return false; }).map(function(w){ return w[2]; });
-    return '<div class="card"><div class="row">' + iconSVG(p.icon, p.color, 32) + '<div class="sp"><h3>' + esc(p.n) + '</h3><p class="small muted" style="margin:2px 0">依市調估算，尖峰熱度約 ' + Math.round(heat*1.2) + '；' + (overlap.length ? '有趕上' + overlap.join('、') : '交易時段沒趕上這一區的尖峰') + '</p></div><button class="btn amber" data-act="doOpen" data-d="' + d + '" data-p="' + p.id + '"' + (S.cash < CFG.openFee ? ' disabled' : '') + '>開店</button></div></div>';
-  }).join('');
-  return '<p class="small muted" style="margin-top:0">' + D.n + '以' + SEGS[D.main].n + '為主，尖峰：' + D.peaks.map(function(w){ return w[2] + ' ' + hh(w[0]) + '–' + hh(w[1]); }).join('、') + '。開店費 ' + money(CFG.openFee) + '。</p>' + list;
+function shelfText(p){ return p.shelf ? (p.shelf >= 24 ? '保存 ' + Math.round(p.shelf/24) + ' 天' : '保存 ' + p.shelf + ' 小時') : '不會壞'; }
+function bestHours(p){ var best = 0, bh = 0; for(var h=0; h<24; h+=0.5){ var v = prodTime(p,h); if(v > best){ best = v; bh = h; } } return hh(Math.max(0, bh - 1)) + '–' + hh(bh + 1); }
+function pickHTML(){
+  return '<p class="small muted" style="margin-top:0">每種商品都有自己的優勢和風險。選好後，系統會依開店地點初步定價，市場從「冷清」開始，靠你的經營慢慢變熱絡。</p>' +
+    S.products.map(function(p){
+      return '<div class="card"><div class="row" style="align-items:flex-start">' + iconSVG(p.icon, p.color, 40) + '<div class="sp"><h3>' + esc(p.n) + ' <span class="pill">' + CATS[p.cat] + '</span></h3>' +
+        '<p class="small" style="margin:4px 0">' + shelfText(p) + '，最好賣 ' + bestHours(p) + '，價格波動' + (p.vol >= 1.3 ? '大' : p.vol >= 0.9 ? '中等' : '小') + '</p>' +
+        (p.adv ? '<p class="small" style="margin:2px 0;color:#9fe0c8">優勢：' + esc(p.adv) + '</p><p class="small" style="margin:2px 0;color:#ffb3ba">風險：' + esc(p.risk) + '</p>' : '') +
+        '</div></div><button class="btn amber wide" data-act="pickP" data-p="' + p.id + '">選這個</button></div>';
+    }).join('');
+}
+function pickDHTML(){
+  var f = ui.flow, p = prod(f.p);
+  var opts = DISTS.filter(function(d){ return !d.port && (!stallIn(d.id) || (f.swap && stallIn(d.id).id === f.swap)); }).map(function(d){
+    var pv = previewStall(d.id, p.id), peak = Math.max.apply(null, pv.Hexp);
+    return {d:d, pv:pv, peak:peak, sales:Math.round(pv.tgt)};
+  });
+  var best = opts.reduce(function(a,b){ return !a || b.peak > a.peak ? b : a; }, null);
+  return '<p class="small muted" style="margin-top:0">「' + esc(p.n) + '」在各區的預估表現（依開局市調）：</p>' + opts.map(function(o){
+    return '<div class="card"><div class="row">' + avatarSVG(SEGS[o.d.main].kind, 34) + '<div class="sp"><h3 style="color:' + o.d.color + '">' + o.d.n + (o === best ? ' <span class="pill" style="color:var(--amber)">推薦</span>' : '') + '</h3>' +
+      '<p class="small" style="margin:2px 0">主要族群 ' + SEGS[o.d.main].n + '，尖峰熱度約 ' + Math.round(o.peak) + '，預估每天賣 ' + o.sales + ' 件</p><p class="small muted" style="margin:0">租金 $' + o.d.rent + '/小時，尖峰 ' + o.d.peaks.map(function(w){ return hh(w[0]) + '–' + hh(w[1]); }).join('、') + '</p></div></div>' +
+      '<button class="btn amber wide" data-act="pickD" data-d="' + o.d.id + '">開在這裡</button></div>';
+  }).join('') + '<button class="btn ghost wide" data-act="flowBack" data-to="pick">重新選商品</button>';
+}
+function ipoHTML(){
+  var f = ui.flow, p = prod(f.p), pv = previewStall(f.d, p.id), fee = S.setup ? 0 : f.swap ? CFG.swapFee : CFG.openFee;
+  var supFrom = hh(pv.close), supTo = hh(pv.open);
+  return '<div class="card"><div class="row">' + iconSVG(p.icon, p.color, 40) + '<div class="sp"><h3>' + esc(p.n) + '</h3><p class="small muted" style="margin:2px 0">' + DIST[f.d].n + '，' + CATS[p.cat] + '，' + shelfText(p) + '</p></div></div>' +
+    '<div class="grid2" style="margin-top:10px"><div class="scard"><span class="small muted">合理價</span><b class="num" style="font-size:26px">$' + pv.F.toFixed(1) + '</b></div><div class="scard"><span class="small muted">開盤參考價</span><b class="num" style="font-size:26px">$' + pv.V.toFixed(1) + '</b></div>' +
+    '<div class="scard"><span class="small muted">建議收購價</span><b class="num" style="font-size:26px;color:var(--cyan)">$' + pv.bid + '</b></div><div class="scard"><span class="small muted">建議售價</span><b class="num" style="font-size:26px;color:var(--amber)">$' + pv.ask + '</b></div></div>' +
+    '<p class="small" style="margin-top:10px">市場剛起步，流動性只有 <b>' + Math.round(pv.L) + '（冷清）</b>，所以系統先給 ±7% 的寬價差保護你。等流動性升高，就能慢慢收窄。</p>' +
+    '<p class="small">建議營業 ' + hh(pv.open) + '–' + hh(pv.close) + '，供應商會在 ' + supFrom + '–' + supTo + ' 之間上門' + (perishable(p) ? '（生鮮多半在開店前一小時送到）' : '') + '。營運成本約 ' + money(dailyCost(pv)) + '/天，進貨目標 ' + pv.tgt + ' 件。</p></div>' +
+    '<div class="card"><h3>流動性等級</h3><p class="small" style="margin:6px 0 0">' + TIERS.map(function(t, i){ return '<b>' + t.n + '</b>（' + t.at + '）' + (i ? '：' + TIER_UNLOCK[i] : '：基本造市') ; }).join('<br>') + '</p></div>' +
+    '<button class="btn hot wide" data-act="doOpen"' + (S.cash < fee ? ' disabled' : '') + '>' + (S.setup ? '開張！' : '開店 ' + money(fee)) + '</button><button class="btn ghost wide" data-act="flowBack" data-to="pickD">換個地點</button>';
 }
 function rndHTML(){
-  var d = ui.draft || (ui.draft = {name:'', icon:'box', color:CUSTOM_COLORS[0], pts:[0,0,0,0,0,0], sess:1});
+  var d = ui.draft || (ui.draft = {name:'', icon:'box', color:CUSTOM_COLORS[0], pts:[0,0,0,0,0,0], sess:1, cat:'goods'});
   var used = d.pts.reduce(function(a,b){ return a+b; }, 0), left = 12 - used;
   var rows = ATTRS.map(function(a,i){ var pips = ''; for(var k=1;k<=5;k++) pips += '<i class="' + (k <= d.pts[i] ? 'on' : '') + '"></i>'; return '<div class="ptrow"><span>' + a + '</span><button class="rb" data-act="pt" data-i="' + i + '" data-d="-1" aria-label="' + a + '減 1"' + (d.pts[i] ? '' : ' disabled') + '>−</button><span class="pips" role="img" aria-label="' + a + ' ' + d.pts[i] + ' 點">' + pips + '</span><button class="rb" data-act="pt" data-i="' + i + '" data-d="1" aria-label="' + a + '加 1"' + (d.pts[i] < 5 && left > 0 ? '' : ' disabled') + '>+</button></div>'; }).join('');
   var est = DISTS.filter(function(x){ return !x.port; }).map(function(x){ return x.n + ' ' + Math.round(100*appealOf(x.id, d.pts, S.reports.map(function(r){ return r.cur; }))*1.2); }).join('、');
   var ok = d.name.trim() && used > 0 && S.cash >= CFG.rndFee;
   return '<label class="field" for="rndName">商品名稱</label><input id="rndName" class="text-in" maxlength="8" placeholder="例如：燕麥奶" value="' + esc(d.name) + '">' +
+    '<span class="field">類別（決定保存期限和會遇到的事件）</span><div class="opts">' + Object.keys(CATS).map(function(k){ return '<button data-act="rcat" data-v="' + k + '" aria-pressed="' + (d.cat === k) + '">' + CATS[k] + '（' + (CAT_SHELF[k] ? CAT_SHELF[k] + ' 小時' : '不會壞') + '）</button>'; }).join('') + '</div>' +
     '<span class="field">包裝</span><div class="opts">' + CUSTOM_ICONS.map(function(q){ return '<button data-act="ricon" data-v="' + q[0] + '" aria-pressed="' + (d.icon === q[0]) + '">' + iconSVG(q[0], d.color, 22) + q[1] + '</button>'; }).join('') + '</div>' +
     '<span class="field">顏色</span><div class="opts">' + CUSTOM_COLORS.map(function(col){ return '<button class="swatch" data-act="rcol" data-v="' + col + '" style="background:' + col + '" aria-pressed="' + (d.color === col) + '" aria-label="顏色 ' + col + '"></button>'; }).join('') + '</div>' +
-    '<span class="field">交易時段</span><div class="opts">' + SESSIONS.map(function(s,i){ return '<button data-act="rsess" data-v="' + i + '" aria-pressed="' + (d.sess === i) + '">' + s.n + ' ' + hh(s.o) + '–' + hh(s.c) + '</button>'; }).join('') + '</div>' +
+    '<span class="field">建議營業時段</span><div class="opts">' + SESSIONS.map(function(s,i){ return '<button data-act="rsess" data-v="' + i + '" aria-pressed="' + (d.sess === i) + '">' + s.n + ' ' + hh(s.o) + '–' + hh(s.c) + '</button>'; }).join('') + '</div>' +
     '<div class="row" style="justify-content:space-between;margin:16px 0 4px"><b>屬性配點（每項最多 5）</b><span>剩 <b class="num" style="font-size:20px">' + left + '</b> / 12</span></div>' + rows +
-    '<p class="small muted">依你的市調估算各區尖峰熱度：' + est + '</p>' +
+    '<p class="small muted">依你的市調估算各區熱度：' + est + '</p>' +
     '<button class="btn hot wide" id="rndGo" data-act="doRnd"' + (ok ? '' : ' disabled') + '>研發 ' + money(CFG.rndFee) + '</button>';
 }
 function tasksHTML(){
-  var L = lvl(), N = nextLvl();
+  var L = lvl(), N = nextLvl(), td = S.today;
   var lvC = '<div class="card"><div class="row"><span class="num" style="font-size:40px;line-height:1;color:var(--amber)">LV.' + L.lv + '</span><div class="sp"><h3>' + L.n + '</h3><p class="small muted" style="margin:2px 0">經驗 ' + S.xp + (N ? ' / ' + N.xp : '（滿級）') + '</p></div></div>' + (N ? '<div class="prog"><i style="width:' + clamp((S.xp - L.xp)/(N.xp - L.xp)*100, 0, 100) + '%"></i></div><p class="small muted">下一級解鎖：' + (UNLOCKS[N.lv] || '更高稱號') + '</p>' : '') + '</div>';
-  var ms = '<h3 style="margin:14px 0 4px">今日任務</h3>' + S.missions.map(function(m, i){ var v = missionVal(m), done = v >= m.goal; return '<div class="card"><div class="row"><div class="sp"><b>' + m.text + '</b><p class="small muted" style="margin:2px 0">獎勵 ' + money(m.r) + '、經驗 ' + m.x + '</p></div>' + (m.done ? '<span class="pill">已領取</span>' : '<button class="btn ' + (done ? 'amber' : 'ghost') + '" data-act="claim" data-i="' + i + '"' + (done ? '' : ' disabled') + '>領取</button>') + '</div><div class="prog"><i style="width:' + clamp(v/m.goal*100, 0, 100) + '%"></i></div></div>'; }).join('');
+  var ms = '<h3 class="grp">今日任務</h3>' + S.missions.map(function(m, i){ var v = missionVal(m), done = v >= m.goal; return '<div class="card"><div class="row"><div class="sp"><b>' + m.text + '</b><p class="small muted" style="margin:2px 0">獎勵 ' + money(m.r) + '、經驗 ' + m.x + '</p></div>' + (m.done ? '<span class="pill">已領取</span>' : '<button class="btn ' + (done ? 'amber' : 'ghost') + '" data-act="claim" data-i="' + i + '"' + (done ? '' : ' disabled') + '>領取</button>') + '</div><div class="prog"><i style="width:' + clamp(v/m.goal*100, 0, 100) + '%"></i></div></div>'; }).join('');
+  var unreal = td.pnl - td.realized;
+  var led = '<div class="card"><h3>今日帳本</h3><div class="ledger">' +
+    '<span>已實現獲利（價差）</span><b class="num ' + dirc(td.realized) + '">' + smoney(td.realized) + '</b>' +
+    '<span>未實現（庫存漲跌與成本）</span><b class="num ' + dirc(unreal) + '">' + smoney(unreal) + '</b>' +
+    '<span>營運與策略成本</span><b class="num">' + money(td.costs) + '</b>' +
+    '<span>報廢</span><b class="num">' + td.spoiled + ' 件（' + money(td.spoilLoss) + '）</b>' +
+    '<span>客人／成交</span><b class="num">' + td.cust + ' / ' + td.sales + '</b>' +
+    '<span>供應商／收購</span><b class="num">' + td.sup + ' / ' + td.bought + '</b>' +
+    '<span>套利客進／出</span><b class="num">' + td.arbIn + ' / ' + td.arbOut + '</b>' +
+    '<span>補貼與獎勵</span><b class="num">' + money(td.rebate + td.reward) + '</b></div><p class="small muted" style="margin-bottom:0">淨值變化 = 已實現 + 未實現；成本已經算在兩者裡面。</p></div>';
   var days = S.daily.slice(-14), mx = Math.max.apply(null, days.map(function(d){ return Math.abs(d.pnl); }).concat([100]));
-  var bars = '<div class="card"><h3>每日損益</h3>' + (days.length ? '<div style="display:flex;align-items:center;gap:3px;height:90px;margin-top:8px">' + days.map(function(d){ var hgt = Math.abs(d.pnl)/mx*42; return '<div style="flex:1;display:flex;flex-direction:column;justify-content:center;height:90px" title="第 ' + d.day + ' 天 ' + smoney(d.pnl) + '"><div style="height:42px;display:flex;align-items:flex-end"><i style="display:block;width:100%;height:' + (d.pnl > 0 ? hgt : 0) + 'px;background:var(--up);border-radius:3px 3px 0 0"></i></div><div style="height:42px"><i style="display:block;width:100%;height:' + (d.pnl < 0 ? hgt : 0) + 'px;background:var(--down);border-radius:0 0 3px 3px"></i></div></div>'; }).join('') + '</div>' : '<p class="small muted">過完第一天就會出現。</p>') + '<p class="small muted">今天到目前 ' + smoney(S.today.pnl) + '，成交 ' + S.today.fills + ' 件，流動性補貼 ' + money(S.today.rebate) + '，恐慌獎勵 ' + money(S.today.reward) + '</p></div>';
+  var bars = '<div class="card"><h3>每日損益</h3>' + (days.length ? '<div style="display:flex;align-items:center;gap:3px;height:90px;margin-top:8px">' + days.map(function(d){ var hgt = Math.abs(d.pnl)/mx*42; return '<div style="flex:1;display:flex;flex-direction:column;justify-content:center;height:90px" title="第 ' + d.day + ' 天 ' + smoney(d.pnl) + '"><div style="height:42px;display:flex;align-items:flex-end"><i style="display:block;width:100%;height:' + (d.pnl > 0 ? hgt : 0) + 'px;background:var(--up);border-radius:3px 3px 0 0"></i></div><div style="height:42px"><i style="display:block;width:100%;height:' + (d.pnl < 0 ? hgt : 0) + 'px;background:var(--down);border-radius:0 0 3px 3px"></i></div></div>'; }).join('') + '</div>' : '<p class="small muted">過完第一天就會出現。</p>') + '</div>';
   var fin = '<div class="card"><h3>融資</h3><p class="small">負債 <b class="num">' + money(S.debt) + '</b>，額度 <b class="num">' + money(creditOf()) + '</b>，日利率 0.3%</p><div class="row"><button class="btn amber sp" data-act="borrow"' + (creditOf() - S.debt >= 500 ? '' : ' disabled') + '>借 $500</button><button class="btn ghost sp" data-act="repay"' + (S.debt > 0.5 ? '' : ' disabled') + '>還 $500</button></div></div>';
-  return lvC + ms + bars + fin;
+  return lvC + led + ms + bars + fin;
 }
 function researchHTML(){
-  var i = ui.seg, s = SEGS[i], r = S.reports[i], age = Math.floor((S.t - r.t)/60);
+  var i = ui.seg, r = S.reports[i], age = Math.floor((S.t - r.t)/60);
   var bars = ATTRS.map(function(a, k){ var v = r.cur[k], t = r.tgt ? r.tgt[k] : null, mk = '', ar = ''; if(t != null && Math.abs(t - v) > 0.05){ var up = t > v; mk = '<span class="tg" style="left:' + (t/1.3*100) + '%;background:' + (up ? 'var(--up)' : 'var(--down)') + '"></span>'; ar = up ? '↑' : '↓'; } return '<span>' + a + '</span><span class="bar"><i style="width:' + (v/1.3*100) + '%"></i>' + mk + '</span><span class="val">' + (v*10).toFixed(1) + ar + '</span>'; }).join('');
   var where = DISTS.filter(function(d){ return !d.port; }).map(function(d){ return d.n + ' ' + Math.round(d.mix[i]*100) + '%'; }).join('、');
   return '<div class="seg-chips">' + SEGS.map(function(x, k){ return '<button data-act="seg" data-v="' + k + '" aria-pressed="' + (k === i) + '">' + avatarSVG(x.kind, 22) + x.n + '</button>'; }).join('') + '</div>' +
@@ -1525,9 +1882,9 @@ function researchHTML(){
 function panicHTML(sh){
   var st = stallById(sh.sid); if(!st) return '';
   var p = prod(st.p);
-  return '<div class="shout">恐慌拋售！</div><p>網紅爆料「' + esc(p.n) + '」品質出包，' + DIST[st.d].n + '的供應商和囤貨的人正大量拋售，<b>對手造市商已經撤單</b>。你手上有 ' + st.inv + ' 件庫存。</p>' +
-    '<div class="card"><b>堅守市場</b><p class="small muted" style="margin:4px 0 0">繼續報價接貨，每收購一件交易所發 $5 流動性獎勵，經驗值三倍。爆料若是真的，庫存會貶值。</p></div>' +
-    '<div class="card"><b>暫時撤單</b><p class="small muted" style="margin:4px 0 0">到真相大白前都不交易，保住現金。但口碑大跌，沒人接盤的價格會崩得更深。</p></div>' +
+  return '<div class="shout">恐慌拋售！</div><p>網紅爆料「' + esc(p.n) + '」品質出包，' + DIST[st.d].n + '的囤貨者正大量拋售，客人也不敢買，<b>對手造市商已經撤單</b>。你手上有 ' + st.inv + ' 件庫存。' + (st.mods.transp > S.t ? '你有公開品質報告，衝擊比較小。' : '') + '</p>' +
+    '<div class="card"><b>堅守市場</b><p class="small muted" style="margin:4px 0 0">繼續報價接貨，每收購一件交易所發 $5 流動性獎勵，經驗值三倍，流動性上升。爆料若是真的，庫存會貶值。</p></div>' +
+    '<div class="card"><b>暫時撤單</b><p class="small muted" style="margin:4px 0 0">真相大白前都不交易，保住現金。但流動性和口碑大跌，沒人接盤的價格會崩得更深。</p></div>' +
     '<div class="cd"><i id="panicBar"></i></div><p class="small muted">倒數結束還沒決定，就會自動撤單。</p>' +
     '<div class="row"><button class="btn hot sp" data-act="stay">堅守市場！</button><button class="btn ghost sp" data-act="flee">暫時撤單</button></div>';
 }
@@ -1536,6 +1893,7 @@ function levelHTML(lv){ var L = LEVELS[lv - 1]; return '<div class="lvup">LEVEL 
 /* ---- 互動 ---- */
 function setQuote(st, side, val){
   if(!st) return;
+  if(side === 'tgt'){ st.tgt = clamp(Math.round(val), 0, st.cap); return; }
   if(locked(st)){ toast('尖峰中報價鎖定'); return; }
   if(st.pulled){ toast('已撤單，先恢復報價'); return; }
   val = Math.round(val); val = Math.max(side === 'ask' ? 2 : 1, Math.min(9999, val));
@@ -1545,23 +1903,26 @@ function setQuote(st, side, val){
   if(st.mods.pledgeDay === dayOf(S.t) && !st.mods.pledgeBroken && (st.ask - st.bid)/st.V > 0.065) toast('注意：價差超過 6% 會違反造市承諾');
 }
 function selectDist(d){ S.sel = d; SC.agents = []; SC.back = []; SC.key = ''; ui.dockKey = ''; sfx('click'); }
+function startFlow(d, swap){ ui.flow = {d:d || null, fixedD:d || null, swap:swap || null}; openSheet('pick'); }
 function bind(){
   document.addEventListener('click', function(ev){
     var b = ev.target.closest('[data-act]'); if(!b || b.disabled) return;
     var a = b.dataset.act, st = stallIn(S.sel);
-    if(a === 'scrim'){ if(ev.target === b && ui.sheet && !LOCKED[ui.sheet.type]) closeSheet(); return; }
+    if(a === 'scrim'){ if(ev.target === b && ui.sheet && !LOCKED[ui.sheet.type] && !(S.setup)) closeSheet(); return; }
     switch(a){
       case 'dist': selectDist(b.dataset.d); updateDOM(); return;
       case 'speed': var v = Number(b.dataset.v); if(v === 0) ui.paused = !ui.paused; else { ui.speed = v; ui.paused = false; } document.querySelectorAll('[data-act="speed"]').forEach(function(x){ var xv = Number(x.dataset.v); x.setAttribute('aria-pressed', String(xv === 0 ? ui.paused : (!ui.paused && xv === ui.speed))); }); sfx('click'); return;
       case 'ctab': ui.ctab = b.dataset.v; document.querySelectorAll('[data-act="ctab"]').forEach(function(x){ x.setAttribute('aria-selected', String(x.dataset.v === ui.ctab)); }); updateDOM(); return;
-      case 'q': if(st){ setQuote(st, b.dataset.side, st[b.dataset.side] + Number(b.dataset.d)); sfx('click'); renderDock(true); } return;
-      case 'align': if(st){ if(locked(st)){ toast('尖峰中報價鎖定'); return; } alignQuotes(st); sfx('click'); renderDock(true); } return;
+      case 'q': if(st){ setQuote(st, b.dataset.side, st[b.dataset.side] + Number(b.dataset.d)*(b.dataset.side === 'tgt' ? 2 : 1)); sfx('click'); renderDock(true); } return;
+      case 'align': if(st){ if(locked(st)){ toast('尖峰中報價鎖定'); return; } alignQuotes(st); sfx('click'); renderDock(true); toast('依流動性對齊：±' + (st.L >= 60 ? 4 : st.L >= 30 ? 5 : 6) + '%'); } return;
       case 'qa': if(st){ useStrat(st, b.dataset.s); updateDOM(); renderDock(true); } return;
-      case 'openStall': openSheet('open', {d:S.sel}); return;
+      case 'newStall': if(S.stalls.length >= maxStalls()){ toast('升級後才能開更多攤位'); return; } startFlow(b.dataset.d); return;
       case 'bigok': acceptBig(); return;
       case 'bigno': S.big = null; hideBig(); return;
-      case 'sheet': if(b.dataset.s === 'news'){ S.newsSeen = S.news.length + S.notes.length; } openSheet(b.dataset.s); return;
-      case 'close': if(ui.sheet && ui.sheet.type === 'help'){ SETTINGS.seenHelp = true; saveSettings(); } closeSheet(); return;
+      case 'sheet': if(b.dataset.s === 'news'){ S.newsSeen = S.news.length + S.notes.length; } if(b.dataset.s === 'strat') ui.stratSid = (stallIn(S.sel) || {}).id; openSheet(b.dataset.s); return;
+      case 'close':
+        if(ui.sheet && ui.sheet.type === 'help'){ SETTINGS.seenHelp = true; saveSettings(); if(S.setup){ startFlow(null); return; } }
+        closeSheet(); return;
       case 'goto': selectDist(b.dataset.d); closeSheet(); updateDOM(); return;
       case 'ntab': ui.newsTab = b.dataset.v; renderSheet(); return;
       case 'set': SETTINGS[b.dataset.k] = !SETTINGS[b.dataset.k]; saveSettings(); sfx('click'); renderSheet(); return;
@@ -1569,22 +1930,26 @@ function bind(){
       case 'newgame': newGameNow(); return;
       case 'spick': ui.stratSid = Number(b.dataset.id); renderSheet(); return;
       case 'use': var ts = stallById(ui.stratSid); if(ts){ useStrat(ts, b.dataset.s); renderSheet(); ui.dockKey = ''; } return;
-      case 'sq': var s2 = stallById(Number(b.dataset.id)); setQuote(s2, b.dataset.side, s2[b.dataset.side] + Number(b.dataset.d)); renderSheet(); ui.dockKey = ''; return;
+      case 'hrs': var hs = stallById(ui.stratSid); if(hs){ var k = b.dataset.k, nv = hs[k] + Number(b.dataset.d); if(k === 'open'){ nv = clamp(nv, 0, 23); if(hs.close - nv < 4 || hs.close - nv > 24) return; hs.open = nv; } else { nv = clamp(nv, hs.open + 4, hs.open + 24); hs.close = nv; } if(hs.mods.pledgeDay === dayOf(S.t)) toast('營業時間改變，記得維持承諾'); renderSheet(); ui.dockKey = ''; } return;
       case 'psp': var s3 = stallById(Number(b.dataset.id)); s3.mods.pricerSp = clamp(Math.round((s3.mods.pricerSp + Number(b.dataset.d)*0.005)*1000)/1000, 0.015, 0.12); renderSheet(); return;
-      case 'swap': ui.swapSid = Number(b.dataset.id); openSheet('open', {d:stallById(ui.swapSid).d, swap:true}); return;
-      case 'openD': openSheet('open', {d:b.dataset.d}); return;
+      case 'swap': var sw = stallById(Number(b.dataset.id)); if(sw.inv > 0){ toast('先把庫存賣完或出清'); return; } startFlow(sw.d, sw.id); return;
+      case 'pickP': ui.flow.p = b.dataset.p; if(ui.flow.d){ openSheet('ipo'); } else openSheet('pickD'); return;
+      case 'pickD': ui.flow.d = b.dataset.d; openSheet('ipo'); return;
+      case 'flowBack': if(b.dataset.to === 'pickD' && (ui.flow.swap || ui.flow.fixedD)){ openSheet('pick'); return; } if(b.dataset.to === 'pickD') ui.flow.d = null; openSheet(b.dataset.to); return;
       case 'doOpen':
-        var d = b.dataset.d, pid = b.dataset.p, fee = ui.sheet && ui.sheet.swap ? CFG.swapFee : CFG.openFee;
+        var f = ui.flow, fee = S.setup ? 0 : f.swap ? CFG.swapFee : CFG.openFee;
         if(S.cash < fee){ toast('現金不足'); return; }
-        S.cash -= fee;
-        if(ui.sheet && ui.sheet.swap){ var sw = stallById(ui.swapSid); sw.p = pid; sw.inv = 0; sw.hist = []; sw.trades = []; sw.marks = []; setupStall(sw); note('chip', DIST[d].n + '攤位改賣「' + prod(pid).n + '」'); }
-        else { addStall(d, pid); note('tag', '在' + DIST[d].n + '開了「' + prod(pid).n + '」攤位'); }
-        dismissSheet(); selectDist(d); sfx('coin'); toast('開張！先把庫存補起來'); updateDOM(); return;
+        if(f.swap){ var sx = stallById(f.swap); S.cash -= fee; sx.p = f.p; sx.lots = []; sx.inv = 0; sx.hist = []; sx.trades = []; sx.marks = []; sx.L = Math.min(sx.L, 15); sx.tox = 0; setupStall(sx); note('swap', DIST[sx.d].n + '攤位改賣「' + prod(f.p).n + '」'); }
+        else { var first = S.setup; var ns = openStallAt(f.d, f.p, first); if(first){ S.setup = false; S.dayStartEq = equity(); } note('tag', '在' + DIST[f.d].n + '開了「' + prod(f.p).n + '」攤位，系統定價 $' + ns.V.toFixed(1)); }
+        S.sel = f.d; ui.flow = null; dismissSheet(); selectDist(S.sel); sfx('coin'); toast('開張！先觀察流動性和報價'); updateDOM(); saveGame(); return;
       case 'pt': var dr = ui.draft, i = Number(b.dataset.i), dd = Number(b.dataset.d), used = dr.pts.reduce(function(x,y){ return x+y; }, 0); if(dd > 0 && used >= 12) return; dr.pts[i] = clamp(dr.pts[i] + dd, 0, 5); renderSheet(); return;
+      case 'rcat': ui.draft.cat = b.dataset.v; renderSheet(); return;
       case 'ricon': ui.draft.icon = b.dataset.v; renderSheet(); return;
       case 'rcol': ui.draft.color = b.dataset.v; renderSheet(); return;
       case 'rsess': ui.draft.sess = Number(b.dataset.v); renderSheet(); return;
-      case 'doRnd': var dft = ui.draft; if(!dft || !dft.name.trim() || S.cash < CFG.rndFee) return; S.cash -= CFG.rndFee; var se = SESSIONS[dft.sess]; S.products.push({id:'c' + (S.uid++), n:dft.name.trim(), icon:dft.icon, pts:dft.pts.slice(), open:se.o, close:se.c, color:dft.color, temp:null, unlock:1, custom:true}); note('chip', '研發完成「' + dft.name.trim() + '」'); ui.draft = null; toast('研發完成，可以在攤位頁換上新商品'); openSheet('prod'); return;
+      case 'doRnd': var dft = ui.draft; if(!dft || !dft.name.trim() || S.cash < CFG.rndFee) return; S.cash -= CFG.rndFee; var se = SESSIONS[dft.sess];
+        S.products.push({id:'c' + (S.uid++), n:dft.name.trim(), cat:dft.cat, icon:dft.icon, pts:dft.pts.slice(), open:se.o, close:se.c, color:dft.color, shelf:CAT_SHELF[dft.cat], vol:1, bm:1, temp:dft.cat === 'rain' ? 'rain' : null, tf:0.3, tb:[[(se.o + se.c)/2, 0.8, Math.max(1.5, (se.c - se.o)/4)]], adv:'你自己研發的商品', risk:'市場反應未知', custom:true});
+        note('chip', '研發完成「' + dft.name.trim() + '」'); ui.draft = null; toast('研發完成，可以開店或替攤位換上新商品'); openSheet('prod'); return;
       case 'claim': var m = S.missions[Number(b.dataset.i)]; if(m && !m.done && missionVal(m) >= m.goal){ m.done = true; S.cash += m.r; S.xp += m.x; sfx('coin'); toast('領取 ' + money(m.r)); renderSheet(); } return;
       case 'borrow': var room = creditOf() - S.debt; if(room >= 500){ S.debt += 500; S.cash += 500; sfx('coin'); renderSheet(); } return;
       case 'repay': var amt = Math.min(500, S.debt, S.cash); if(amt > 0){ S.debt -= amt; S.cash -= amt; if(S.debt < 0.5) S.debt = 0; renderSheet(); } return;
@@ -1601,8 +1966,8 @@ function bind(){
   $('scene').addEventListener('click', function(ev){
     var r = $('scene').getBoundingClientRect(), x = ev.clientX - r.left, y = ev.clientY - r.top, g = geom();
     var st = stallIn(S.sel);
-    if(!st && !DIST[S.sel].port){ openSheet('open', {d:S.sel}); return; }
-    if(st && Math.abs(x - g.stallX) < g.stallW/2 && y > g.hor) openSheet('strat');
+    if(!st && !DIST[S.sel].port){ if(S.stalls.length < maxStalls()) startFlow(S.sel); else toast('升級後才能開更多攤位'); return; }
+    if(st && Math.abs(x - g.stallX) < g.stallW/2 && y > g.hor){ ui.stratSid = st.id; openSheet('strat'); }
   });
   document.addEventListener('click', function(ev){
     var cv = $('mapCv'); if(!cv || ev.target !== cv || !SC.mapPaths) return;
@@ -1617,13 +1982,13 @@ function bind(){
   if(document.fonts && document.fonts.ready) document.fonts.ready.then(function(){ SC.key = ''; });
 }
 function newGameNow(){
-  try { localStorage.removeItem('heatx5-save'); } catch(e) {}
-  newState(); queue = []; ui.hard = false; dismissSheet(); ui.panicSid = null; ui.restartArm = false; $('sheet').innerHTML = ''; hideBig();
-  SC.agents = []; SC.back = []; SC.key = ''; ui.dockKey = ''; updateDOM(); toast('新的一局開始了');
+  try { localStorage.removeItem('heatx6-save'); } catch(e) {}
+  newState(); queue = []; ui.hard = false; ui.panicSid = null; ui.restartArm = false; dismissSheet(); hideBig();
+  SC.agents = []; SC.back = []; SC.key = ''; ui.dockKey = ''; updateDOM(); startFlow(null);
 }
 function loop(ts){
   var dt = Math.min(100, ts - (ui.last || ts)); ui.last = ts;
-  var run = !ui.paused && !ui.hard && !ui.auto && !S.over;
+  var run = !ui.paused && !ui.hard && !ui.auto && !S.over && !S.setup;
   if(run){ ui.acc += dt*ui.speed/CFG.hourMs*60; var k = 0; while(ui.acc >= 1 && k < 300){ stepMinute(); ui.acc -= 1; k++; } if(ui.acc > 5) ui.acc = 0; }
   if(S.big && run){ S.big.left -= dt; var bb = $('bigBar'); if(bb) bb.style.width = clamp(S.big.left/14000*100, 0, 100) + '%'; if(S.big.left <= 0){ S.big = null; hideBig(); toast('大單被別人接走了'); } }
   if(ui.panicSid){ var left = ui.panicEnd - ts, pb = $('panicBar'); if(pb) pb.style.width = clamp(left/9000*100, 0, 100) + '%'; if(left <= 0){ var ps = stallById(ui.panicSid); if(ps) decidePanic(ps, false); toast('猶豫太久，自動撤單了'); sfx('bad'); ui.panicSid = null; ui.hard = false; dismissSheet(); } }
@@ -1638,10 +2003,12 @@ function loop(ts){
 function boot(){
   if(!loadGame()) newState();
   buildStatic(); bind(); resizeScene(); resizeChart(); updateDOM();
-  if(!SETTINGS.seenHelp || S.t > 6*60 + 1) openSheet('help');
+  if(S.setup){ if(SETTINGS.seenHelp) startFlow(null); else openSheet('help'); }
+  else openSheet('help');
   requestAnimationFrame(loop);
 }
 if(UI) boot();
+
 </script>
 </body>
 </html>
