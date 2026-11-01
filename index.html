@@ -139,7 +139,7 @@ svg{display:block;}
 .dk-nm{flex:1;min-width:0;display:flex;flex-direction:column;line-height:1.3;}
 .dk-nm b{font-size:14px;font-weight:900;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
 .stc{font-size:11px;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
-.stc.peak{color:var(--gold);} .stc.off{color:var(--cyan);} .stc.closed{color:var(--muted);} .stc.pulled,.stc.panic{color:var(--up);}
+.stc.peak{color:var(--gold);} .stc.off{color:var(--cyan);} .stc.closed{color:var(--muted);} .stc.tgt{color:var(--violet);} .stc.pulled,.stc.panic{color:var(--up);}
 .dk-inv{text-align:right;font-size:11px;color:var(--muted);line-height:1.35;flex:none;}
 .dk-inv > span{display:block;}
 .dk-inv b{font-size:16px;color:var(--ink);}
@@ -149,6 +149,8 @@ svg{display:block;}
 .qs button{width:30px;height:44px;border-radius:10px;border:1px solid var(--line);background:var(--panel-2);color:var(--ink);font-size:19px;padding:0;flex:none;}
 .qv{flex:1;min-width:0;height:44px;border-radius:10px;display:flex;flex-direction:column;align-items:center;justify-content:center;line-height:1;color:#0b1020;}
 .qs.bid .qv{background:var(--cyan);} .qs.ask .qv{background:var(--amber);}
+.qs.tgt .qv{background:var(--panel-2);color:var(--ink);box-shadow:inset 0 0 0 1px var(--line);}
+.qs.tgt.hit .qv{background:var(--violet);color:#120a2e;box-shadow:none;}
 .qv small{font-size:10px;font-weight:900;opacity:.75;}
 .qv b{font-size:21px;}
 .dk-al{height:44px;padding:0 11px;border-radius:10px;border:1px solid var(--line);background:var(--panel-2);color:var(--ink);font-weight:700;font-size:13px;}
@@ -430,9 +432,9 @@ function hexRGB(h){ h = h.replace('#',''); if(h.length === 3) h = h.split('').ma
 function rgba(h,a){ var c = hexRGB(h); return 'rgba(' + c[0] + ',' + c[1] + ',' + c[2] + ',' + a + ')'; }
 function mix(a,b,t){ var x = hexRGB(a), y = hexRGB(b); return 'rgb(' + Math.round(x[0]+(y[0]-x[0])*t) + ',' + Math.round(x[1]+(y[1]-x[1])*t) + ',' + Math.round(x[2]+(y[2]-x[2])*t) + ')'; }
 function sstep(a,b,x){ var t = clamp((x-a)/(b-a),0,1); return t*t*(3-2*t); }
-function hourOf(t){ return (t % 1440)/60; }
+function hourOf(t){ return (((t % 1440) + 1440) % 1440)/60; }
 function dayOf(t){ return Math.floor(t/1440) + 1; }
-function clockOf(t){ var m = Math.floor(t % 1440); return pad(Math.floor(m/60)) + ':' + pad(m % 60); }
+function clockOf(t){ var m = Math.floor(((t % 1440) + 1440) % 1440); return pad(Math.floor(m/60)) + ':' + pad(m % 60); }
 function hh(x){ x = ((x % 24) + 24) % 24; var m = Math.round(x*60); return pad(Math.floor(m/60) % 24) + ':' + pad(m % 60); }
 function circ(a,b){ var d = Math.abs(a-b) % 24; return Math.min(d, 24-d); }
 function inWin(h,a,b){ return (h >= a && h < b) || (h + 24 >= a && h + 24 < b); }
@@ -467,6 +469,7 @@ function tierOf(L){ var k = 0; for(var i=0;i<TIERS.length;i++) if(L >= TIERS[i].
 function rivalSpread(st){ var base = 0.09 - 0.04*st.L/100; return S.wars.some(function(w){ return w.d === st.d && w.until > S.t; }) ? 0.03 : base; }
 function distMult(d){ var m = 1; S.devents.forEach(function(e){ if(e.d === d && e.until > S.t) m *= e.mult; }); return m; }
 function locked(st){ return !!peakOf(st, hourOf(S.t)) && !st.mods.pricer; }
+function tgtOf(st){ return st.tgt == null ? st.cap : Math.min(st.tgt, st.cap); }
 function pendingQ(st){ return S.deliveries.reduce(function(a,d){ return a + (d.sid === st.id ? d.q : 0); }, 0); }
 function catEvents(p){ return S.cevents.filter(function(e){ return e.until > S.t && (e.cat === p.cat || (e.cat === 'fresh' && perishable(p))); }); }
 function catMult(p, k){ var m = 1; catEvents(p).forEach(function(e){ if(e[k] != null) m *= e[k]; }); return m; }
@@ -490,7 +493,7 @@ function equity(){
 }
 function stars(b){ return clamp((b - 0.3)/1.4*5, 0, 5); }
 function newToday(){ return {cust:0, sales:0, sup:0, bought:0, arbIn:0, arbOut:0, fills:0, buys:0, maxHeat:0, maxL:0, bigs:0, strategies:0, arbs:0, reward:0, rebate:0, arb:0, lost:0, costs:0, realized:0, spoiled:0, spoilLoss:0, pnl:0}; }
-function newSTD(){ return {buy:0, sell:0, lost:0, pricey:0, cheap:0, nostock:0, full:0, enough:0, closed:0, arb:0, spoiled:0, realized:0}; }
+function newSTD(){ return {buy:0, sell:0, lost:0, pricey:0, cheap:0, nostock:0, full:0, nocash:0, enough:0, closed:0, arb:0, spoiled:0, realized:0}; }
 function note(icon, text){ S.notes.unshift({t:S.t, icon:icon, text:text}); if(S.notes.length > 80) S.notes.pop(); }
 function pushNews(src, text, kind){ var n = {t:S.t, src:src, text:text, kind:kind}; S.news.unshift(n); if(S.news.length > 80) S.news.pop(); return n; }
 function mark(st, text, color){ st.marks.push({t:S.t, text:text, color:color}); if(st.marks.length > 30) st.marks.shift(); }
@@ -589,7 +592,8 @@ function stallStep(st, h, day, wx, supG, T){
     arr += nB;
     if(st.panic){ var nP = poisson(st.supBase*1.5/60); for(k=0;k<nP;k++) arrival(st, -1); arr += nP; }
   } else if(!inH && !st.pulled){
-    var lamS = st.supBase*supTime(st,h)*supG*catMult(p, 'sup')*(0.5 + st.L/100)/0.75/60;
+    var mBid = clamp(Math.exp(4*(st.bid/st.V - 0.93)), 0.6, 1.5);
+    var lamS = st.supBase*supTime(st,h)*supG*catMult(p, 'sup')*(0.5 + st.L/100)*mBid/0.75/60;
     var nS = poisson(lamS);
     for(k=0;k<nS;k++) arrival(st, -1);
     arr += nS;
@@ -618,13 +622,14 @@ function arrival(st, side){
     if(st.panic) rs2 = st.V*0.85*(1 + gauss()*0.06);
     if(!rivalOn || st.bid >= rb){
       if(rs2 <= st.bid){
-        if(st.inv >= (st.tgt || st.cap) && st.inv < st.cap) out = 'enough';
-        else if(st.inv < st.cap && S.cash >= st.bid){ out = 'sell'; addInv(st, 1, st.bid); S.cash -= st.bid; st.V *= 1 + imp; if(st.panic){ S.cash += 5; S.today.reward += 5; S.xp += 2; } }
-        else out = rivalOn && rs2 <= rb ? 'lost' : 'full';
+        if(st.inv >= st.cap) out = rivalOn && rs2 <= rb ? 'lost' : 'full';
+        else if(st.inv >= tgtOf(st)) out = 'enough';
+        else if(S.cash < st.bid) out = 'nocash';
+        else { out = 'sell'; addInv(st, 1, st.bid); S.cash -= st.bid; st.V *= 1 + imp; if(st.panic){ S.cash += 5; S.today.reward += 5; S.xp += 2; } }
       } else out = 'cheap';
     } else out = rs2 <= rb ? 'lost' : 'cheap';
   }
-  st.td[out]++;
+  st.td[out] = (st.td[out] || 0) + 1;
   if(out === 'buy' || out === 'sell'){
     st.buzz += 0.006*gain; S.xp += 1; S.totalFills++; S.today.fills++;
     st.cnt[out === 'buy' ? 'fb' : 'fs']++;
@@ -632,7 +637,7 @@ function arrival(st, side){
     pushTrade(st, out === 'buy' ? askE : st.bid, out === 'buy' ? 1 : -1);
     if(st.mods.pledgeDay === dayOf(S.t) && !st.mods.pledgeBroken){ S.cash += 1.5; S.today.rebate += 1.5; }
   } else {
-    if(out === 'lost') st.buzz -= 0.004; else if(out === 'nostock') st.buzz -= 0.006; else if(out === 'full') st.buzz -= 0.003; else if(out !== 'enough') st.buzz -= 0.0008;
+    if(out === 'lost') st.buzz -= 0.004; else if(out === 'nostock') st.buzz -= 0.006; else if(out === 'full' || out === 'nocash') st.buzz -= 0.003; else if(out !== 'enough') st.buzz -= 0.0008;
     if(out !== 'pricey' && out !== 'cheap' && out !== 'enough') S.today.lost++;
   }
   if(UI) fxArrival(st, side, out, out === 'buy' ? askE : st.bid);
@@ -641,16 +646,16 @@ function pushTrade(st, px, s){ st.trades.push({t:S.t, px:px, s:s}); if(st.trades
 function momentum(st){ return st.vr.length ? st.V/st.vr[0] - 1 : 0; }
 function arbStep(st, open, apR){
   var Ff = st.F*Math.pow(clamp(apR, 0.5, 2), 0.5), askE = effAsk(st), q = 0, side = 0, kind = 'arb', imp = impact(st);
-  var canIn = !perishable(prod(st.p)) && st.inv < Math.min(st.cap, st.tgt || st.cap) && S.cash >= st.bid;
+  var canIn = !perishable(prod(st.p)) && st.inv < tgtOf(st) && S.cash >= st.bid;
   if(open && st.inv > 0 && askE < Math.min(Ff, st.F)*0.95){
     q = Math.min(4, Math.ceil((Math.min(Ff, st.F)*0.95 - askE)/st.F*30), st.inv);
     var tk = takeInv(st, q); S.cash += q*askE; S.today.realized += q*askE - tk.cost; side = 1; st.V *= 1 + imp*q;
   } else if(canIn && st.bid > Math.max(Ff, st.F)*1.04){
-    q = Math.min(4, Math.ceil((st.bid - Math.max(Ff, st.F)*1.04)/st.F*30), Math.min(st.cap, st.tgt || st.cap) - st.inv, Math.floor(S.cash/st.bid));
+    q = Math.min(4, Math.ceil((st.bid - Math.max(Ff, st.F)*1.04)/st.F*30), tgtOf(st) - st.inv, Math.floor(S.cash/st.bid));
     addInv(st, q, st.bid); S.cash -= q*st.bid; side = -1; st.V *= 1 - imp*q;
   } else if(st.V > st.F*1.06){
     kind = 'rev'; st.V += (st.F - st.V)*0.08;
-    if(canIn && st.bid > st.F*1.02){ q = Math.min(3, Math.min(st.cap, st.tgt || st.cap) - st.inv); addInv(st, q, st.bid); S.cash -= q*st.bid; side = -1; }
+    if(canIn && st.bid > st.F*1.02){ q = Math.min(3, tgtOf(st) - st.inv, Math.floor(S.cash/st.bid)); addInv(st, q, st.bid); S.cash -= q*st.bid; side = -1; }
   } else if(st.V < st.F*0.94){
     kind = 'rev'; st.V += (st.F - st.V)*0.08;
     if(open && askE < st.F && st.inv > 0){ q = Math.min(3, st.inv); var tk2 = takeInv(st, q); S.cash += q*askE; S.today.realized += q*askE - tk2.cost; side = 1; }
@@ -1022,7 +1027,7 @@ function loadGame(){ try { var r = localStorage.getItem('heatx6-save'); if(!r) r
 function hasSave(){ try { return !!localStorage.getItem('heatx6-save'); } catch(e){ return false; } }
 var OUT = {
   buy:{n:'買走',c:'--amber'}, sell:{n:'賣給你',c:'--cyan'}, lost:{n:'被對手搶走',c:'--violet'}, pricey:{n:'嫌貴',c:'--muted'}, cheap:{n:'嫌收購價低',c:'--muted'},
-  nostock:{n:'缺貨',c:'--hot'}, full:{n:'倉庫滿',c:'--hot'}, enough:{n:'已收夠',c:'--muted'}
+  nostock:{n:'缺貨',c:'--hot'}, full:{n:'倉庫滿',c:'--hot'}, nocash:{n:'現金不足',c:'--hot'}, enough:{n:'已收夠',c:'--muted'}
 };
 var FORCE_PAUSE = {strat:1, pick:1, pickD:1, ipo:1, rnd:1};
 var ui = {speed:1, paused:false, hard:false, acc:0, last:0, sheet:null, auto:false, ctab:'heat', domT:0, saveT:0, dockKey:'', panicSid:null, panicEnd:0, restartArm:false, draft:null, stratSid:null, seg:0, bannerT:0, newsTab:'news', flow:null};
@@ -1237,6 +1242,7 @@ function bubbleOf(a){
     case 'cheap': return ['太低', '#eef1fb', '#141a3a'];
     case 'nostock': return ['缺貨？', '#ff4f5e', '#fff'];
     case 'full': return ['滿倉', '#ff4f5e', '#fff'];
+    case 'nocash': return ['沒現金？', '#ff4f5e', '#fff'];
     case 'lost': return ['去對面', '#a184ff', '#fff'];
     case 'closed': return ['沒開？', '#eef1fb', '#141a3a'];
     case 'arbB': return ['低價掃 ' + a.q + ' 件', '#ff4f5e', '#fff'];
@@ -1391,7 +1397,7 @@ function drawStall(c, g, st, n, ts){
   drawIcon(c, p.icon, p.color, x - sw2/2 + 15*s, sY + sh/2, 16*s);
   c.textAlign = 'center'; c.textBaseline = 'middle';
   if(open){ c.fillStyle = st.mods.promo > S.t ? '#ff6b78' : '#ffb547'; c.font = 'italic 700 ' + Math.round(19*s) + 'px "Barlow Condensed", sans-serif'; c.fillText('$' + (Math.round(effAsk(st)*10)/10), x + 8*s, sY + sh/2 + 1); }
-  else { c.fillStyle = '#5cc8ff'; c.font = '700 ' + Math.round(11*s) + 'px "Noto Sans TC", sans-serif'; c.fillText('進貨中 收 $' + st.bid, x + 8*s, sY + sh/2); }
+  else { var hit = st.inv >= tgtOf(st); c.fillStyle = hit ? '#d9cfff' : '#5cc8ff'; c.font = '700 ' + Math.round(11*s) + 'px "Noto Sans TC", sans-serif'; c.fillText(hit ? '已達進貨目標' : '進貨中 收 $' + st.bid, x + 8*s, sY + sh/2); }
   c.textBaseline = 'alphabetic';
   if(st.mods.promo > S.t && open){ rr(c, x0 - 6*s, aY + aH + 4*s, 62*s, 16*s, 4*s, '#ff4f5e'); c.fillStyle = '#fff'; c.font = '900 ' + Math.round(10*s) + 'px "Noto Sans TC", sans-serif'; c.textAlign = 'center'; c.fillText('限時 95 折', x0 + 25*s, aY + aH + 15*s); }
   if(open && !st.pulled){
@@ -1507,7 +1513,10 @@ function statusOf(st){
   var h = hourOf(S.t);
   if(st.panic) return {cls:'panic', t:st.panic.stay === false ? '恐慌撤單中' : '恐慌拋售中，堅守市場'};
   if(st.pulled) return {cls:'pulled', t:'已撤單，暫停交易'};
-  if(!inHours(st,h)) return {cls:'closed', t:'進貨時段，' + hh(st.open) + ' 開店'};
+  if(!inHours(st,h)){
+    if(st.inv >= tgtOf(st)) return {cls:'tgt', t:(st.inv >= st.cap ? '倉庫已滿' : '已達進貨目標') + '，供應商會被婉拒'};
+    return {cls:'closed', t:'進貨時段，' + hh(st.open) + ' 開店' + (perishable(prod(st.p)) ? '（生鮮開店前才到貨）' : '')};
+  }
   var pk = peakOf(st,h);
   if(pk) return {cls:'peak', t:pk[2] + '，報價鎖到 ' + hh(Math.min(pk[1], st.close))};
   return {cls:'off', t:'營業中，離峰可改價（' + hh(st.close) + ' 打烊）'};
@@ -1542,6 +1551,8 @@ function renderDock(force){
   if(ol != null) sub += '<br><span class="' + (ol < 90 ? 'hotc' : '') + '">保鮮 ' + (ol/60).toFixed(1) + 'h</span>';
   $('dkSub').innerHTML = sub;
   $('dk-bid').textContent = '$' + st.bid; $('dk-ask').textContent = '$' + st.ask; $('dk-tgt').textContent = st.tgt;
+  var tq = $('dk-tgt').parentNode, hit = st.inv >= tgtOf(st);
+  tq.parentNode.classList.toggle('hit', hit); tq.querySelector('small').textContent = hit ? '目標已達' : '進貨目標';
   $('lqFill').style.width = st.L + '%'; $('lqTgt').style.left = st.lc.t + '%';
   $('lqV').textContent = Math.round(st.L); $('lqT').textContent = TIERS[tierOf(st.L)].n;
 }
@@ -1571,6 +1582,7 @@ function updateDOM(){
     var so = statusOf(st);
     if(so.cls === 'peak') chips.push('<span class="chip"><i class="dot"></i>' + peakOf(st,h)[2] + '</span>');
     else if(so.cls === 'closed') chips.push('<span class="chip" style="color:#9fe0ff">進貨時段</span>');
+    else if(so.cls === 'tgt') chips.push('<span class="chip" style="color:#d9cfff">已達進貨目標</span>');
     else if(so.cls === 'panic') chips.push('<span class="chip"><i class="dot"></i>恐慌拋售</span>');
     chips.push('<span class="chip" style="color:#7ff0e2">流動性 ' + TIERS[tierOf(st.L)].n + '</span>');
     if(st.fwd) chips.push('<span class="chip">預售待交 <b>' + st.fwd.q + '</b> 件，剩 ' + Math.ceil((st.fwd.due - S.t)/60) + 'h</span>');
@@ -1605,7 +1617,7 @@ function updateDOM(){
       var dV = ago ? (st.V/ago.V - 1)*100 : 0; $('cval').innerHTML = '參考價 <b class="num">$' + st.V.toFixed(1) + '</b> <span class="' + dirc(dV) + '">' + pct(dV) + '</span>';
     } else {
       var td = st.td;
-      $('drv').innerHTML = chipHTML('賣出', td.buy) + chipHTML('收購', td.sell) + chipHTML('流失', td.lost + td.nostock + td.full, (td.lost + td.nostock) < td.buy) + chipHTML('報廢', td.spoiled, td.spoiled === 0);
+      $('drv').innerHTML = chipHTML('賣出', td.buy) + chipHTML('收購', td.sell) + chipHTML('流失', td.lost + td.nostock + td.full + (td.nocash || 0), (td.lost + td.nostock) < td.buy) + chipHTML('報廢', td.spoiled, td.spoiled === 0);
       var lb = hist.slice(-12).reduce(function(a,p){ return a + p.B; }, 0), ls = hist.slice(-12).reduce(function(a,p){ return a + p.S; }, 0); $('cval').innerHTML = '一小時 客 <b class="num" style="color:var(--amber)">' + lb + '</b> 供 <b class="num" style="color:var(--cyan)">' + ls + '</b>';
     }
   } else { $('drv').innerHTML = ''; $('cval').innerHTML = ''; }
@@ -1680,7 +1692,7 @@ function helpHTML(){
     '<li><b>流動性是一切的核心。</b>新市場一開始很冷清，靠窄價差、穩定供貨、充足庫存、口碑和人潮，流動性會慢慢升高。</li>' +
     '<li>流動性越高，客人和供應商越多，你的單筆交易對價格的衝擊越小，也會解鎖更多套利手法：起步（拉抬、拋售）、活絡（跨區調貨）、熱絡（吃對手單）、沸騰（撮合大單、預售合約）。</li>' +
     '<li>流動性枯竭的原因：價差太寬、缺貨或撤單、價格大幅波動、被套利客反覆吃單（毒性高），以及恐慌事件。</li>' +
-    '<li>客人只在營業時間上門，供應商只在打烊後來。營業越久人力成本越高，進貨時間也越少。</li>' +
+    '<li>客人只在營業時間上門，供應商只在打烊後來。收購價開得越高，上門的供應商越多；庫存到了「進貨目標」就不再收貨。營業越久人力成本越高，進貨時間也越少。</li>' +
     '<li>尖峰時段報價會鎖住，要在離峰或打烊時調好，或啟用智慧報價機。</li>' +
     '<li>生鮮商品有保存期限，賣不掉就報廢。用「進貨目標」控制收多少貨，或開啟即期折扣。</li>' +
     '<li>大量溢價買進會推高價格、吸引追漲客，但回歸套利客會把價格壓回合理價，太頻繁還會被主管機關約談。</li></ul>' +
@@ -1900,6 +1912,10 @@ function setQuote(st, side, val){
   st[side] = val;
   if(side === 'bid' && st.bid >= st.ask) st.ask = st.bid + 1;
   if(side === 'ask' && st.ask <= st.bid) st.bid = Math.max(1, st.ask - 1);
+  if(side === 'bid'){
+    if(st.inv >= tgtOf(st)) toast('庫存已達進貨目標，供應商會被婉拒；要多收貨請調高進貨目標');
+    else if(inHours(st, hourOf(S.t))) toast('營業中只有客人上門，供應商打烊後才會來');
+  }
   if(st.mods.pledgeDay === dayOf(S.t) && !st.mods.pledgeBroken && (st.ask - st.bid)/st.V > 0.065) toast('注意：價差超過 6% 會違反造市承諾');
 }
 function selectDist(d){ S.sel = d; SC.agents = []; SC.back = []; SC.key = ''; ui.dockKey = ''; sfx('click'); }
@@ -1977,6 +1993,11 @@ function bind(){
   });
   var ro = function(){ resizeScene(); resizeChart(); };
   window.addEventListener('resize', function(){ clearTimeout(ui.rt); ui.rt = setTimeout(ro, 120); });
+  // 版面高度會隨面板內容改變（不只視窗縮放），畫布要跟著重設尺寸，否則會被拉伸變形
+  if(window.ResizeObserver){
+    var obs = new ResizeObserver(function(){ ro(); drawScene(performance.now()); drawChart(); });
+    obs.observe($('sceneWrap')); obs.observe($('chart'));
+  }
   document.addEventListener('visibilitychange', function(){ if(document.hidden) saveGame(); });
   window.addEventListener('pagehide', saveGame);
   if(document.fonts && document.fonts.ready) document.fonts.ready.then(function(){ SC.key = ''; });
